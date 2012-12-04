@@ -39,7 +39,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "13"
          endingLineNumber = "13"
-         landmarkName = "@interface RegisteringViewController"
+         landmarkName = "@protocol ResisteringViewControllerDelegate"
          landmarkType = "2">
       </FileBreakpoint>
       <FileBreakpoint
@@ -86,7 +86,7 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "timemanagement/RegisteringViewController.m"
-         timestampString = "375895578.726075"
+         timestampString = "376204841.790935"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "135"
@@ -99,7 +99,7 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "timemanagement/RegisteringViewController.m"
-         timestampString = "375895578.726075"
+         timestampString = "376204841.790935"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "145"
@@ -182,7 +182,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "28"
          endingLineNumber = "28"
-         landmarkName = "-initWithDoing:time:"
+         landmarkName = "-initWithDoing:time:information:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -195,7 +195,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "29"
          endingLineNumber = "29"
-         landmarkName = "-initWithDoing:time:"
+         landmarkName = "-initWithDoing:time:information:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -208,7 +208,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "30"
          endingLineNumber = "30"
-         landmarkName = "-initWithDoing:time:"
+         landmarkName = "-initWithDoing:time:information:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -221,7 +221,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "32"
          endingLineNumber = "32"
-         landmarkName = "-initWithDoing:time:"
+         landmarkName = "-initWithDoing:time:information:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

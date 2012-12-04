@@ -13,7 +13,7 @@
 #import "ToDo.h"
 
 @interface ToDoViewController ()
-<AdittionToDoViewControllerDelegate>
+<AdittionToDoViewControllerDelegate,DetailViewControllerDelegate>
 
 @end
 
@@ -116,9 +116,7 @@
 	cell.textLabel.text = [self.ToDoList objectInListAtIndex:indexPath.row].doing;
     //ToDoの下に時間をラベルに表示
     cell.detailTextLabel.text = [self.ToDoList objectInListAtIndex:indexPath.row].time;
-    cell.accessoryType =
-    UITableViewCellAccessoryDetailDisclosureButton;
-    
+    cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
     
     return cell;
 }
@@ -175,42 +173,15 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-     /*[tableView deselectRowAtIndexPath:indexPath animated:YES];
-  //  NSString *title = [self.doingList objectAtIndex:indexPath.row];
-    DetailViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"detail"];
-    controller.title = [self.doingList objectAtIndex:indexPath.row];
-      [[self navigationController] pushViewController:controller animated:YES];
-      */
-    /**
-    DetailViewController *detailViewController = [[DetailViewController alloc] initWithNibName:title bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
-     
 }
 
 - (void)tableView:(UITableView *)tableView
 accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
+    DetailViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"detail"];
+    controller.delegate = self;
+    [self presentViewController:controller animated:YES completion:nil];
     
-    //---Navigate to the details view---
-    if (self.detailviewController == nil)
-    {
-        DetailViewController *d = [[DetailViewController alloc]
-                                    initWithNibName:@"DetailViewController"
-                                    bundle:[NSBundle mainBundle]];
-        
-        self.detailviewController = d;
-    }
-    
-    //---set the state selected in the method of the
-    // DetailsViewController---//
-    
-    //[self.detailviewController initWithTextSelected:msg];
-    [self.navigationController
-     pushViewController:self.detailviewController
-     animated:YES];
-}
+  }
 
 
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{

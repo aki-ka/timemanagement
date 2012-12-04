@@ -13,7 +13,7 @@
 @end
 
 @implementation DetailViewController
-@synthesize navi_title=_navi_title;
+@synthesize delegate = _delegate;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -36,7 +36,19 @@
     // Dispose of any resources that can be recreated.
 }
 
+
 - (IBAction)backButton:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (IBAction)doneButton:(id)sender {
+}
+
+- (IBAction)endButton:(id)sender {
+}
+
+- (IBAction)dateButton:(id)sender {
+}
+
+- (IBAction)timeButton:(id)sender {
 }
 @end

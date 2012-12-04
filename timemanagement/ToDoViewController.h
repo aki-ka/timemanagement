@@ -10,6 +10,7 @@
 #import "DetailViewController.h"
 
 @class ToDo;
+
 @interface ToDoViewController : UITableViewController
 //ToDo（すること）を格納するリスト
 @property(nonatomic,strong) ToDo *ToDoList;
