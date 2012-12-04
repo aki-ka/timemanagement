@@ -15,10 +15,14 @@
 #import "RegisteringViewController.h"
 
 @interface TimeManagementMasterViewController ()
+<ResisteringViewControllerDelegate>
 
 @end
 
 @implementation TimeManagementMasterViewController
+
+@synthesize dataController = _dataController;
+@synthesize EditButton = _EditButton;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -32,23 +36,16 @@
 - (void)viewDidLoad
 {
     _dataController = [[TimeManagementController alloc] init];
-    NSDate *today = [NSDate dateWithTimeIntervalSinceNow:0.0f];
-    NSDate *oneday = [NSDate dateWithTimeIntervalSinceNow:3*60];
-    NSDate *twoday = [NSDate dateWithTimeIntervalSinceNow:3*60*60];
-    NSInteger monday = 0;
-    NSInteger tueday = 1;
-    NSInteger friday = 4;
-    NSInteger satday = 5;
-    NSInteger non = 7;
-    [self.dataController addTimeManagementWithOccasion:@"1限のとき" start:@"家" goal:@"学校" time:today day:monday];
-    [self.dataController addTimeManagementWithOccasion:@"人生に絶望したときおんなのこにふられたたお" start:@"現世" goal:@"来世" time:twoday day:non];
-    [self.dataController addTimeManagementWithOccasion:@"地球滅亡のとき" start:@"家" goal:@"学校" time:today day:satday];
-    [self.dataController addTimeManagementWithOccasion:@"地球滅亡のとき" start:@"家" goal:@"学校" time:oneday day:tueday];
-    [self.dataController addTimeManagementWithOccasion:@"地球滅亡のとき" start:@"家" goal:@"学校" time:today day:friday];
+
+    NSString *directory = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
+    NSString *filePath = [directory stringByAppendingPathComponent:@"timemanagement.dat"];
+    NSArray *array = [NSKeyedUnarchiver unarchiveObjectWithFile:filePath];
+    if(array){
+        NSMutableArray *Marray = [NSMutableArray arrayWithArray:array];
+        [self.dataController setMasterTimeManagementList:Marray];
+    }
 
     [super viewDidLoad];
-    
-    
     self.tableView.allowsMultipleSelectionDuringEditing = YES;
 
 
@@ -99,15 +96,29 @@
     return cell;
 }
 
+// キャンセルが押されたら
 -(void) registeringViewControllerDidCancel:(RegisteringViewController *)controller{
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
+// doneが押されたら、リストに追加
+- (void)registeringViewControllerDidFinish:(RegisteringViewController *)controller ocassion:(NSString *)ocassion start:(NSString *)start goal:(NSString *)goal time:(NSDate *)time day:(NSInteger)day; {
+    [self.dataController addTimeManagementWithOccasion:ocassion start:start goal:goal time:time day:day];
+    [[self tableView] reloadData];
+    /*
+    NSString *directory = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
+    NSString *filePath = [directory stringByAppendingPathComponent:@"timemanagement.dat"];
+    NSMutableArray *array = [[NSMutableArray alloc] init];
+    array = [self.dataController getList];
+    [NSKeyedArchiver archiveRootObject:array toFile:filePath];
+     */
+    [self dismissViewControllerAnimated:YES completion:NULL];
+}
 
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if([[segue identifier] isEqualToString:@"addTime"]){
-        RegisteringViewController *addController = (RegisteringViewController *)[[[segue destinationViewController]viewControllers]objectAtIndex:0];
-        addController.delegate = self;
+        RegisteringViewController *addTime = (RegisteringViewController *)[[[segue destinationViewController]viewControllers]objectAtIndex:0];
+        addTime.delegate = self;
     }
 }
 
@@ -175,7 +186,13 @@
         }
         [self.dataController removeMasterTimeManagementAtIndexes:indexSet];
         [self.tableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationFade];
-        
+        /*
+        NSString *directory = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
+        NSString *filePath = [directory stringByAppendingPathComponent:@"timemanagement.dat"];
+        NSMutableArray *array = [[NSMutableArray alloc] init];
+        array = [self.dataController getList];
+        [NSKeyedArchiver archiveRootObject:array toFile:filePath];
+        */
         //編集モードを解除
         [self.tableView setEditing:NO animated:NO];
         

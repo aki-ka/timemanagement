@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2843" systemVersion="11E53" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="yOB-pg-hrl">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="11G56" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="yOB-pg-hrl">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1929"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
     </dependencies>
     <scenes>
         <!--Registering View Controller - register-->
@@ -15,7 +15,6 @@
                             <button autoresizesSubviews="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" restorationIdentifier="clearKeyboard" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OhZ-L1-Skh">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="201" id="cWm-6f-Xuw"/>
-                                    <constraint firstAttribute="width" constant="317" id="tsa-EG-iQH"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal">
@@ -79,22 +78,6 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="register" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ESZ-Ao-FsT">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="124" id="ZIE-Xo-WfS"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="register">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="registerData:" destination="sxx-iL-UGH" eventType="touchUpInside" id="ehL-XF-bpf"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zSf-H5-2Ay">
                                 <constraints>
                                     <constraint firstAttribute="width" constant="204" id="xbI-w3-2oQ"/>
@@ -111,44 +94,28 @@
                                     <segue destination="xwR-uN-WXy" kind="modal" identifier="SelectPlayer" modalTransitionStyle="partialCurl" id="sFo-6S-MD3"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="list" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cqt-u5-Raw">
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="表示">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="list:" destination="sxx-iL-UGH" eventType="touchUpInside" id="HhM-Fh-g1N"/>
-                                </connections>
-                            </button>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.74698873017176437" blue="0.69961666517045829" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="kxS-Bl-lit" firstAttribute="top" secondItem="Pnj-gP-TgI" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="6X9-wo-UBi"/>
-                            <constraint firstItem="sLz-K7-jVF" firstAttribute="bottom" secondItem="tsm-hc-xPV" secondAttribute="bottom" type="default" id="70Q-VW-XKt"/>
-                            <constraint firstItem="FsF-gY-aYr" firstAttribute="top" secondItem="mYc-nC-m6I" secondAttribute="top" constant="134" id="7kh-g4-vQb"/>
-                            <constraint firstAttribute="bottom" secondItem="cqt-u5-Raw" secondAttribute="bottom" constant="28" id="APg-GL-pNk"/>
-                            <constraint firstItem="ESZ-Ao-FsT" firstAttribute="top" secondItem="8Dh-xJ-TUD" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Abw-pA-BPs"/>
-                            <constraint firstItem="sLz-K7-jVF" firstAttribute="leading" secondItem="Xat-bC-Kts" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="AjI-eF-DNn"/>
-                            <constraint firstItem="tsm-hc-xPV" firstAttribute="leading" secondItem="sLz-K7-jVF" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="BMH-hN-doi"/>
-                            <constraint firstItem="Pnj-gP-TgI" firstAttribute="top" secondItem="mYc-nC-m6I" secondAttribute="top" constant="55" id="GFc-0i-4Ud"/>
-                            <constraint firstItem="Xat-bC-Kts" firstAttribute="leading" secondItem="mYc-nC-m6I" secondAttribute="leading" constant="128" id="GHi-B8-WfH"/>
-                            <constraint firstItem="8Dh-xJ-TUD" firstAttribute="top" secondItem="zSf-H5-2Ay" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="IHk-DM-0o3"/>
+                            <constraint firstAttribute="bottom" secondItem="8Dh-xJ-TUD" secondAttribute="bottom" constant="142" id="2WW-1L-Jto"/>
+                            <constraint firstItem="zSf-H5-2Ay" firstAttribute="top" secondItem="mYc-nC-m6I" secondAttribute="top" constant="186" id="2lA-kn-DXe"/>
+                            <constraint firstAttribute="trailing" secondItem="tsm-hc-xPV" secondAttribute="trailing" constant="23" id="4eg-gy-ecI"/>
+                            <constraint firstItem="Xat-bC-Kts" firstAttribute="leading" secondItem="FsF-gY-aYr" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="7Cv-OM-6Q3"/>
+                            <constraint firstItem="tsm-hc-xPV" firstAttribute="baseline" secondItem="Xat-bC-Kts" secondAttribute="baseline" type="default" id="D8j-FX-rXm"/>
+                            <constraint firstItem="kxS-Bl-lit" firstAttribute="leading" secondItem="mYc-nC-m6I" secondAttribute="leading" constant="133" id="Fic-B8-yfs"/>
                             <constraint firstItem="OhZ-L1-Skh" firstAttribute="top" secondItem="mYc-nC-m6I" secondAttribute="top" constant="12" id="ImG-aj-LUe"/>
-                            <constraint firstItem="FsF-gY-aYr" firstAttribute="leading" secondItem="mYc-nC-m6I" secondAttribute="leading" constant="28" id="OJL-C4-7d6"/>
-                            <constraint firstItem="cqt-u5-Raw" firstAttribute="leading" secondItem="mYc-nC-m6I" secondAttribute="leading" constant="8" id="RbD-xv-NBz"/>
-                            <constraint firstItem="ESZ-Ao-FsT" firstAttribute="centerX" secondItem="8Dh-xJ-TUD" secondAttribute="centerX" type="default" id="WXe-WS-BWn"/>
-                            <constraint firstItem="kxS-Bl-lit" firstAttribute="leading" secondItem="8Dh-xJ-TUD" secondAttribute="leading" type="default" id="Wv7-S5-Fk5"/>
-                            <constraint firstItem="Pnj-gP-TgI" firstAttribute="centerX" secondItem="kxS-Bl-lit" secondAttribute="centerX" type="default" id="dhf-De-Ub1"/>
-                            <constraint firstItem="cqt-u5-Raw" firstAttribute="baseline" secondItem="ESZ-Ao-FsT" secondAttribute="baseline" type="default" id="exu-9D-PG8"/>
-                            <constraint firstItem="zSf-H5-2Ay" firstAttribute="centerX" secondItem="8Dh-xJ-TUD" secondAttribute="centerX" type="default" id="hDF-Q4-MzS"/>
-                            <constraint firstItem="ESZ-Ao-FsT" firstAttribute="centerX" secondItem="mYc-nC-m6I" secondAttribute="centerX" type="default" id="iIl-lx-zPT"/>
+                            <constraint firstItem="kxS-Bl-lit" firstAttribute="top" secondItem="mYc-nC-m6I" secondAttribute="top" constant="87" id="KWT-rs-Ln5"/>
+                            <constraint firstItem="Pnj-gP-TgI" firstAttribute="top" secondItem="mYc-nC-m6I" secondAttribute="top" constant="36" id="NAH-Sd-ivH"/>
+                            <constraint firstItem="tsm-hc-xPV" firstAttribute="leading" secondItem="sLz-K7-jVF" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="NXC-Jr-X5X"/>
+                            <constraint firstItem="8Dh-xJ-TUD" firstAttribute="centerX" secondItem="zSf-H5-2Ay" secondAttribute="centerX" type="default" id="RvI-tK-uXr"/>
+                            <constraint firstItem="8Dh-xJ-TUD" firstAttribute="centerX" secondItem="mYc-nC-m6I" secondAttribute="centerX" type="default" id="Se7-Oo-rx7"/>
+                            <constraint firstItem="Pnj-gP-TgI" firstAttribute="centerX" secondItem="OhZ-L1-Skh" secondAttribute="centerX" type="default" id="eqW-9B-fWi"/>
+                            <constraint firstItem="Xat-bC-Kts" firstAttribute="leading" secondItem="mYc-nC-m6I" secondAttribute="leading" constant="128" id="erD-1b-Ypg"/>
+                            <constraint firstItem="kxS-Bl-lit" firstAttribute="centerX" secondItem="Pnj-gP-TgI" secondAttribute="centerX" type="default" id="mT2-au-yJI"/>
                             <constraint firstItem="FsF-gY-aYr" firstAttribute="baseline" secondItem="sLz-K7-jVF" secondAttribute="baseline" type="default" id="nrA-Va-3rV"/>
                             <constraint firstItem="OhZ-L1-Skh" firstAttribute="leading" secondItem="mYc-nC-m6I" secondAttribute="leading" type="default" id="oiq-RM-ngK"/>
-                            <constraint firstItem="Xat-bC-Kts" firstAttribute="baseline" secondItem="tsm-hc-xPV" secondAttribute="baseline" type="default" id="zmi-9t-UZL"/>
+                            <constraint firstItem="tsm-hc-xPV" firstAttribute="bottom" secondItem="sLz-K7-jVF" secondAttribute="bottom" type="default" id="s6Q-r2-vhk"/>
+                            <constraint firstItem="sLz-K7-jVF" firstAttribute="top" secondItem="mYc-nC-m6I" secondAttribute="top" constant="125" id="xR2-ce-q9s"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="register" id="xVO-cg-Ryq">
@@ -157,7 +124,11 @@
                                 <action selector="pushCancel:" destination="sxx-iL-UGH" id="7dY-bJ-WaJ"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="done" id="SEg-3r-Ivt"/>
+                        <barButtonItem key="rightBarButtonItem" title="done" id="SEg-3r-Ivt">
+                            <connections>
+                                <action selector="pushDone:" destination="sxx-iL-UGH" id="dLg-XT-qBO"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="buttonClearKeyboard" destination="OhZ-L1-Skh" id="2LO-u2-040"/>
@@ -677,7 +648,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 </segments>
                             </segmentedControl>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.74698873020000001" blue="0.69961666519999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="oah-Wu-3Ds" secondAttribute="bottom" constant="27" id="1Rr-0I-dWe"/>
                             <constraint firstItem="Oqx-CG-ieC" firstAttribute="top" secondItem="qSP-Te-ftt" secondAttribute="top" constant="64" id="Doo-3g-ahv"/>
@@ -812,6 +783,89 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             <point key="canvasLocation" x="1799" y="1417"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="AdittionToDoViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AdittionToDoViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="ButtonCancel:"/>
+                <relationship kind="action" name="ButtonDone:"/>
+                <relationship kind="action" name="clearKeyBoard:"/>
+                <relationship kind="action" name="dateButton:"/>
+                <relationship kind="action" name="endEdit:"/>
+                <relationship kind="action" name="timeButton:"/>
+                <relationship kind="outlet" name="dateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="date_cbv" candidateClass="CheckBoxButton"/>
+                <relationship kind="outlet" name="info_cbv" candidateClass="CheckBoxButton"/>
+                <relationship kind="outlet" name="timeLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="time_cbv" candidateClass="CheckBoxButton"/>
+                <relationship kind="outlet" name="toDoLabel" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="CheckBoxButton" superclassName="UIButton">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CheckBoxButton.h"/>
+        </class>
+        <class className="DateSelectionViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DateSelectionViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="buttonEnd:"/>
+                <relationship kind="outlet" name="DatePicker" candidateClass="UIDatePicker"/>
+            </relationships>
+        </class>
+        <class className="DetailViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DetailViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="backButton:"/>
+                <relationship kind="outlet" name="navi_title" candidateClass="UINavigationItem"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="RegisteringViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RegisteringViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="clearKeybord:"/>
+                <relationship kind="action" name="goal_end:"/>
+                <relationship kind="action" name="occasion_end:"/>
+                <relationship kind="action" name="pushCancel:"/>
+                <relationship kind="action" name="pushDone:"/>
+                <relationship kind="action" name="start_end:"/>
+                <relationship kind="outlet" name="buttonClearKeyboard" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="goal" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="occasion" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="start" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="SelectionViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SelectionViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="decide:"/>
+                <relationship kind="outlet" name="day" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="time" candidateClass="UIDatePicker"/>
+            </relationships>
+        </class>
+        <class className="TimeManagementMasterViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TimeManagementMasterViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="buttonPush:"/>
+                <relationship kind="outlet" name="EditButton" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="TimeSelectionViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TimeSelectionViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="buttonEnd:"/>
+                <relationship kind="outlet" name="TimePicker" candidateClass="UIDatePicker"/>
+            </relationships>
+        </class>
+        <class className="ToDoViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ToDoViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="buttonEdit:"/>
+                <relationship kind="outlet" name="buttonEdit" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

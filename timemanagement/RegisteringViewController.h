@@ -29,25 +29,27 @@
 @property (nonatomic, strong) NSDate *time;
 //曜日
 @property (nonatomic) NSInteger day;
-//情報を登録
-- (IBAction)registerData:(id)sender;
+
+
 //キーボードを隠す
 - (IBAction)clearKeybord:(id)sender;
 //状況、出発地、目的地の編集完了
 - (IBAction)occasion_end:(id)sender;
 - (IBAction)start_end:(id)sender;
 - (IBAction)goal_end:(id)sender;
-//デバッグ用
-- (IBAction)list:(id)sender;
+
 //cancelボタンが押されたときのメソッド
 - (IBAction)pushCancel:(id)sender;
-
+//doneボタンが押されたときのメソッド
+- (IBAction)pushDone:(id)sender;
 
 @end
 
 @protocol ResisteringViewControllerDelegate <NSObject>
 //cancel
 - (void)registeringViewControllerDidCancel:(RegisteringViewController *)controller;
+
+- (void)registeringViewControllerDidFinish:(RegisteringViewController *)controller ocassion:(NSString *)ocassion start:(NSString *)start goal:(NSString *)goal time:(NSDate *)time day:(NSInteger)day;
 
 
 @end

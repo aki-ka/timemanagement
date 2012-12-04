@@ -48,47 +48,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-//情報を登録
-- (IBAction)registerData:(id)sender {
-       int oLength = [self.occasion.text length];
-    int sLength = [self.start.text length];
-    int gLength = [self.goal.text length];
-    //空白があれば、登録せずに、警告を表示
-    if(oLength==0||sLength==0||gLength==0){
-    UIAlertView *alert = [
-                          [UIAlertView alloc]
-                          initWithTitle:@"warning"
-                          message:@"空白があります"
-                          delegate:self
-                          cancelButtonTitle:@"OK"
-                          otherButtonTitles:nil
-                          ];
-        [alert show];
-    }
-    else if(self.day == 8){
-        UIAlertView *alert = [
-                              [UIAlertView alloc]
-                              initWithTitle:@"warning"
-                              message:@"時間を入力してください"
-                              delegate:self
-                              cancelButtonTitle:@"OK"
-                              otherButtonTitles: nil];
-        [alert show];
-
-        
-    }
-    else{
-        UIAlertView *alert = [
-                              [UIAlertView alloc]
-                              initWithTitle:@"登録完了"
-                              message:@""
-                              delegate:self
-                              cancelButtonTitle:@"OK"
-                              otherButtonTitles: nil];
-        [alert show];
-    [self.ManagementController addTimeManagementWithOccasion:self.occasion.text start:self.start.text goal:self.goal.text time:self.time day:self.day];
-    }
-    }
 /*
  キーボードを隠す
  view上の編集を終了させる
@@ -121,32 +80,39 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-
-//表示のボタンのアクション
-//デバッグ用
-- (IBAction)list:(id)sender {
-    NSInteger day = self.day;
-    NSLog(@"selfday:%d",day);
-    //配列数の確認
-      NSUInteger i = self.ManagementController.countOfList;
-    NSLog(@"count:%u\n",i);
-    //曜日の確認
-    int lastElement = self.ManagementController.countOfList - 1 ;
-    int k = [self.ManagementController objectInListAtIndex:lastElement].day;
-    NSLog(@"day:%d\n",k);
-    //状況の確認
-    NSString *j = [self.ManagementController objectInListAtIndex:lastElement].occasion;
-    NSLog(@"occasion:%@\n",j);
-    //時間の確認
-    NSDate *time =[[NSDate alloc] init];
-    time = [self.ManagementController objectInListAtIndex:lastElement].time;
-    NSDateFormatter *formatter =[[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"HH:mm"];
-    NSString *result = [formatter stringFromDate:time];
-    NSLog(@"time:%@\n",result);
-  }
-
 - (IBAction)pushCancel:(id)sender {
     [[self delegate] registeringViewControllerDidCancel:self];
+}
+
+- (IBAction)pushDone:(id)sender {
+    int oLength = [self.occasion.text length];
+    int sLength = [self.start.text length];
+    int gLength = [self.goal.text length];
+    //空白があれば、登録せずに、警告を表示
+    if(oLength==0||sLength==0||gLength==0){
+        UIAlertView *alert = [
+                              [UIAlertView alloc]
+                              initWithTitle:@"warning"
+                              message:@"空白があります"
+                              delegate:self
+                              cancelButtonTitle:@"OK"
+                              otherButtonTitles:nil
+                              ];
+        [alert show];
+    }
+    else if(self.day == 8){
+        UIAlertView *alert = [
+                              [UIAlertView alloc]
+                              initWithTitle:@"warning"
+                              message:@"時間を入力してください"
+                              delegate:self
+                              cancelButtonTitle:@"OK"
+                              otherButtonTitles: nil];
+        [alert show];
+    }
+    else{
+        [[self delegate] registeringViewControllerDidFinish:self ocassion:self.occasion.text start:self.start.text goal:self.goal.text time:self.time day:self.day];
+    }
+
 }
 @end
