@@ -10,8 +10,9 @@
 #import "SelectionViewController.h"
 #import "TimeManagementController.h"
 #import "TimeManagement.h"
+#import "OccasionSelectionViewController.h"
 @interface RegisteringViewController ()
-<SelectionViewControllerDelegate>
+<SelectionViewControllerDelegate,OccasionSelectionViewControllerDelegate>
 
 @end
 @implementation RegisteringViewController
@@ -23,6 +24,7 @@
 @synthesize time = _time;
 @synthesize day = _day;
 @synthesize buttonClearKeyboard = _buttonClearKeyboard;
+//@synthesize occaisioncontroller =_occaisioncontroller;
 
 //初期化
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -114,5 +116,18 @@
         [[self delegate] registeringViewControllerDidFinish:self ocassion:self.occasion.text start:self.start.text goal:self.goal.text time:self.time day:self.day];
     }
 
+}
+
+- (IBAction)pushOccasion:(id)sender {
+    OccasionSelectionViewController *controller =[self.storyboard instantiateViewControllerWithIdentifier:@"occasion"];
+    controller.delegate = self;
+    [self presentViewController:controller animated:YES completion:nil];
+    
+}
+
+- (IBAction)pushStart:(id)sender {
+}
+
+- (IBAction)pushGoal:(id)sender {
 }
 @end

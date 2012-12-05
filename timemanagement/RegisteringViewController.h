@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "OccasionSelectionViewController.h"
 @class TimeManagementController;
 
 @protocol ResisteringViewControllerDelegate;
@@ -29,7 +29,8 @@
 @property (nonatomic, strong) NSDate *time;
 //曜日
 @property (nonatomic) NSInteger day;
-
+//状況選択の画面
+//@property (strong,nonatomic) OccasionSelectionViewController *OccasionController;
 
 //キーボードを隠す
 - (IBAction)clearKeybord:(id)sender;
@@ -42,6 +43,9 @@
 - (IBAction)pushCancel:(id)sender;
 //doneボタンが押されたときのメソッド
 - (IBAction)pushDone:(id)sender;
+- (IBAction)pushOccasion:(id)sender;
+- (IBAction)pushStart:(id)sender;
+- (IBAction)pushGoal:(id)sender;
 
 @end
 

@@ -60,11 +60,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "timemanagement/RegisteringViewController.m"
-         timestampString = "375895578.726075"
+         timestampString = "376413794.794048"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "38"
-         endingLineNumber = "38"
+         startingLineNumber = "40"
+         endingLineNumber = "40"
          landmarkName = "-viewDidLoad"
          landmarkType = "5">
       </FileBreakpoint>
@@ -86,22 +86,22 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "timemanagement/RegisteringViewController.m"
-         timestampString = "376204841.790935"
+         timestampString = "376413794.794048"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "135"
-         endingLineNumber = "135">
+         startingLineNumber = "150"
+         endingLineNumber = "150">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "timemanagement/RegisteringViewController.m"
-         timestampString = "376204841.790935"
+         timestampString = "376413794.794048"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "145"
-         endingLineNumber = "145">
+         startingLineNumber = "160"
+         endingLineNumber = "160">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"

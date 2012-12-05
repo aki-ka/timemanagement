@@ -18,6 +18,10 @@
 		291ADE9716569A5A005FF628 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 291ADE9616569A5A005FF628 /* Default.png */; };
 		291ADE9916569A5A005FF628 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 291ADE9816569A5A005FF628 /* Default@2x.png */; };
 		291ADE9B16569A5A005FF628 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 291ADE9A16569A5A005FF628 /* Default-568h@2x.png */; };
+		2939407C166F96B4002725AF /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2939407B166F96B4002725AF /* MainStoryboard.storyboard */; };
+		2939407F166F98E9002725AF /* OccasionSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2939407E166F98E9002725AF /* OccasionSelectionViewController.m */; };
+		29394082166F98FB002725AF /* StartSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 29394081166F98FB002725AF /* StartSelectionViewController.m */; };
+		29394085166F9916002725AF /* GoalSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 29394084166F9916002725AF /* GoalSelectionViewController.m */; };
 		295F758A16690DB2004B8E1E /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 295F758916690DB2004B8E1E /* DetailViewController.m */; };
 		29642C0F1668DDC700CC3DEE /* TimeSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 29642C0E1668DDC700CC3DEE /* TimeSelectionViewController.m */; };
 		296A08571663E02E00C5D622 /* ToDoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 296A08561663E02E00C5D622 /* ToDoViewController.m */; };
@@ -46,7 +50,6 @@
 		29A0E2441668D09A00E94BF1 /* cb_mono_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 29A0E22B1668D09A00E94BF1 /* cb_mono_on.png */; };
 		29A0E2451668D09A00E94BF1 /* cb_mono_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 29A0E22C1668D09A00E94BF1 /* cb_mono_on@2x.png */; };
 		29A0E2501668D47F00E94BF1 /* CheckBoxButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 29A0E24F1668D47F00E94BF1 /* CheckBoxButton.m */; };
-		29CD5050166DBBB300141E02 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 29CD504F166DBBB300141E02 /* MainStoryboard.storyboard */; };
 		29D548F9166A501100EB5429 /* ToDoElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 29D548F8166A501100EB5429 /* ToDoElement.m */; };
 		29D548FD166A514400EB5429 /* ToDo.m in Sources */ = {isa = PBXBuildFile; fileRef = 29D548FC166A514400EB5429 /* ToDo.m */; };
 		DEB7E21A166BCDB700C058DF /* TimeManagementMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEB7E219166BCDB700C058DF /* TimeManagementMasterViewController.m */; };
@@ -70,6 +73,13 @@
 		291ADE9616569A5A005FF628 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		291ADE9816569A5A005FF628 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		291ADE9A16569A5A005FF628 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		2939407B166F96B4002725AF /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
+		2939407D166F98E9002725AF /* OccasionSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OccasionSelectionViewController.h; sourceTree = "<group>"; };
+		2939407E166F98E9002725AF /* OccasionSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OccasionSelectionViewController.m; sourceTree = "<group>"; };
+		29394080166F98FB002725AF /* StartSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartSelectionViewController.h; sourceTree = "<group>"; };
+		29394081166F98FB002725AF /* StartSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartSelectionViewController.m; sourceTree = "<group>"; };
+		29394083166F9916002725AF /* GoalSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoalSelectionViewController.h; sourceTree = "<group>"; };
+		29394084166F9916002725AF /* GoalSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoalSelectionViewController.m; sourceTree = "<group>"; };
 		295F758816690DB2004B8E1E /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		295F758916690DB2004B8E1E /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		29642C0D1668DDC700CC3DEE /* TimeSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeSelectionViewController.h; sourceTree = "<group>"; };
@@ -106,7 +116,6 @@
 		29A0E22C1668D09A00E94BF1 /* cb_mono_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cb_mono_on@2x.png"; sourceTree = "<group>"; };
 		29A0E24E1668D47F00E94BF1 /* CheckBoxButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckBoxButton.h; sourceTree = "<group>"; };
 		29A0E24F1668D47F00E94BF1 /* CheckBoxButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckBoxButton.m; sourceTree = "<group>"; };
-		29CD504F166DBBB300141E02 /* MainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = MainStoryboard.storyboard; path = ../../../../../../Volumes/AKI/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		29D548F7166A501100EB5429 /* ToDoElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToDoElement.h; sourceTree = "<group>"; };
 		29D548F8166A501100EB5429 /* ToDoElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToDoElement.m; sourceTree = "<group>"; };
 		29D548FB166A514400EB5429 /* ToDo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToDo.h; sourceTree = "<group>"; };
@@ -162,13 +171,19 @@
 				29A0E2171668D09A00E94BF1 /* SSCheckBoxView */,
 				291ADE9316569A5A005FF628 /* AppDelegate.h */,
 				291ADE9416569A5A005FF628 /* AppDelegate.m */,
+				2939407B166F96B4002725AF /* MainStoryboard.storyboard */,
 				DEB7E218166BCDB700C058DF /* TimeManagementMasterViewController.h */,
 				DEB7E219166BCDB700C058DF /* TimeManagementMasterViewController.m */,
 				29A0E24E1668D47F00E94BF1 /* CheckBoxButton.h */,
 				29A0E24F1668D47F00E94BF1 /* CheckBoxButton.m */,
+				2939407D166F98E9002725AF /* OccasionSelectionViewController.h */,
+				2939407E166F98E9002725AF /* OccasionSelectionViewController.m */,
+				29394080166F98FB002725AF /* StartSelectionViewController.h */,
+				29394081166F98FB002725AF /* StartSelectionViewController.m */,
+				29394083166F9916002725AF /* GoalSelectionViewController.h */,
+				29394084166F9916002725AF /* GoalSelectionViewController.m */,
 				290FE1811666B50000F6403D /* DateSelectionViewController.h */,
 				290FE1821666B50000F6403D /* DateSelectionViewController.m */,
-				29CD504F166DBBB300141E02 /* MainStoryboard.storyboard */,
 				29642C0D1668DDC700CC3DEE /* TimeSelectionViewController.h */,
 				29642C0E1668DDC700CC3DEE /* TimeSelectionViewController.m */,
 				290FE17E1666B19E00F6403D /* AdittionToDoViewController.h */,
@@ -318,7 +333,7 @@
 				29A0E2431668D09A00E94BF1 /* cb_mono_off@2x.png in Resources */,
 				29A0E2441668D09A00E94BF1 /* cb_mono_on.png in Resources */,
 				29A0E2451668D09A00E94BF1 /* cb_mono_on@2x.png in Resources */,
-				29CD5050166DBBB300141E02 /* MainStoryboard.storyboard in Resources */,
+				2939407C166F96B4002725AF /* MainStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,6 +359,9 @@
 				29D548F9166A501100EB5429 /* ToDoElement.m in Sources */,
 				29D548FD166A514400EB5429 /* ToDo.m in Sources */,
 				DEB7E21A166BCDB700C058DF /* TimeManagementMasterViewController.m in Sources */,
+				2939407F166F98E9002725AF /* OccasionSelectionViewController.m in Sources */,
+				29394082166F98FB002725AF /* StartSelectionViewController.m in Sources */,
+				29394085166F9916002725AF /* GoalSelectionViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -174,7 +174,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 }
-
+//アクセサリが押されたら詳細画面へ飛ぶ
 - (void)tableView:(UITableView *)tableView
 accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
     DetailViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"detail"];
@@ -183,7 +183,7 @@ accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
     
   }
 
-
+//編集画面へ飛ぶ
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if([[segue identifier] isEqualToString:@"AddPlayer"]){
         AdittionToDoViewController *addController = (AdittionToDoViewController *)[[[segue destinationViewController]viewControllers]objectAtIndex:0];
