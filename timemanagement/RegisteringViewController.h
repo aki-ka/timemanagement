@@ -17,11 +17,12 @@
 @property (weak, nonatomic) id <ResisteringViewControllerDelegate> delegate;
 //配列
 @property (strong,nonatomic) TimeManagementController *ManagementController;
+//候補用に受け渡す配列
+@property(strong,nonatomic) TimeManagementController *Controller;
 //状況
 @property (weak, nonatomic) IBOutlet UIButton *occasion;
-
-
-@property (weak, nonatomic) IBOutlet UITextField *ooccasion;
+@property (weak, nonatomic) IBOutlet UIButton *start;
+@property (weak, nonatomic) IBOutlet UIButton *goal;
 
 //キーボードを隠す為のボタン
 @property (weak, nonatomic) IBOutlet UIButton *buttonClearKeyboard;

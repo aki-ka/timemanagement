@@ -144,7 +144,9 @@
                     </navigationItem>
                     <connections>
                         <outlet property="buttonClearKeyboard" destination="OhZ-L1-Skh" id="2LO-u2-040"/>
+                        <outlet property="goal" destination="9HR-jS-ReL" id="dON-to-aDM"/>
                         <outlet property="occasion" destination="bKK-Du-6R8" id="zIG-fR-Bqt"/>
+                        <outlet property="start" destination="vrY-cO-dzi" id="Zlc-IO-P04"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YUB-IT-lUR" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -572,8 +574,16 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <items>
                                 <navigationItem title="Start" id="yHc-Io-Nqd">
-                                    <barButtonItem key="leftBarButtonItem" title="back" id="Fo7-iS-mpl"/>
-                                    <barButtonItem key="rightBarButtonItem" title="Done" id="biS-a4-y2r"/>
+                                    <barButtonItem key="leftBarButtonItem" title="back" id="Fo7-iS-mpl">
+                                        <connections>
+                                            <action selector="buttonBack:" destination="1WO-gx-ODh" id="NPO-42-bGZ"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem key="rightBarButtonItem" title="Done" id="biS-a4-y2r">
+                                        <connections>
+                                            <action selector="buttonDone:" destination="1WO-gx-ODh" id="oTp-R3-InX"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </navigationItem>
                             </items>
                         </navigationBar>
@@ -1015,8 +1025,16 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <items>
                                 <navigationItem title="Goal" id="m6t-fz-tSE">
-                                    <barButtonItem key="leftBarButtonItem" title="back" id="RLU-HL-K7i"/>
-                                    <barButtonItem key="rightBarButtonItem" title="Done" id="W0Q-Nf-n4f"/>
+                                    <barButtonItem key="leftBarButtonItem" title="back" id="RLU-HL-K7i">
+                                        <connections>
+                                            <action selector="buttonBack:" destination="qV1-fQ-Q2P" id="uns-8T-gUd"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem key="rightBarButtonItem" title="Done" id="W0Q-Nf-n4f">
+                                        <connections>
+                                            <action selector="buttonDone:" destination="qV1-fQ-Q2P" id="2Df-VU-sVZ"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </navigationItem>
                             </items>
                         </navigationBar>
@@ -1136,6 +1154,10 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         </class>
         <class className="GoalSelectionViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/GoalSelectionViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="buttonBack:"/>
+                <relationship kind="action" name="buttonDone:"/>
+            </relationships>
         </class>
         <class className="NSLayoutConstraint" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
@@ -1157,8 +1179,9 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 <relationship kind="action" name="pushOccasion:"/>
                 <relationship kind="action" name="pushStart:"/>
                 <relationship kind="outlet" name="buttonClearKeyboard" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="goal" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="occasion" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="ooccasion" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="start" candidateClass="UIButton"/>
             </relationships>
         </class>
         <class className="SelectionViewController" superclassName="UIViewController">
@@ -1171,6 +1194,10 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         </class>
         <class className="StartSelectionViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/StartSelectionViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="buttonBack:"/>
+                <relationship kind="action" name="buttonDone:"/>
+            </relationships>
         </class>
         <class className="TimeManagementMasterViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/TimeManagementMasterViewController.h"/>

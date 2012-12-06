@@ -15,7 +15,7 @@
 #import "RegisteringViewController.h"
 
 @interface TimeManagementMasterViewController ()
-<ResisteringViewControllerDelegate>
+<ResisteringViewControllerDelegate,UIActionSheetDelegate>
 
 @end
 
@@ -117,8 +117,10 @@
 
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if([[segue identifier] isEqualToString:@"addTime"]){
+        
         RegisteringViewController *addTime = (RegisteringViewController *)[[[segue destinationViewController]viewControllers]objectAtIndex:0];
         addTime.delegate = self;
+        addTime.Controller = self.dataController;
     }
 }
 

@@ -7,7 +7,23 @@
 //
 
 #import <UIKit/UIKit.h>
+@class TimeManagementController;
+@protocol GoalSelectionViewControllerDelegate;
 
 @interface GoalSelectionViewController : UITableViewController
+@property (nonatomic) id <GoalSelectionViewControllerDelegate> delegate;
+@property (nonatomic) TimeManagementController *managementController;
+@property(weak,nonatomic) UITextField *txtfield;
+
+- (IBAction)buttonBack:(id)sender;
+- (IBAction)buttonDone:(id)sender;
+
+
+@end
+
+@protocol GoalSelectionViewControllerDelegate <NSObject>
+
+-(void) pushBack_g:(GoalSelectionViewController *) controller;
+-(void) pushDone_g:(GoalSelectionViewController *) controller goal:(NSString *) goal;
 
 @end

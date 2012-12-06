@@ -14,7 +14,7 @@
 
 @property (nonatomic) id <OccasionSelectionViewControllerDelegate> delegate;
 @property (nonatomic) TimeManagementController *managementController;
-@property (copy,nonatomic) UITextField *txtField;
+@property (weak,nonatomic) UITextField *txtField;
 
 - (IBAction)buttonBack:(id)sender;
 - (IBAction)buttonDone:(id)sender;

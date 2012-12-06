@@ -10,7 +10,7 @@
 #import "TimeManagementController.h"
 #import "TimeManagement.h"
 
-@interface OccasionSelectionViewController ()<OccasionSelectionViewControllerDelegate,UITextFieldDelegate>
+@interface OccasionSelectionViewController ()<UITextFieldDelegate>
 
 @end
 
@@ -33,6 +33,7 @@
 
 - (void)viewDidLoad
 {
+    self.txtField = [[UITextField alloc] init];
     [super viewDidLoad];
 
     // Uncomment the following line to preserve selection between presentations.
@@ -54,7 +55,14 @@
     [textField resignFirstResponder];
     return YES;
 }
-
+-(BOOL) textFieldShouldBeginEditing:(UITextField *)textField{
+    self.txtField = textField;
+    return YES;
+}
+-(BOOL) textFieldShouldEndEditing:(UITextField *)textField{
+    self.txtField = textField;
+    return YES;
+}
 
 #pragma mark - Table view data source
 
@@ -104,13 +112,11 @@
         txtField.frame = CGRectMake(10.f, 10.f, cell.contentView.bounds.size.width - 20.f, 24.f);
         txtField.returnKeyType = UIReturnKeyDone;
         txtField.delegate = self;
-        
         [cell addSubview:txtField];
-        self.txtField = txtField;
-    }
+        }
     //候補を表示
     else{
-        
+        cell.textLabel.text = [self.managementController objectInListAtIndex:indexPath.row].occasion;
     }
     return cell;
 }
@@ -161,13 +167,15 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+    //入力の場合、セルの選択を解除
+    if(indexPath.section == 0){
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    }
+    //履歴から選択された場合、登録画面へ
+    else{
+        NSString *occasion = [self.managementController objectInListAtIndex:indexPath.row].occasion;
+        [[self delegate] pushDone:self occasion:occasion];
+    }
 }
 
 - (IBAction)buttonBack:(id)sender {
@@ -175,7 +183,7 @@
 }
 
 - (IBAction)buttonDone:(id)sender {
-    NSString *occasion = self.txtField.text;
+    NSString *occasion = [self.txtField text];
     [[self delegate] pushDone:self occasion:occasion];
 }
 @end

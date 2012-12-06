@@ -7,12 +7,17 @@
 //
 
 #import "GoalSelectionViewController.h"
-
-@interface GoalSelectionViewController ()
+#import "TimeManagementController.h"
+#import "TimeManagement.h"
+@interface GoalSelectionViewController ()<UITextFieldDelegate>
 
 @end
 
 @implementation GoalSelectionViewController
+
+@synthesize delegate =_delegate;
+@synthesize managementController = _managementController;
+@synthesize txtfield = _txtfield;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -25,6 +30,7 @@
 
 - (void)viewDidLoad
 {
+    self.txtfield = [[UITextField alloc] init];
     [super viewDidLoad];
 
     // Uncomment the following line to preserve selection between presentations.
@@ -40,29 +46,77 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+//キーボードを隠す
+-(BOOL) textFieldShouldReturn:(UITextField *)textField{
+    [textField resignFirstResponder];
+    return YES;
+}
+-(BOOL) textFieldShouldBeginEditing:(UITextField *)textField{
+    self.txtfield = textField;
+    return YES;
+}
+-(BOOL) textFieldShouldEndEditing:(UITextField *)textField{
+    self.txtfield = textField;
+    return YES;
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
+
     // Return the number of sections.
-    return 0;
+    return 2;
 }
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    switch(section) {
+        case 0: // 1個目のセクションの場合
+            return @"入力";
+            break;
+        case 1: // 2個目のセクションの場合
+            return @"履歴";
+            break;
+    }
+    return nil; //ビルド警告回避用
+}
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    switch (section) {
+        case 0://テキストフィールドを表示するセル
+            return 1;
+            break;
+            
+        default://候補を表示するセルの数
+            break;
+    }
+    return self.managementController.countOfList;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
+    static NSString *CellIdentifier = @"CellIdentifier";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+    }
+    //テキストフィールドを表示
+    if(indexPath.section==0){
+        UITextField *txtField = [[UITextField alloc] init];
+        [txtField addTarget:self action:nil forControlEvents:UIControlEventAllEditingEvents];
+        txtField.frame = CGRectMake(10.f, 10.f, cell.contentView.bounds.size.width - 20.f, 24.f);
+        txtField.returnKeyType = UIReturnKeyDone;
+        txtField.delegate = self;
+        [cell addSubview:txtField];
+    }
+    //候補を表示
+    else{
+        cell.textLabel.text = [self.managementController objectInListAtIndex:indexPath.row].goal;
+    }
     return cell;
 }
 
@@ -109,13 +163,24 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+    //入力の場合、セルの選択を解除
+    if(indexPath.section == 0){
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    }
+    //履歴から選択された場合、登録画面へ
+    else{
+        NSString *goal = [self.managementController objectInListAtIndex:indexPath.row].goal;
+        [[self delegate] pushDone_g:self goal:goal];
+    }
+
 }
 
+- (IBAction)buttonBack:(id)sender {
+    [[self delegate] pushBack_g:self];
+}
+
+- (IBAction)buttonDone:(id)sender {
+    NSString *goal = [self.txtfield text];
+    [[self delegate] pushDone_g:self goal:goal];
+}
 @end

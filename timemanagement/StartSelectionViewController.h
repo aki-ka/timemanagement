@@ -7,7 +7,23 @@
 //
 
 #import <UIKit/UIKit.h>
+@class TimeManagementController;
+@protocol StartSelectionViewControllerDelegate;
 
 @interface StartSelectionViewController : UITableViewController
+
+@property (nonatomic) id <StartSelectionViewControllerDelegate> delegate;
+@property(nonatomic) TimeManagementController *managementController;
+@property(weak,nonatomic) UITextField *txtField;
+- (IBAction)buttonDone:(id)sender;
+- (IBAction)buttonBack:(id)sender;
+
+@end
+
+@protocol StartSelectionViewControllerDelegate <NSObject>
+//back
+-(void) pushBack_s:(StartSelectionViewController *)controller;
+//Done
+-(void) pushDone_s:(StartSelectionViewController *)controller start:(NSString *)start;
 
 @end

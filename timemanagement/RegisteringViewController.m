@@ -11,15 +11,16 @@
 #import "TimeManagementController.h"
 #import "TimeManagement.h"
 #import "OccasionSelectionViewController.h"
+#import "StartSelectionViewController.h"
+#import "GoalSelectionViewController.h"
 @interface RegisteringViewController ()
-<SelectionViewControllerDelegate,OccasionSelectionViewControllerDelegate>
+<SelectionViewControllerDelegate,OccasionSelectionViewControllerDelegate,StartSelectionViewControllerDelegate,GoalSelectionViewControllerDelegate>
 
 @end
 @implementation RegisteringViewController
 @synthesize ManagementController = _ManagementController;
 @synthesize delegate = _delegate;
-@synthesize ooccasion = _ooccasion;
-@synthesize occasion = _occasion;
+@synthesize occasion = _occasion,start=_start,goal=_goal;
 @synthesize time = _time;
 @synthesize day = _day;
 @synthesize buttonClearKeyboard = _buttonClearKeyboard;
@@ -71,15 +72,42 @@
     self.day = day;
     [self dismissViewControllerAnimated:YES completion:nil];
 }
-//
+//Occasionから何もせずに返ってくる
 -(void) pushBack:(OccasionSelectionViewController *)controller{
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
-//
+//Occasionから入力を受け取る
 -(void) pushDone:(OccasionSelectionViewController *)controller occasion:(NSString *)occasion{
     [self.occasion setTitle:occasion forState:UIControlStateNormal];
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
+//Startから何もせずに返ってくる
+-(void) pushBack_s:(StartSelectionViewController *)controller{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+//Startから入力を受け取る
+-(void) pushDone_s:(StartSelectionViewController *)controller start:(NSString *)start{
+    [self.start setTitle:start forState:UIControlStateNormal];
+    [self dismissViewControllerAnimated:YES completion:nil];
+
+}
+//Goalから何もせずに返ってくる
+-(void) pushBack_g:(GoalSelectionViewController *)controller{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+//Goalから入力を受け取る
+-(void) pushDone_g:(GoalSelectionViewController *)controller goal:(NSString *)goal{
+    [self.goal setTitle:goal forState:UIControlStateNormal];
+    [self dismissViewControllerAnimated:YES completion:nil];
+
+}
+
+
+
+
+
+
+
 
 //cancelが押されたら
 - (IBAction)pushCancel:(id)sender {
@@ -87,10 +115,11 @@
 }
 //Doneが押されたら
 - (IBAction)pushDone:(id)sender {
-    int oLength = [self.ooccasion.text length];
-   
+    NSString *occasion = self.occasion.titleLabel.text;
+    NSString *start = self.start.titleLabel.text;
+    NSString *goal = self.goal.titleLabel.text;
     //空白があれば、登録せずに、警告を表示
-    if(oLength==0){
+    if([occasion isEqualToString:@"Occaison"]){
         UIAlertView *alert = [
                               [UIAlertView alloc]
                               initWithTitle:@"warning"
@@ -112,7 +141,7 @@
         [alert show];
     }
     else{
-       
+        [[self delegate] registeringViewControllerDidFinish:self ocassion:occasion start:start goal:goal time:self.time day:self.day];
     }
 
 }
@@ -120,13 +149,24 @@
 - (IBAction)pushOccasion:(id)sender {
     OccasionSelectionViewController *controller =[self.storyboard instantiateViewControllerWithIdentifier:@"occasion"];
     controller.delegate = self;
+    controller.managementController = self.Controller;
     [self presentViewController:controller animated:YES completion:nil];
     
 }
 
 - (IBAction)pushStart:(id)sender {
+    StartSelectionViewController *controller =[self.storyboard instantiateViewControllerWithIdentifier:@"start"];
+    controller.delegate = self;
+    controller.managementController = self.Controller;
+    [self presentViewController:controller animated:YES completion:nil];
+
 }
 
 - (IBAction)pushGoal:(id)sender {
+    GoalSelectionViewController *controller =[self.storyboard instantiateViewControllerWithIdentifier:@"goal"];
+    controller.delegate = self;
+    controller.managementController = self.Controller;
+    [self presentViewController:controller animated:YES completion:nil];
+
 }
 @end
