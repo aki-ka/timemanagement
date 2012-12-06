@@ -12,6 +12,20 @@
 //初期化
 @synthesize occasion = _occasion, start = _start, goal = _goal, time =_time, day =_day;
 
+-(id) initWithCoder:(NSCoder *) decoder{
+    self = [super init];
+    if (self) {
+        _occasion = [decoder decodeObjectForKey:@"occasion"];
+        _start = [decoder decodeObjectForKey:@"start"];
+        _goal = [decoder decodeObjectForKey:@"goal"];
+        _time = [decoder decodeObjectForKey:@"time"];
+        _day = [decoder decodeBoolForKey:@"day"];
+    }
+    return self;
+
+    
+}
+
 -(id)initWithOccasion:(NSString *)occasion start:(NSString *)start goal:(NSString *)goal time:(NSDate *)time day:(NSInteger)day
 {
     self = [super init];
@@ -62,6 +76,25 @@
         return NSOrderedSame;
     }
 }
+
+-(void)encodeWithCoder:(NSCoder *)encoder{
+    [encoder encodeObject:_occasion forKey:@"occasion"];
+    [encoder encodeObject:_start forKey:@"start"];
+    [encoder encodeObject:_goal forKey:@"goal"];
+    [encoder encodeObject:_time forKey:@"time"];
+    [encoder encodeBool:_day forKey:@"day"];
+}
+
+-(void)dealloc{
+    self.occasion =nil;
+    self.start = nil;
+    self.goal = nil;
+    self.time=0;
+    self.day = 0;
+}
+
+
+
 
 
 @end

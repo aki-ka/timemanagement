@@ -165,7 +165,7 @@
 - (IBAction)pushGoal:(id)sender {
     GoalSelectionViewController *controller =[self.storyboard instantiateViewControllerWithIdentifier:@"goal"];
     controller.delegate = self;
-    controller.managementController = self.Controller;
+   controller.managementController = self.Controller;
     [self presentViewController:controller animated:YES completion:nil];
 
 }

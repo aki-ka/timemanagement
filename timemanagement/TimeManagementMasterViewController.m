@@ -105,13 +105,12 @@
 - (void)registeringViewControllerDidFinish:(RegisteringViewController *)controller ocassion:(NSString *)ocassion start:(NSString *)start goal:(NSString *)goal time:(NSDate *)time day:(NSInteger)day; {
     [self.dataController addTimeManagementWithOccasion:ocassion start:start goal:goal time:time day:day];
     [[self tableView] reloadData];
-    /*
+    
     NSString *directory = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
     NSString *filePath = [directory stringByAppendingPathComponent:@"timemanagement.dat"];
     NSMutableArray *array = [[NSMutableArray alloc] init];
     array = [self.dataController getList];
     [NSKeyedArchiver archiveRootObject:array toFile:filePath];
-     */
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
@@ -186,15 +185,15 @@
         for (NSIndexPath *indexpath in indexPaths) {
             [indexSet addIndex:indexpath.row];
         }
+        
         [self.dataController removeMasterTimeManagementAtIndexes:indexSet];
         [self.tableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationFade];
-        /*
         NSString *directory = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
         NSString *filePath = [directory stringByAppendingPathComponent:@"timemanagement.dat"];
         NSMutableArray *array = [[NSMutableArray alloc] init];
         array = [self.dataController getList];
         [NSKeyedArchiver archiveRootObject:array toFile:filePath];
-        */
+        
         //編集モードを解除
         [self.tableView setEditing:NO animated:NO];
         

@@ -19,6 +19,7 @@
 @synthesize delegate =_delegate;
 @synthesize managementController = _managementController;
 @synthesize txtField = _txtField;
+@synthesize ideal = _ideal;
 
 
 
@@ -34,6 +35,7 @@
 - (void)viewDidLoad
 {
     self.txtField = [[UITextField alloc] init];
+    [self removeDuplicatedObjects];
     [super viewDidLoad];
 
     // Uncomment the following line to preserve selection between presentations.
@@ -98,6 +100,26 @@
     return self.managementController.countOfList;
 }
 
+//重複を消去
+-(void) removeDuplicatedObjects{
+    NSMutableArray *array_i = [[NSMutableArray alloc] init];
+    array_i = [self.managementController getList];
+    NSMutableIndexSet* removedIndexes = [[NSMutableIndexSet alloc] init];
+    NSMutableSet* set = [[NSMutableSet alloc] init];
+    const NSUInteger count = [self.managementController countOfList];
+    for (NSUInteger i = 0; i < count; i++) {
+        NSString *object = [self.managementController objectInListAtIndex:i].occasion;
+        if ([set containsObject:object]) {
+            [removedIndexes addIndex:i];
+        } else {
+            [set addObject:object];
+        }
+    }
+[array_i removeObjectsAtIndexes:removedIndexes];
+self.ideal =[[TimeManagementController alloc] init];
+[self.ideal setMasterTimeManagementList:array_i];
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"CellIdentifier";
@@ -116,7 +138,7 @@
         }
     //候補を表示
     else{
-        cell.textLabel.text = [self.managementController objectInListAtIndex:indexPath.row].occasion;
+        cell.textLabel.text = [self.ideal objectInListAtIndex:indexPath.row].occasion;
     }
     return cell;
 }

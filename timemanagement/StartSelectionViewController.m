@@ -30,6 +30,7 @@
 - (void)viewDidLoad
 {
     self.txtField = [[UITextField alloc] init];
+    [self removeDuplicatedObjects];
     [super viewDidLoad];
 
     // Uncomment the following line to preserve selection between presentations.
@@ -94,6 +95,25 @@
     }
     return self.managementController.countOfList;
 }
+
+
+-(void) removeDuplicatedObjects{
+    NSMutableIndexSet* removedIndexes = [[NSMutableIndexSet alloc] init];
+    NSMutableSet* set = [[NSMutableSet alloc] init];
+    const NSUInteger count = [self.managementController countOfList];
+    for (NSUInteger i = 0; i < count; i++) {
+        NSString *object = [self.managementController objectInListAtIndex:i].start;
+        if ([set containsObject:object]) {
+            [removedIndexes addIndex:i];
+        } else {
+            [set addObject:object];
+        }
+    }
+    [self.managementController removeMasterTimeManagementAtIndexes:removedIndexes];
+}
+
+
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {

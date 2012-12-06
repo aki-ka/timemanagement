@@ -17,7 +17,7 @@
 @property(weak,nonatomic) UITextField *txtField;
 - (IBAction)buttonDone:(id)sender;
 - (IBAction)buttonBack:(id)sender;
-
+-(void) removeDuplicatedObjects;
 @end
 
 @protocol StartSelectionViewControllerDelegate <NSObject>

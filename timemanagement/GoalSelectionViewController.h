@@ -17,7 +17,7 @@
 
 - (IBAction)buttonBack:(id)sender;
 - (IBAction)buttonDone:(id)sender;
-
+- (void) removeDuplicatedObjects;
 
 @end
 

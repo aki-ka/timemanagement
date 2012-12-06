@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface TimeManagement : NSObject
+@interface TimeManagement : NSObject<NSCoding>
 //状況
 @property (nonatomic, copy) NSString *occasion;
 //出発地
