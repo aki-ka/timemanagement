@@ -47,6 +47,13 @@
     return [self.masterToDoList objectAtIndex:theIndex];
 }
 
+//index番目の要素を入れ替える
+-(void) exchangeToDoElement:(NSString *)doing time:(NSString *)time information:(BOOL)information index:(NSInteger)index{
+    [self.masterToDoList removeObjectAtIndex:index];
+    ToDoElement *todoElement;
+    todoElement = [[ToDoElement alloc] initWithDoing:doing time:time information:information];
+    [self.masterToDoList insertObject:todoElement atIndex:index];
+}
 //消去
 - (void) removemasterToDoListAtIndexes:(NSIndexSet *)indexes{
     [self.masterToDoList removeObjectsAtIndexes:indexes];

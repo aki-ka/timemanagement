@@ -42,7 +42,7 @@
     //選択した時間をstring型に直し、date へ格納
     NSDate *select = [self.DatePicker date];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"MM/dd  "];
+    [formatter setDateFormat:@"MM/dd"];
     NSString *date = [formatter stringFromDate:select];
     [[self delegate] dateSelectionViewControllerDidOK:self date:date];
 }

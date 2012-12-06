@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "CheckBoxButton.h"
+@class ToDoElement;
 @protocol DetailViewControllerDelegate;
 
 
@@ -26,7 +27,10 @@
 @property (weak, nonatomic) IBOutlet CheckBoxButton *cbv_time;
 //通知をするかのチェックボックス
 @property (weak, nonatomic) IBOutlet CheckBoxButton *cbv_info;
-
+//詳細を表示するToDoElement
+@property(nonatomic) ToDoElement *element;
+//詳細を表示するToDoListのindex
+@property(nonatomic) NSInteger index;
 //何もせずに戻る
 - (IBAction)backButton:(id)sender;
 //編集完了
@@ -45,6 +49,6 @@
 //back
 -(void) detailViewControllerDidBack:(DetailViewController *)controller;
 //done
--(void) detailViewControllerDidFinish:(DetailViewController *)controller todo:(NSString *)todo time:(NSString *)time infomation:(BOOL) information;
+-(void) detailViewControllerDidFinish:(DetailViewController *)controller todo:(NSString *)todo time:(NSString *)time infomation:(BOOL) information index:(NSInteger) index;
 
 @end

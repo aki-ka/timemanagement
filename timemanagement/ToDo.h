@@ -20,5 +20,7 @@
 
 - (void)addToDoElementWithDoing:(NSString *)doing time:(NSString *)time information:(BOOL) information;
 
+-(void) exchangeToDoElement:(NSString *)doing time:(NSString *)time information:(BOOL) information index:(NSInteger) index;
+
 - (NSMutableArray *) getList;
 @end

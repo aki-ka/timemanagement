@@ -78,7 +78,7 @@
     //選択した時間
     
     //日付と時間を結合
-    NSString *time = [NSString stringWithFormat:@"%@%@ ",self.dateLabel.text,self.timeLabel.text];
+    NSString *time = [NSString stringWithFormat:@"%@ %@",self.dateLabel.text,self.timeLabel.text];
     [[self delegate] additionToDoViewControllerDidFinish:self todo:self.toDoLabel.text time:time information:self.info_cbv.checkBoxSelected];
     }
 }

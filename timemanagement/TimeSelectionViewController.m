@@ -40,7 +40,7 @@
 - (IBAction)buttonEnd:(id)sender {
     NSDate *select = [self.TimePicker date];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"HH:mm  "];
+    [formatter setDateFormat:@"HH:mm"];
     NSString *time = [formatter stringFromDate:select];
     [[self delegate] timeSelectionBiewControllerDidOK:self time:time];
 }

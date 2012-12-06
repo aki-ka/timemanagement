@@ -51,8 +51,38 @@
 
 }
 
-
-
+//詳細画面でキャンセルが押されたら
+-(void) detailViewControllerDidBack:(DetailViewController *)controller{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+//詳細画面で決定が押されたら
+-(void) detailViewControllerDidFinish:(DetailViewController *)controller todo:(NSString *)todo time:(NSString *)time infomation:(BOOL)information index:(NSInteger)index{
+    //登録処理
+    [self.ToDoList exchangeToDoElement:todo time:time information:information index:index];
+    [[self tableView] reloadData];
+    NSString *directory = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
+    NSString *filePath = [directory stringByAppendingPathComponent:@"todo.dat"];
+    NSMutableArray *array = [[NSMutableArray alloc] init];
+    array = [self.ToDoList getList];
+    [NSKeyedArchiver archiveRootObject:array toFile:filePath];
+    
+    
+    [self dismissViewControllerAnimated:YES completion:NULL];
+    if (information) {
+        UILocalNotification *localPush = [[UILocalNotification alloc] init];
+        //タイムゾーン設定
+        localPush.timeZone = [NSTimeZone defaultTimeZone];
+        //表示タイミング
+        localPush.fireDate = [NSDate dateWithTimeIntervalSinceNow:1];
+        //メッセージ
+        localPush.alertBody = todo;
+        //バッジ表示
+        localPush.applicationIconBadgeNumber = 0;
+        //登録
+        [[UIApplication sharedApplication] scheduleLocalNotification:localPush];
+        
+    }
+}
 
 //キャンセルを押されたら
 -(void) additionToDoViewControllerDidCancel:(AdittionToDoViewController *)controller{
@@ -179,6 +209,8 @@
 accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
     DetailViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"detail"];
     controller.delegate = self;
+    controller.element = [self.ToDoList objectInListAtIndex:indexPath.row];
+    controller.index = indexPath.row;
     [self presentViewController:controller animated:YES completion:nil];
     
   }

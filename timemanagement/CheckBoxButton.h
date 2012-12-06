@@ -10,4 +10,7 @@
 
 @interface CheckBoxButton : UIButton
 @property (nonatomic, assign) BOOL checkBoxSelected;
+
+- (void)checkboxPush:(CheckBoxButton*) button;
+- (void)setState:(CheckBoxButton*) button;
 @end

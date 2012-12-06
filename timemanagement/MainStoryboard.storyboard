@@ -867,7 +867,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                             </label>
                             <navigationBar contentMode="scaleToFill" barStyle="blackOpaque" translatesAutoresizingMaskIntoConstraints="NO" id="BoF-ZR-sqL">
                                 <items>
-                                    <navigationItem title="add" id="6FH-nP-t9z">
+                                    <navigationItem title="detail" id="6FH-nP-t9z">
                                         <barButtonItem key="leftBarButtonItem" title="back" id="ZHo-5j-bgM">
                                             <connections>
                                                 <action selector="backButton:" destination="mRx-Tx-NXv" id="hZn-hL-ZlO"/>
@@ -889,13 +889,13 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                             <constraint firstItem="Ck5-KS-mWk" firstAttribute="top" secondItem="Ovn-gy-AnG" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="6Jc-8z-G7e"/>
                             <constraint firstItem="ECw-SU-BFd" firstAttribute="leading" secondItem="AZW-os-49Y" secondAttribute="leading" constant="27" id="7Uv-xm-O6M"/>
                             <constraint firstItem="ECw-SU-BFd" firstAttribute="leading" secondItem="vVw-xD-UsO" secondAttribute="leading" type="default" id="8Ib-nJ-ugM"/>
+                            <constraint firstItem="Ck5-KS-mWk" firstAttribute="centerX" secondItem="QVP-FZ-Iat" secondAttribute="centerX" type="default" id="BNp-8l-uvB"/>
                             <constraint firstItem="Rxq-DA-kzg" firstAttribute="leading" secondItem="vVw-xD-UsO" secondAttribute="leading" type="default" id="DqD-de-7pi"/>
                             <constraint firstItem="BoF-ZR-sqL" firstAttribute="leading" secondItem="AZW-os-49Y" secondAttribute="leading" type="default" id="GUZ-Na-t1J"/>
                             <constraint firstItem="XfE-BM-TFV" firstAttribute="leading" secondItem="kZ2-LO-axg" secondAttribute="leading" type="default" id="IAA-yt-Kxj"/>
                             <constraint firstItem="XfE-BM-TFV" firstAttribute="leading" secondItem="AZW-os-49Y" secondAttribute="leading" constant="80" id="OIw-Xg-otI"/>
-                            <constraint firstItem="Ck5-KS-mWk" firstAttribute="leading" secondItem="AZW-os-49Y" secondAttribute="leading" constant="43" id="UjC-Nh-NmZ"/>
+                            <constraint firstItem="Ck5-KS-mWk" firstAttribute="centerX" secondItem="BoF-ZR-sqL" secondAttribute="centerX" type="default" id="Tek-gW-SZG"/>
                             <constraint firstItem="dKf-nk-BCk" firstAttribute="baseline" secondItem="ECw-SU-BFd" secondAttribute="baseline" type="default" id="Wt5-kX-N8k"/>
-                            <constraint firstItem="QVP-FZ-Iat" firstAttribute="centerX" secondItem="BoF-ZR-sqL" secondAttribute="centerX" type="default" id="XFz-cT-zat"/>
                             <constraint firstItem="UeN-x6-SOA" firstAttribute="leading" secondItem="dKf-nk-BCk" secondAttribute="leading" type="default" id="XLf-9T-NP0"/>
                             <constraint firstItem="XfE-BM-TFV" firstAttribute="bottom" secondItem="ECw-SU-BFd" secondAttribute="bottom" type="default" id="ZaT-kK-npS"/>
                             <constraint firstItem="Ovn-gy-AnG" firstAttribute="top" secondItem="AZW-os-49Y" secondAttribute="top" constant="59" id="aFe-ek-WXD"/>

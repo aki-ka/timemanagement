@@ -120,6 +120,7 @@ self.ideal =[[TimeManagementController alloc] init];
 [self.ideal setMasterTimeManagementList:array_i];
 }
 
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"CellIdentifier";
