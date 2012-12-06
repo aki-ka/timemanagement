@@ -144,6 +144,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="buttonClearKeyboard" destination="OhZ-L1-Skh" id="2LO-u2-040"/>
+                        <outlet property="occasion" destination="bKK-Du-6R8" id="zIG-fR-Bqt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YUB-IT-lUR" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1053,8 +1054,16 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <items>
                                 <navigationItem title="Occasion" id="QPi-0Z-XBh">
-                                    <barButtonItem key="leftBarButtonItem" title="back" id="hjJ-HV-eSR"/>
-                                    <barButtonItem key="rightBarButtonItem" title="Done" id="iq2-yI-jrN"/>
+                                    <barButtonItem key="leftBarButtonItem" title="back" id="hjJ-HV-eSR">
+                                        <connections>
+                                            <action selector="buttonBack:" destination="HCy-DL-wl0" id="FIa-EG-XRH"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem key="rightBarButtonItem" title="Done" id="iq2-yI-jrN">
+                                        <connections>
+                                            <action selector="buttonDone:" destination="HCy-DL-wl0" id="26F-Hz-Rfl"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </navigationItem>
                             </items>
                         </navigationBar>
@@ -1133,23 +1142,23 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         </class>
         <class className="OccasionSelectionViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OccasionSelectionViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="buttonBack:"/>
+                <relationship kind="action" name="buttonDone:"/>
+            </relationships>
         </class>
         <class className="RegisteringViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RegisteringViewController.h"/>
             <relationships>
                 <relationship kind="action" name="clearKeybord:"/>
-                <relationship kind="action" name="goal_end:"/>
-                <relationship kind="action" name="occasion_end:"/>
                 <relationship kind="action" name="pushCancel:"/>
                 <relationship kind="action" name="pushDone:"/>
                 <relationship kind="action" name="pushGoal:"/>
                 <relationship kind="action" name="pushOccasion:"/>
                 <relationship kind="action" name="pushStart:"/>
-                <relationship kind="action" name="start_end:"/>
                 <relationship kind="outlet" name="buttonClearKeyboard" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="goal" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="occasion" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="start" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="occasion" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="ooccasion" candidateClass="UITextField"/>
             </relationships>
         </class>
         <class className="SelectionViewController" superclassName="UIViewController">

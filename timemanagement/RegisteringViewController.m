@@ -18,9 +18,8 @@
 @implementation RegisteringViewController
 @synthesize ManagementController = _ManagementController;
 @synthesize delegate = _delegate;
+@synthesize ooccasion = _ooccasion;
 @synthesize occasion = _occasion;
-@synthesize start = _start;
-@synthesize goal = _goal;
 @synthesize time = _time;
 @synthesize day = _day;
 @synthesize buttonClearKeyboard = _buttonClearKeyboard;
@@ -58,15 +57,6 @@
     [self.view endEditing:YES];
 }
 
-//それぞれの編集完了
-- (IBAction)occasion_end:(id)sender {
-}
-
-- (IBAction)start_end:(id)sender {
-}
-
-- (IBAction)goal_end:(id)sender {
-}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -75,23 +65,32 @@
         selectController.delegate = self;
     }
 }
-
+//selectionViewから返ってきた値を格納
 - (void)selectionViewControllerDidFinish:(SelectionViewController *)controller time:(NSDate *)time day:(NSInteger)day{
     self.time = time;
     self.day = day;
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+//
+-(void) pushBack:(OccasionSelectionViewController *)controller{
+    [self dismissViewControllerAnimated:YES completion:NULL];
+}
+//
+-(void) pushDone:(OccasionSelectionViewController *)controller occasion:(NSString *)occasion{
+    [self.occasion setTitle:occasion forState:UIControlStateNormal];
+    [self dismissViewControllerAnimated:YES completion:NULL];
+}
 
+//cancelが押されたら
 - (IBAction)pushCancel:(id)sender {
     [[self delegate] registeringViewControllerDidCancel:self];
 }
-
+//Doneが押されたら
 - (IBAction)pushDone:(id)sender {
-    int oLength = [self.occasion.text length];
-    int sLength = [self.start.text length];
-    int gLength = [self.goal.text length];
+    int oLength = [self.ooccasion.text length];
+   
     //空白があれば、登録せずに、警告を表示
-    if(oLength==0||sLength==0||gLength==0){
+    if(oLength==0){
         UIAlertView *alert = [
                               [UIAlertView alloc]
                               initWithTitle:@"warning"
@@ -113,7 +112,7 @@
         [alert show];
     }
     else{
-        [[self delegate] registeringViewControllerDidFinish:self ocassion:self.occasion.text start:self.start.text goal:self.goal.text time:self.time day:self.day];
+       
     }
 
 }

@@ -18,11 +18,11 @@
 //配列
 @property (strong,nonatomic) TimeManagementController *ManagementController;
 //状況
-@property (weak, nonatomic) IBOutlet UITextField *occasion;
-//出発地
-@property (weak, nonatomic) IBOutlet UITextField *start;
-//目的地
-@property (weak, nonatomic) IBOutlet UITextField *goal;
+@property (weak, nonatomic) IBOutlet UIButton *occasion;
+
+
+@property (weak, nonatomic) IBOutlet UITextField *ooccasion;
+
 //キーボードを隠す為のボタン
 @property (weak, nonatomic) IBOutlet UIButton *buttonClearKeyboard;
 //時間
@@ -34,10 +34,7 @@
 
 //キーボードを隠す
 - (IBAction)clearKeybord:(id)sender;
-//状況、出発地、目的地の編集完了
-- (IBAction)occasion_end:(id)sender;
-- (IBAction)start_end:(id)sender;
-- (IBAction)goal_end:(id)sender;
+
 
 //cancelボタンが押されたときのメソッド
 - (IBAction)pushCancel:(id)sender;
