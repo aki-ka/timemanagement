@@ -23,9 +23,16 @@
 @property (weak, nonatomic) IBOutlet UIButton *occasion;
 @property (weak, nonatomic) IBOutlet UIButton *start;
 @property (weak, nonatomic) IBOutlet UIButton *goal;
+//
+@property (weak, nonatomic) IBOutlet UITextField *occasion_text;
+//
+@property (weak, nonatomic) IBOutlet UITextField *start_text;
+//
+@property (weak, nonatomic) IBOutlet UITextField *goal_text;
+//
+@property (weak, nonatomic) IBOutlet UITextField *time_text;
 
-//キーボードを隠す為のボタン
-@property (weak, nonatomic) IBOutlet UIButton *buttonClearKeyboard;
+
 //時間
 @property (nonatomic, strong) NSDate *time;
 //曜日
@@ -33,14 +40,12 @@
 //状況選択の画面
 //@property (strong,nonatomic) OccasionSelectionViewController *OccasionController;
 
-//キーボードを隠す
-- (IBAction)clearKeybord:(id)sender;
-
 
 //cancelボタンが押されたときのメソッド
 - (IBAction)pushCancel:(id)sender;
 //doneボタンが押されたときのメソッド
 - (IBAction)pushDone:(id)sender;
+
 - (IBAction)pushOccasion:(id)sender;
 - (IBAction)pushStart:(id)sender;
 - (IBAction)pushGoal:(id)sender;

@@ -13,6 +13,9 @@
 @property (nonatomic , copy) NSString *doing;
 @property (nonatomic , copy) NSString *time;
 @property (nonatomic) BOOL information;
+//ToDoが完了したことを知らせる
+@property (nonatomic) BOOL check;
+//初期化
 -(id)initWithDoing:(NSString *)doing time:(NSString *)time information:(BOOL) information;
 
 @end

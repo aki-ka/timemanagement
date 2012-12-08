@@ -68,19 +68,35 @@
     
     
     [self dismissViewControllerAnimated:YES completion:NULL];
+    //通知がYESだったら
     if (information) {
-        UILocalNotification *localPush = [[UILocalNotification alloc] init];
-        //タイムゾーン設定
-        localPush.timeZone = [NSTimeZone defaultTimeZone];
-        //表示タイミング
-        localPush.fireDate = [NSDate dateWithTimeIntervalSinceNow:1];
-        //メッセージ
-        localPush.alertBody = todo;
-        //バッジ表示
-        localPush.applicationIconBadgeNumber = 0;
-        //登録
-        [[UIApplication sharedApplication] scheduleLocalNotification:localPush];
-        
+        BOOL single = YES;
+        //重複しているかどうか確かめる
+        int a =[ [[UIApplication sharedApplication] scheduledLocalNotifications] count];
+        NSLog(@"%d",a);
+        for (UILocalNotification *notify in [[UIApplication sharedApplication] scheduledLocalNotifications]){
+            NSString *key = [notify.userInfo objectForKey:todo];
+            if([key isEqual:todo]){
+                single = NO;
+                break;
+            }
+        }
+        //重複していなければ登録
+        if(single){
+            UILocalNotification *localPush = [[UILocalNotification alloc] init];
+            //タイムゾーン設定
+            localPush.timeZone = [NSTimeZone defaultTimeZone];
+            //表示タイミング
+            localPush.fireDate = [NSDate dateWithTimeIntervalSinceNow:1];
+            //メッセージ
+            localPush.alertBody = todo;
+            //バッジ表示
+            localPush.applicationIconBadgeNumber = 0;
+            //特定できるようにキーを設定
+            [localPush setUserInfo:[NSDictionary  dictionaryWithObject:todo forKey:todo]];
+            //登録
+            [[UIApplication sharedApplication] scheduleLocalNotification:localPush];
+        }
     }
 }
 
@@ -102,7 +118,19 @@
      
        
     [self dismissViewControllerAnimated:YES completion:NULL];
+    //通知がYESだったら
     if (information) {
+        BOOL single = YES;
+        //重複しているかどうか確かめる
+        for (UILocalNotification *notify in [[UIApplication sharedApplication] scheduledLocalNotifications]){
+            NSString *key = [notify.userInfo objectForKey:todo];
+            if([key isEqual:todo]){
+                 single = NO;
+                break;
+            }
+        }
+        //重複していなければ登録
+        if(single){
         UILocalNotification *localPush = [[UILocalNotification alloc] init];
         //タイムゾーン設定
         localPush.timeZone = [NSTimeZone defaultTimeZone];
@@ -112,11 +140,13 @@
         localPush.alertBody = todo;
         //バッジ表示
         localPush.applicationIconBadgeNumber = 0;
+        //特定できるようにキーを設定
+         [localPush setUserInfo:[NSDictionary  dictionaryWithObject:todo forKey:todo]];
         //登録
         [[UIApplication sharedApplication] scheduleLocalNotification:localPush];
-        
+        }
     }
-}
+    }
 
 
 #pragma mark - Table view data source
@@ -146,7 +176,14 @@
 	cell.textLabel.text = [self.ToDoList objectInListAtIndex:indexPath.row].doing;
     //ToDoの下に時間をラベルに表示
     cell.detailTextLabel.text = [self.ToDoList objectInListAtIndex:indexPath.row].time;
-    cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    if([self.ToDoList objectInListAtIndex:indexPath.row].check){
+        cell.accessoryType =UITableViewCellAccessoryCheckmark;
+        [cell.textLabel setEnabled:NO];
+       }
+    else{
+        cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
+    }
     
     return cell;
 }
@@ -203,16 +240,63 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    //編集状態でなければ
+    if(!self.tableView.editing){
+        //選択状態の解除
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        //選択されたセルを取得
+        UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
+        //詳細用のアクセサリをチェックマークに変え、テキストを薄い色に
+        if(cell.accessoryType == UITableViewCellAccessoryDetailDisclosureButton){
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        [cell.textLabel setEnabled:NO];
+            //チェックされたとする
+        [self.ToDoList objectInListAtIndex:indexPath.row].check = YES;
+            //保存
+            NSString *directory = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
+            NSString *filePath = [directory stringByAppendingPathComponent:@"todo.dat"];
+            NSMutableArray *array = [[NSMutableArray alloc] init];
+            array = [self.ToDoList getList];
+            [NSKeyedArchiver archiveRootObject:array toFile:filePath];
+            //通知を消去
+            for (UILocalNotification *notify in [[UIApplication sharedApplication] scheduledLocalNotifications]){
+                NSString *key = [notify.userInfo objectForKey:cell.textLabel.text];
+                if([key isEqual:cell.textLabel.text]){
+                    [[UIApplication sharedApplication] cancelLocalNotification:notify];
+                    break;
+                }
+            }
+
+            
+        }
+        //その逆
+        else{
+            cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
+            [cell.textLabel setEnabled:YES];
+            [self.ToDoList objectInListAtIndex:indexPath.row].check = NO;
+            //保存
+            NSString *directory = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
+            NSString *filePath = [directory stringByAppendingPathComponent:@"todo.dat"];
+            NSMutableArray *array = [[NSMutableArray alloc] init];
+            array = [self.ToDoList getList];
+            [NSKeyedArchiver archiveRootObject:array toFile:filePath];
+
+        }
+    }
+        
 }
 //アクセサリが押されたら詳細画面へ飛ぶ
 - (void)tableView:(UITableView *)tableView
 accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
+    
+    if(cell.accessoryType == UITableViewCellAccessoryDetailDisclosureButton){
     DetailViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"detail"];
     controller.delegate = self;
     controller.element = [self.ToDoList objectInListAtIndex:indexPath.row];
     controller.index = indexPath.row;
     [self presentViewController:controller animated:YES completion:nil];
-    
+    }
   }
 
 //編集画面へ飛ぶ

@@ -14,10 +14,8 @@
 
 @property (nonatomic) id <OccasionSelectionViewControllerDelegate> delegate;
 @property (nonatomic) TimeManagementController *managementController;
+@property (nonatomic) NSMutableArray *ideal;
 @property (weak,nonatomic) UITextField *txtField;
-//履歴表示用の配列
-@property (nonatomic) TimeManagementController *ideal;
-
 - (IBAction)buttonBack:(id)sender;
 - (IBAction)buttonDone:(id)sender;
 - (void) removeDuplicatedObjects;

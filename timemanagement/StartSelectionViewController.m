@@ -16,7 +16,7 @@
 
 @implementation StartSelectionViewController
 
-@synthesize delegate =_delegate,managementController=_managementController,txtField=_txtField;
+@synthesize delegate =_delegate,managementController=_managementController,txtField=_txtField,ideal=_ideal;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -30,6 +30,7 @@
 - (void)viewDidLoad
 {
     self.txtField = [[UITextField alloc] init];
+    self.ideal = [[NSMutableArray alloc] init];
     [self removeDuplicatedObjects];
     [super viewDidLoad];
 
@@ -93,24 +94,26 @@
         default://候補を表示するセルの数
             break;
     }
-    return self.managementController.countOfList;
+    return self.ideal.count;
 }
 
-
+//重複を消去
 -(void) removeDuplicatedObjects{
-    NSMutableIndexSet* removedIndexes = [[NSMutableIndexSet alloc] init];
+     //重複しない要素を格納
     NSMutableSet* set = [[NSMutableSet alloc] init];
     const NSUInteger count = [self.managementController countOfList];
+    //重複しているかどうかの確認
     for (NSUInteger i = 0; i < count; i++) {
         NSString *object = [self.managementController objectInListAtIndex:i].start;
-        if ([set containsObject:object]) {
-            [removedIndexes addIndex:i];
-        } else {
+        if ([set containsObject:object])
+        {
+            }
+        else {
             [set addObject:object];
+            [self.ideal addObject:object];//重複していないオブジェクトを格納
         }
     }
-    [self.managementController removeMasterTimeManagementAtIndexes:removedIndexes];
-}
+   }
 
 
 
@@ -134,7 +137,7 @@
     }
     //候補を表示
     else{
-          cell.textLabel.text = [self.managementController objectInListAtIndex:indexPath.row].start;
+        cell.textLabel.text = [self.ideal objectAtIndex:indexPath.row];
     }
     return cell;
 }
@@ -188,7 +191,7 @@
     }
     //履歴から選択された場合、登録画面へ
     else{
-        NSString *start = [self.managementController objectInListAtIndex:indexPath.row].start;
+        NSString *start = [self.ideal objectAtIndex:indexPath.row];
         [[self delegate] pushDone_s:self start:start];
     }
 

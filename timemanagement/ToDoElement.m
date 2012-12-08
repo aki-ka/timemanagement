@@ -10,7 +10,7 @@
 
 @implementation ToDoElement
 
-@synthesize doing =_doing,time = _time,information=_information;
+@synthesize doing =_doing,time = _time,information=_information,check=_check;
 
 -(id)initWithCoder:(NSCoder*)decoder{
     self = [super init];
@@ -18,6 +18,7 @@
         _doing = [decoder decodeObjectForKey:@"doing"];
         _time = [decoder decodeObjectForKey:@"time"];
         _information = [decoder decodeBoolForKey:@"information"];
+        _check = [decoder decodeBoolForKey:@"check"];
     }
     return self;
 }
@@ -29,6 +30,7 @@
     _doing = doing;
     _time = time;
     _information = information;
+        _check= NO;
         return self;
     }
     return nil;
@@ -38,6 +40,7 @@
     [encoder encodeObject:_doing forKey:@"doing"];
     [encoder encodeObject:_time forKey:@"time"];
     [encoder encodeBool:_information forKey:@"information"];
+    [encoder encodeBool:_check forKey:@"check"];
 }
 
 -(void)dealloc{

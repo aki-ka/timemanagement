@@ -50,6 +50,10 @@
 		29A0E2441668D09A00E94BF1 /* cb_mono_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 29A0E22B1668D09A00E94BF1 /* cb_mono_on.png */; };
 		29A0E2451668D09A00E94BF1 /* cb_mono_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 29A0E22C1668D09A00E94BF1 /* cb_mono_on@2x.png */; };
 		29A0E2501668D47F00E94BF1 /* CheckBoxButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 29A0E24F1668D47F00E94BF1 /* CheckBoxButton.m */; };
+		29B5A11916735E3000D70EA0 /* 00199_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 29B5A11816735E3000D70EA0 /* 00199_1.png */; };
+		29B5A11B1673B67D00D70EA0 /* 04.png in Resources */ = {isa = PBXBuildFile; fileRef = 29B5A11A1673B67D00D70EA0 /* 04.png */; };
+		29B5A11D1673B68200D70EA0 /* b2.png in Resources */ = {isa = PBXBuildFile; fileRef = 29B5A11C1673B68200D70EA0 /* b2.png */; };
+		29B5A11F1673B68600D70EA0 /* a1_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 29B5A11E1673B68600D70EA0 /* a1_1.png */; };
 		29D548F9166A501100EB5429 /* ToDoElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 29D548F8166A501100EB5429 /* ToDoElement.m */; };
 		29D548FD166A514400EB5429 /* ToDo.m in Sources */ = {isa = PBXBuildFile; fileRef = 29D548FC166A514400EB5429 /* ToDo.m */; };
 		DEB7E21A166BCDB700C058DF /* TimeManagementMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEB7E219166BCDB700C058DF /* TimeManagementMasterViewController.m */; };
@@ -116,6 +120,10 @@
 		29A0E22C1668D09A00E94BF1 /* cb_mono_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cb_mono_on@2x.png"; sourceTree = "<group>"; };
 		29A0E24E1668D47F00E94BF1 /* CheckBoxButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckBoxButton.h; sourceTree = "<group>"; };
 		29A0E24F1668D47F00E94BF1 /* CheckBoxButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckBoxButton.m; sourceTree = "<group>"; };
+		29B5A11816735E3000D70EA0 /* 00199_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 00199_1.png; path = ../../../00199_1.png; sourceTree = "<group>"; };
+		29B5A11A1673B67D00D70EA0 /* 04.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 04.png; path = ../../../04.png; sourceTree = "<group>"; };
+		29B5A11C1673B68200D70EA0 /* b2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = b2.png; path = ../../../b2.png; sourceTree = "<group>"; };
+		29B5A11E1673B68600D70EA0 /* a1_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = a1_1.png; path = ../../../a1_1.png; sourceTree = "<group>"; };
 		29D548F7166A501100EB5429 /* ToDoElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToDoElement.h; sourceTree = "<group>"; };
 		29D548F8166A501100EB5429 /* ToDoElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToDoElement.m; sourceTree = "<group>"; };
 		29D548FB166A514400EB5429 /* ToDo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToDo.h; sourceTree = "<group>"; };
@@ -171,9 +179,9 @@
 				29A0E2171668D09A00E94BF1 /* SSCheckBoxView */,
 				291ADE9316569A5A005FF628 /* AppDelegate.h */,
 				291ADE9416569A5A005FF628 /* AppDelegate.m */,
-				2939407B166F96B4002725AF /* MainStoryboard.storyboard */,
 				DEB7E218166BCDB700C058DF /* TimeManagementMasterViewController.h */,
 				DEB7E219166BCDB700C058DF /* TimeManagementMasterViewController.m */,
+				2939407B166F96B4002725AF /* MainStoryboard.storyboard */,
 				29A0E24E1668D47F00E94BF1 /* CheckBoxButton.h */,
 				29A0E24F1668D47F00E94BF1 /* CheckBoxButton.m */,
 				2939407D166F98E9002725AF /* OccasionSelectionViewController.h */,
@@ -212,6 +220,10 @@
 		291ADE8B16569A5A005FF628 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				29B5A11C1673B68200D70EA0 /* b2.png */,
+				29B5A11E1673B68600D70EA0 /* a1_1.png */,
+				29B5A11A1673B67D00D70EA0 /* 04.png */,
+				29B5A11816735E3000D70EA0 /* 00199_1.png */,
 				291ADE8C16569A5A005FF628 /* timemanagement-Info.plist */,
 				291ADE8D16569A5A005FF628 /* InfoPlist.strings */,
 				291ADE9016569A5A005FF628 /* main.m */,
@@ -334,6 +346,10 @@
 				29A0E2441668D09A00E94BF1 /* cb_mono_on.png in Resources */,
 				29A0E2451668D09A00E94BF1 /* cb_mono_on@2x.png in Resources */,
 				2939407C166F96B4002725AF /* MainStoryboard.storyboard in Resources */,
+				29B5A11916735E3000D70EA0 /* 00199_1.png in Resources */,
+				29B5A11B1673B67D00D70EA0 /* 04.png in Resources */,
+				29B5A11D1673B68200D70EA0 /* b2.png in Resources */,
+				29B5A11F1673B68600D70EA0 /* a1_1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

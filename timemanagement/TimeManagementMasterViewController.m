@@ -36,13 +36,14 @@
 - (void)viewDidLoad
 {
     _dataController = [[TimeManagementController alloc] init];
-
+    
     NSString *directory = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
     NSString *filePath = [directory stringByAppendingPathComponent:@"timemanagement.dat"];
     NSArray *array = [NSKeyedUnarchiver unarchiveObjectWithFile:filePath];
     if(array){
         NSMutableArray *Marray = [NSMutableArray arrayWithArray:array];
         [self.dataController setMasterTimeManagementList:Marray];
+        
     }
 
     [super viewDidLoad];
@@ -104,7 +105,7 @@
 // doneが押されたら、リストに追加
 - (void)registeringViewControllerDidFinish:(RegisteringViewController *)controller ocassion:(NSString *)ocassion start:(NSString *)start goal:(NSString *)goal time:(NSDate *)time day:(NSInteger)day; {
     [self.dataController addTimeManagementWithOccasion:ocassion start:start goal:goal time:time day:day];
-    [[self tableView] reloadData];
+        [[self tableView] reloadData];
     
     NSString *directory = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
     NSString *filePath = [directory stringByAppendingPathComponent:@"timemanagement.dat"];
@@ -174,6 +175,7 @@
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
 }
+
 - (IBAction)buttonPush:(id)sender {
     
     if([self.EditButton.title isEqualToString:@"Delete"]){

@@ -23,8 +23,8 @@
 @synthesize occasion = _occasion,start=_start,goal=_goal;
 @synthesize time = _time;
 @synthesize day = _day;
-@synthesize buttonClearKeyboard = _buttonClearKeyboard;
-//@synthesize occaisioncontroller =_occaisioncontroller;
+@synthesize occasion_text=_occasion_text,start_text=_start_text,goal_text=_goal_text;
+
 
 //初期化
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -50,13 +50,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
- キーボードを隠す
- view上の編集を終了させる
- */
-- (IBAction)clearKeybord:(id)sender {
-    [self.view endEditing:YES];
-}
+
 
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -70,6 +64,9 @@
 - (void)selectionViewControllerDidFinish:(SelectionViewController *)controller time:(NSDate *)time day:(NSInteger)day{
     self.time = time;
     self.day = day;
+    NSDateFormatter *formatter =[[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"HH:mm"];
+    self.time_text.text = [formatter stringFromDate:time];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 //Occasionから何もせずに返ってくる
@@ -78,7 +75,7 @@
 }
 //Occasionから入力を受け取る
 -(void) pushDone:(OccasionSelectionViewController *)controller occasion:(NSString *)occasion{
-    [self.occasion setTitle:occasion forState:UIControlStateNormal];
+    [self.occasion_text setText:occasion];
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
 //Startから何もせずに返ってくる
@@ -87,7 +84,7 @@
 }
 //Startから入力を受け取る
 -(void) pushDone_s:(StartSelectionViewController *)controller start:(NSString *)start{
-    [self.start setTitle:start forState:UIControlStateNormal];
+    [self.start_text setText:start];
     [self dismissViewControllerAnimated:YES completion:nil];
 
 }
@@ -97,7 +94,7 @@
 }
 //Goalから入力を受け取る
 -(void) pushDone_g:(GoalSelectionViewController *)controller goal:(NSString *)goal{
-    [self.goal setTitle:goal forState:UIControlStateNormal];
+    [self.goal_text setText:goal];
     [self dismissViewControllerAnimated:YES completion:nil];
 
 }
@@ -115,11 +112,14 @@
 }
 //Doneが押されたら
 - (IBAction)pushDone:(id)sender {
-    NSString *occasion = self.occasion.titleLabel.text;
-    NSString *start = self.start.titleLabel.text;
-    NSString *goal = self.goal.titleLabel.text;
+    NSString *occasion = self.occasion_text.text;
+    NSString *start = self.start_text.text;
+    NSString *goal = self.goal_text.text;
+    int olength = [occasion length];
+    int slength = [start length];
+    int glength = [goal length];
     //空白があれば、登録せずに、警告を表示
-    if([occasion isEqualToString:@"Occaison"]){
+    if(olength==0||slength==0||glength==0){
         UIAlertView *alert = [
                               [UIAlertView alloc]
                               initWithTitle:@"warning"

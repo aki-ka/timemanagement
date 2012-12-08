@@ -19,7 +19,7 @@
 @synthesize delegate =_delegate;
 @synthesize managementController = _managementController;
 @synthesize txtField = _txtField;
-@synthesize ideal = _ideal;
+@synthesize ideal=_ideal;
 
 
 
@@ -35,6 +35,7 @@
 - (void)viewDidLoad
 {
     self.txtField = [[UITextField alloc] init];
+    self.ideal = [[NSMutableArray alloc] init];
     [self removeDuplicatedObjects];
     [super viewDidLoad];
 
@@ -97,27 +98,26 @@
         default://候補を表示するセルの数
             break;
     }
-    return self.managementController.countOfList;
+    return self.ideal.count;
 }
 
 //重複を消去
 -(void) removeDuplicatedObjects{
-    NSMutableArray *array_i = [[NSMutableArray alloc] init];
-    array_i = [self.managementController getList];
-    NSMutableIndexSet* removedIndexes = [[NSMutableIndexSet alloc] init];
+    //重複しない要素を格納
     NSMutableSet* set = [[NSMutableSet alloc] init];
     const NSUInteger count = [self.managementController countOfList];
+    //重複しているかどうかの確認
     for (NSUInteger i = 0; i < count; i++) {
         NSString *object = [self.managementController objectInListAtIndex:i].occasion;
-        if ([set containsObject:object]) {
-            [removedIndexes addIndex:i];
-        } else {
+        if ([set containsObject:object])
+        {
+        }
+        else {
             [set addObject:object];
+            [self.ideal addObject:object]; //重複していないオブジェクトを格納
         }
     }
-[array_i removeObjectsAtIndexes:removedIndexes];
-self.ideal =[[TimeManagementController alloc] init];
-[self.ideal setMasterTimeManagementList:array_i];
+    //ここまで
 }
 
 
@@ -139,8 +139,7 @@ self.ideal =[[TimeManagementController alloc] init];
         }
     //候補を表示
     else{
-        cell.textLabel.text = [self.ideal objectInListAtIndex:indexPath.row].occasion;
-    }
+        cell.textLabel.text = [self.ideal objectAtIndex:indexPath.row];    }
     return cell;
 }
 
@@ -196,7 +195,7 @@ self.ideal =[[TimeManagementController alloc] init];
     }
     //履歴から選択された場合、登録画面へ
     else{
-        NSString *occasion = [self.managementController objectInListAtIndex:indexPath.row].occasion;
+        NSString *occasion = [self.ideal objectAtIndex:indexPath.row];
         [[self delegate] pushDone:self occasion:occasion];
     }
 }
