@@ -19,7 +19,7 @@
         _start = [decoder decodeObjectForKey:@"start"];
         _goal = [decoder decodeObjectForKey:@"goal"];
         _time = [decoder decodeObjectForKey:@"time"];
-        _day = [decoder decodeBoolForKey:@"day"];
+        _day = [decoder decodeIntegerForKey:@"day"];
     }
     return self;
 
@@ -82,7 +82,7 @@
     [encoder encodeObject:_start forKey:@"start"];
     [encoder encodeObject:_goal forKey:@"goal"];
     [encoder encodeObject:_time forKey:@"time"];
-    [encoder encodeBool:_day forKey:@"day"];
+    [encoder encodeInteger:_day forKey:@"day"];
 }
 
 -(void)dealloc{

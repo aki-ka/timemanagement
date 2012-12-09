@@ -60,6 +60,10 @@
     [self.masterTimeManagementList removeObjectsAtIndexes:indexSet];
 }
 
+-(void)removeMasterTimeManagementWithObject:(TimeManagement *)timeManagement {
+    [self.masterTimeManagementList removeObject:timeManagement];
+}
+
 -(void)sortDate {
     NSArray *sortdate = [self.masterTimeManagementList sortedArrayUsingSelector:@selector(compareDate:)];
     self.masterTimeManagementList = [NSMutableArray arrayWithArray:sortdate];

@@ -17,6 +17,10 @@
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *EditButton;
 
+@property (nonatomic, copy) NSArray *sectionDatas;
+
+@property (nonatomic) NSInteger flag;
+
 - (IBAction)buttonPush:(id)sender;
 
 -(void)actionSheet:(UIActionSheet*)actionSheet

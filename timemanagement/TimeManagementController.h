@@ -24,6 +24,8 @@
 
 -(void)removeMasterTimeManagementAtIndexes:(NSIndexSet *)indexSet;
 
+-(void)removeMasterTimeManagementWithObject:(TimeManagement *)timeManagement;
+
 -(void)sortDate;
 
 -(void)sortDay;
