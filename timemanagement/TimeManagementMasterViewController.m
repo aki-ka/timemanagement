@@ -115,14 +115,32 @@
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
+
+
+//-----------------------------------------------------変更点-----------------------------------------------------------------------
+
+
+
+
+
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if([[segue identifier] isEqualToString:@"addTime"]){
         
         RegisteringViewController *addTime = (RegisteringViewController *)[[[segue destinationViewController]viewControllers]objectAtIndex:0];
         addTime.delegate = self;
+        
+        
+        //ここだけ
         addTime.Controller = self.dataController;
+        //ここだけ
     }
 }
+
+
+//-----------------------------------------------------変更点-----------------------------------------------------------------------
+
+
+
 
 /*
 // Override to support conditional editing of the table view.

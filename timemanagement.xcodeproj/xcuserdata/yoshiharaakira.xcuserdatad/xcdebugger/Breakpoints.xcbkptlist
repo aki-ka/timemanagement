@@ -60,11 +60,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "timemanagement/RegisteringViewController.m"
-         timestampString = "376698139.290972"
+         timestampString = "376757983.547742"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "41"
-         endingLineNumber = "41"
+         startingLineNumber = "44"
+         endingLineNumber = "44"
          landmarkName = "-viewDidLoad"
          landmarkType = "5">
       </FileBreakpoint>
@@ -73,11 +73,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "timemanagement/ToDoViewController.m"
-         timestampString = "376696487.430127"
+         timestampString = "376751833.489076"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "175"
-         endingLineNumber = "175"
+         startingLineNumber = "266"
+         endingLineNumber = "266"
          landmarkName = "-tableView:numberOfRowsInSection:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -86,33 +86,33 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "timemanagement/RegisteringViewController.m"
-         timestampString = "376698139.290972"
+         timestampString = "376757983.547742"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "199"
-         endingLineNumber = "199">
+         startingLineNumber = "221"
+         endingLineNumber = "221">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "timemanagement/RegisteringViewController.m"
-         timestampString = "376698139.290972"
+         timestampString = "376757983.547742"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "209"
-         endingLineNumber = "209">
+         startingLineNumber = "231"
+         endingLineNumber = "231">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "timemanagement/ToDoElement.m"
-         timestampString = "376688583.989439"
+         timestampString = "376749839.168338"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "39"
-         endingLineNumber = "39"
+         startingLineNumber = "45"
+         endingLineNumber = "45"
          landmarkName = "-encodeWithCoder:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -134,11 +134,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "timemanagement/ToDoViewController.m"
-         timestampString = "376696487.430127"
+         timestampString = "376751833.489076"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "179"
-         endingLineNumber = "179"
+         startingLineNumber = "270"
+         endingLineNumber = "270"
          landmarkName = "-tableView:cellForRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -160,11 +160,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "timemanagement/ToDoElement.m"
-         timestampString = "376688583.989439"
+         timestampString = "376749839.168338"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "40"
-         endingLineNumber = "40"
+         startingLineNumber = "46"
+         endingLineNumber = "46"
          landmarkName = "-encodeWithCoder:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -173,12 +173,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "timemanagement/ToDoElement.m"
-         timestampString = "376688583.989439"
+         timestampString = "376749839.168338"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "29"
-         endingLineNumber = "29"
-         landmarkName = "-initWithDoing:time:information:"
+         startingLineNumber = "32"
+         endingLineNumber = "32"
+         landmarkName = "-initWithDoing:time:information:repeat:day:min:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -186,12 +186,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "timemanagement/ToDoElement.m"
-         timestampString = "376688583.989439"
+         timestampString = "376749839.168338"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "30"
-         endingLineNumber = "30"
-         landmarkName = "-initWithDoing:time:information:"
+         startingLineNumber = "33"
+         endingLineNumber = "33"
+         landmarkName = "-initWithDoing:time:information:repeat:day:min:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -199,25 +199,25 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "timemanagement/ToDoElement.m"
-         timestampString = "376688583.989439"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "31"
-         endingLineNumber = "31"
-         landmarkName = "-initWithDoing:time:information:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "timemanagement/ToDoElement.m"
-         timestampString = "376688583.989439"
+         timestampString = "376749839.168338"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "34"
          endingLineNumber = "34"
-         landmarkName = "-initWithDoing:time:information:"
+         landmarkName = "-initWithDoing:time:information:repeat:day:min:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "timemanagement/ToDoElement.m"
+         timestampString = "376749839.168338"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "40"
+         endingLineNumber = "40"
+         landmarkName = "-initWithDoing:time:information:repeat:day:min:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -225,11 +225,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "timemanagement/RegisteringViewController.m"
-         timestampString = "376698139.290972"
+         timestampString = "376757983.547742"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "79"
-         endingLineNumber = "79"
+         startingLineNumber = "82"
+         endingLineNumber = "82"
          landmarkName = "-pushDone:occasion:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -256,7 +256,33 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "54"
          endingLineNumber = "54"
-         landmarkName = "-exchangeToDoElement:time:information:index:"
+         landmarkName = "-exchangeToDoElement:time:information:repeat:day:min:index:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "timemanagement/AdittionToDoViewController.m"
+         timestampString = "376749839.168338"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "101"
+         endingLineNumber = "101"
+         landmarkName = "-ButtonDone:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "timemanagement/AdittionToDoViewController.m"
+         timestampString = "376749879.551333"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "100"
+         endingLineNumber = "100"
+         landmarkName = "-ButtonDone:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

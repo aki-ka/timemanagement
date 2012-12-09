@@ -17,11 +17,9 @@
     [super awakeFromNib];
     UIImage* nocheck = [UIImage imageNamed:@"cb_dark_off.png"];
     UIImage* checked = [UIImage imageNamed:@"cb_dark_on.png"];
-    UIImage* disable = [UIImage imageNamed:@"disable_check.png"];
     [self setBackgroundImage:nocheck forState:UIControlStateNormal];
     [self setBackgroundImage:checked forState:UIControlStateSelected];
     [self setBackgroundImage:checked forState:UIControlStateHighlighted];
-    [self setBackgroundImage:disable forState:UIControlStateDisabled];
     [self addTarget:self action:@selector(checkboxPush:) forControlEvents:UIControlEventTouchUpInside];
     [self setState:self];
 }
@@ -34,11 +32,9 @@
         // Initialization code
         UIImage* nocheck = [UIImage imageNamed:@"cb_dark_off.png"];
         UIImage* checked = [UIImage imageNamed:@"cb_dark_on.png"];
-        UIImage* disable = [UIImage imageNamed:@"disable_check.png"];
         [self setBackgroundImage:nocheck forState:UIControlStateNormal];
         [self setBackgroundImage:checked forState:UIControlStateSelected];
         [self setBackgroundImage:checked forState:UIControlStateHighlighted];
-        [self setBackgroundImage:disable forState:UIControlStateDisabled];
         [self addTarget:self action:@selector(checkboxPush:) forControlEvents:UIControlEventTouchUpInside];
         [self setState:self];
     }

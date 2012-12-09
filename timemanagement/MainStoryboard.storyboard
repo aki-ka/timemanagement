@@ -29,7 +29,6 @@
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Occasion" textAlignment="center" minimumFontSize="17" background="00199_1.png" translatesAutoresizingMaskIntoConstraints="NO" id="4eV-eH-vMV">
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="208" id="8QN-02-LCZ"/>
                                     <constraint firstAttribute="height" constant="36" id="gAs-GS-mQx"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -37,6 +36,7 @@
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="occasion" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bKK-Du-6R8">
                                 <constraints>
+                                    <constraint firstAttribute="width" constant="208" id="7Y5-lS-qgO"/>
                                     <constraint firstAttribute="height" constant="40" id="g8q-o7-xMi"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -121,6 +121,14 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qWF-A4-VZn">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="dRm-hQ-NVX"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -130,6 +138,7 @@
                             <constraint firstAttribute="bottom" secondItem="4vJ-Ch-lVS" secondAttribute="bottom" constant="148" id="2QY-ad-UKS"/>
                             <constraint firstItem="hbc-II-1rP" firstAttribute="top" secondItem="mYc-nC-m6I" secondAttribute="top" constant="119" id="5lP-2A-3Ym"/>
                             <constraint firstItem="4eV-eH-vMV" firstAttribute="bottom" secondItem="bKK-Du-6R8" secondAttribute="bottom" type="default" id="8Pb-Ut-CoO"/>
+                            <constraint firstItem="4vJ-Ch-lVS" firstAttribute="leading" secondItem="qWF-A4-VZn" secondAttribute="leading" type="default" id="AJJ-Qy-l7N"/>
                             <constraint firstItem="hbc-II-1rP" firstAttribute="leading" secondItem="vrY-cO-dzi" secondAttribute="leading" type="default" id="BP6-XJ-g9A"/>
                             <constraint firstAttribute="bottom" secondItem="dkk-wW-Mii" secondAttribute="bottom" constant="112" id="Edm-hP-mXP"/>
                             <constraint firstItem="4vJ-Ch-lVS" firstAttribute="leading" secondItem="zSf-H5-2Ay" secondAttribute="leading" type="default" id="FTj-Ag-mak"/>
@@ -140,8 +149,10 @@
                             <constraint firstItem="buN-T8-8tS" firstAttribute="leading" secondItem="mYc-nC-m6I" secondAttribute="leading" constant="93" id="KxR-do-EsU"/>
                             <constraint firstItem="4vJ-Ch-lVS" firstAttribute="trailing" secondItem="zSf-H5-2Ay" secondAttribute="trailing" type="default" id="RYQ-Tk-SzN"/>
                             <constraint firstItem="AsR-my-s6Q" firstAttribute="top" secondItem="mYc-nC-m6I" secondAttribute="top" constant="176" id="Xug-j5-bdK"/>
+                            <constraint firstItem="4vJ-Ch-lVS" firstAttribute="trailing" secondItem="qWF-A4-VZn" secondAttribute="trailing" type="default" id="a8L-U3-MT6"/>
                             <constraint firstItem="4vJ-Ch-lVS" firstAttribute="trailing" secondItem="AsR-my-s6Q" secondAttribute="trailing" type="default" id="aQg-4A-tYZ"/>
                             <constraint firstAttribute="trailing" secondItem="dkk-wW-Mii" secondAttribute="trailing" constant="109" id="bdA-Se-RLq"/>
+                            <constraint firstAttribute="bottom" secondItem="qWF-A4-VZn" secondAttribute="bottom" constant="71" id="bei-pr-leA"/>
                             <constraint firstItem="AsR-my-s6Q" firstAttribute="trailing" secondItem="9HR-jS-ReL" secondAttribute="trailing" type="default" id="dcZ-HL-DLN"/>
                             <constraint firstItem="bKK-Du-6R8" firstAttribute="top" secondItem="mYc-nC-m6I" secondAttribute="top" constant="55" id="gze-wB-4bQ"/>
                             <constraint firstItem="buN-T8-8tS" firstAttribute="top" secondItem="zSf-H5-2Ay" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="nbz-GF-KfX"/>
@@ -165,6 +176,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="dayLabel" destination="qWF-A4-VZn" id="6EJ-LK-aQ5"/>
+                        <outlet property="day_cbv" destination="dkk-wW-Mii" id="z4E-xd-nsi"/>
                         <outlet property="goal" destination="9HR-jS-ReL" id="dON-to-aDM"/>
                         <outlet property="goal_text" destination="AsR-my-s6Q" id="eNR-Vd-3AA"/>
                         <outlet property="occasion" destination="bKK-Du-6R8" id="zIG-fR-Bqt"/>
@@ -334,7 +347,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CZv-QN-1ne">
                                 <constraints>
                                     <constraint firstAttribute="width" constant="309" id="UIs-2d-Xjo"/>
-                                    <constraint firstAttribute="height" constant="183" id="ePN-Mh-NY8"/>
+                                    <constraint firstAttribute="height" constant="365" id="fdh-VT-QKh"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal">
@@ -377,7 +390,7 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7yU-Mk-4yU">
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="226" id="1EY-hT-mMH"/>
+                                    <constraint firstAttribute="width" constant="226" id="hAz-XM-4SB"/>
                                 </constraints>
                                 <color key="textColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -457,38 +470,159 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="infoButton:" destination="r5w-yd-dWo" eventType="touchUpInside" id="m9l-9K-f9e"/>
+                                </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k4w-Mc-61d" customClass="CheckBoxButton">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="repeatButton:" destination="r5w-yd-dWo" eventType="touchUpInside" id="J8J-pQ-zcO"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="繰り返し" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7k4-wM-GHU">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="毎日" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g8o-sh-YZm">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hvb-VP-Aqv" customClass="CheckBoxButton">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="21" id="Ct0-wv-Urb"/>
+                                    <constraint firstAttribute="height" constant="21" id="uCg-mu-n2x"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="dayButton:" destination="r5w-yd-dWo" eventType="touchUpInside" id="VcJ-WV-qz2"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="毎週" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VMn-Uf-j7c">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="khX-Gk-39h" customClass="CheckBoxButton">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="21" id="BoE-OD-VFf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="weekButton:" destination="r5w-yd-dWo" eventType="touchUpInside" id="Qdp-bO-CBH"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="毎月" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eBh-Ck-22p">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hf8-zc-zhV" customClass="CheckBoxButton">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="21" id="d4C-b2-Q2m"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="monthButton:" destination="r5w-yd-dWo" eventType="touchUpInside" id="2hJ-mM-kjx"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="5" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jjF-Ex-LdS">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="104" id="Wcb-I6-QhK"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="分前" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7wD-bL-rWf">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Kc0-U9-CTB" firstAttribute="leading" secondItem="PCb-2U-mcW" secondAttribute="leading" type="default" id="0YE-Y1-F2a"/>
+                            <constraint firstAttribute="trailing" secondItem="eBh-Ck-22p" secondAttribute="trailing" constant="94" id="15G-dX-gpB"/>
+                            <constraint firstAttribute="bottom" secondItem="VMn-Uf-j7c" secondAttribute="bottom" constant="116" id="1hz-j6-aWy"/>
+                            <constraint firstItem="7k4-wM-GHU" firstAttribute="bottom" secondItem="k4w-Mc-61d" secondAttribute="bottom" type="default" id="6Qr-CY-EE6"/>
                             <constraint firstItem="Ft0-5C-eZs" firstAttribute="trailing" secondItem="3lY-uC-v1i" secondAttribute="trailing" type="default" id="6X9-O7-R3B"/>
+                            <constraint firstAttribute="bottom" secondItem="khX-Gk-39h" secondAttribute="bottom" constant="115" id="85O-WL-G8S"/>
                             <constraint firstItem="7yU-Mk-4yU" firstAttribute="top" secondItem="tM1-Ix-EGO" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="8ez-wO-iMc"/>
+                            <constraint firstItem="7k4-wM-GHU" firstAttribute="leading" secondItem="PCb-2U-mcW" secondAttribute="leading" constant="15" id="8k7-ux-hb0"/>
                             <constraint firstItem="9hg-v9-Vwz" firstAttribute="top" secondItem="3lY-uC-v1i" secondAttribute="top" type="default" id="9vT-Oe-EuS"/>
                             <constraint firstItem="G0B-Vp-GQM" firstAttribute="leading" secondItem="Br0-e3-Dvt" secondAttribute="leading" type="default" id="AG2-XU-OI4"/>
+                            <constraint firstItem="k4w-Mc-61d" firstAttribute="leading" secondItem="Ft0-5C-eZs" secondAttribute="leading" type="default" id="BMz-pL-zf0"/>
                             <constraint firstItem="CZv-QN-1ne" firstAttribute="leading" secondItem="PCb-2U-mcW" secondAttribute="leading" type="default" id="Bic-5z-Axw"/>
+                            <constraint firstItem="VMn-Uf-j7c" firstAttribute="leading" secondItem="PCb-2U-mcW" secondAttribute="leading" constant="118" id="CGm-8K-Mp9"/>
+                            <constraint firstItem="eBh-Ck-22p" firstAttribute="bottom" secondItem="khX-Gk-39h" secondAttribute="bottom" type="default" id="CIk-NQ-vyq"/>
                             <constraint firstItem="tM1-Ix-EGO" firstAttribute="top" secondItem="PCb-2U-mcW" secondAttribute="top" constant="53" id="CQp-lT-I2F"/>
                             <constraint firstItem="Ft0-5C-eZs" firstAttribute="leading" secondItem="3lY-uC-v1i" secondAttribute="leading" type="default" id="Czm-ny-2lS"/>
+                            <constraint firstAttribute="trailing" secondItem="Hf8-zc-zhV" secondAttribute="trailing" constant="58" id="HcL-Ig-yrQ"/>
+                            <constraint firstItem="jjF-Ex-LdS" firstAttribute="centerY" secondItem="Ft0-5C-eZs" secondAttribute="centerY" type="default" id="I1q-d2-rSh"/>
+                            <constraint firstItem="eBh-Ck-22p" firstAttribute="top" secondItem="khX-Gk-39h" secondAttribute="top" type="default" id="I85-c7-Ohl"/>
+                            <constraint firstAttribute="bottom" secondItem="g8o-sh-YZm" secondAttribute="bottom" constant="118" id="Igx-CS-Rjf"/>
+                            <constraint firstAttribute="trailing" secondItem="7wD-bL-rWf" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="IhR-pv-KlB"/>
+                            <constraint firstItem="jjF-Ex-LdS" firstAttribute="leading" secondItem="PCb-2U-mcW" secondAttribute="leading" constant="141" id="K3D-bU-8QL"/>
                             <constraint firstItem="9hg-v9-Vwz" firstAttribute="bottom" secondItem="3lY-uC-v1i" secondAttribute="bottom" type="default" id="Lgv-fO-4k3"/>
-                            <constraint firstItem="jga-gc-qNJ" firstAttribute="leading" secondItem="PCb-2U-mcW" secondAttribute="leading" constant="100" id="Mnb-pL-jbE"/>
+                            <constraint firstAttribute="bottom" secondItem="7k4-wM-GHU" secondAttribute="bottom" constant="169" id="OAW-1T-nL9"/>
+                            <constraint firstItem="jjF-Ex-LdS" firstAttribute="centerY" secondItem="PCb-2U-mcW" secondAttribute="centerY" type="default" id="OFK-LF-qa6"/>
+                            <constraint firstItem="7k4-wM-GHU" firstAttribute="top" secondItem="k4w-Mc-61d" secondAttribute="top" type="default" id="R1V-BN-XE1"/>
+                            <constraint firstItem="eBh-Ck-22p" firstAttribute="bottom" secondItem="Hf8-zc-zhV" secondAttribute="bottom" type="default" id="T6t-Fm-wI9"/>
                             <constraint firstItem="G0B-Vp-GQM" firstAttribute="top" secondItem="3lY-uC-v1i" secondAttribute="top" type="default" id="U8u-Jp-AKy"/>
+                            <constraint firstItem="jga-gc-qNJ" firstAttribute="leading" secondItem="PCb-2U-mcW" secondAttribute="leading" constant="100" id="ZhL-HI-juV"/>
                             <constraint firstItem="9hg-v9-Vwz" firstAttribute="leading" secondItem="Pgw-5n-ZqR" secondAttribute="leading" type="default" id="aFf-N5-A0d"/>
                             <constraint firstItem="Kc0-U9-CTB" firstAttribute="trailing" secondItem="PCb-2U-mcW" secondAttribute="trailing" type="default" id="aoK-e8-Eca"/>
                             <constraint firstItem="CZv-QN-1ne" firstAttribute="top" secondItem="tM1-Ix-EGO" secondAttribute="top" type="default" id="b9b-3z-fmr"/>
                             <constraint firstItem="Pgw-5n-ZqR" firstAttribute="leading" secondItem="7yU-Mk-4yU" secondAttribute="leading" type="default" id="cA8-yC-Eiz"/>
+                            <constraint firstItem="Pgw-5n-ZqR" firstAttribute="top" secondItem="PCb-2U-mcW" secondAttribute="top" constant="133" id="d0p-sJ-K4F"/>
                             <constraint firstItem="Ft0-5C-eZs" firstAttribute="top" secondItem="5Jt-8b-P6B" secondAttribute="top" type="default" id="eCD-1a-PL8"/>
-                            <constraint firstItem="Ft0-5C-eZs" firstAttribute="centerY" secondItem="PCb-2U-mcW" secondAttribute="centerY" type="default" id="eyh-nK-YC6"/>
+                            <constraint firstItem="jjF-Ex-LdS" firstAttribute="bottom" secondItem="7wD-bL-rWf" secondAttribute="bottom" type="default" id="gHK-FK-FND"/>
                             <constraint firstItem="9hg-v9-Vwz" firstAttribute="top" secondItem="PCb-2U-mcW" secondAttribute="top" constant="177" id="gNT-Dp-ZwN"/>
-                            <constraint firstItem="Br0-e3-Dvt" firstAttribute="leading" secondItem="PCb-2U-mcW" secondAttribute="leading" constant="147" id="ieN-Ne-gHh"/>
+                            <constraint firstItem="Br0-e3-Dvt" firstAttribute="leading" secondItem="PCb-2U-mcW" secondAttribute="leading" constant="147" id="htc-Si-XO0"/>
+                            <constraint firstItem="7yU-Mk-4yU" firstAttribute="centerX" secondItem="Kc0-U9-CTB" secondAttribute="centerX" type="default" id="iNB-ih-eLl"/>
+                            <constraint firstItem="Hvb-VP-Aqv" firstAttribute="leading" secondItem="PCb-2U-mcW" secondAttribute="leading" constant="82" id="lZU-yN-JzD"/>
                             <constraint firstItem="3lY-uC-v1i" firstAttribute="trailing" secondItem="jga-gc-qNJ" secondAttribute="trailing" type="default" id="m8m-0W-N55"/>
                             <constraint firstItem="Pgw-5n-ZqR" firstAttribute="baseline" secondItem="Br0-e3-Dvt" secondAttribute="baseline" type="default" id="nXb-Zw-83C"/>
+                            <constraint firstItem="k4w-Mc-61d" firstAttribute="trailing" secondItem="Ft0-5C-eZs" secondAttribute="trailing" type="default" id="nap-bW-fCv"/>
                             <constraint firstItem="Br0-e3-Dvt" firstAttribute="trailing" secondItem="G0B-Vp-GQM" secondAttribute="trailing" type="default" id="p2p-La-Htx"/>
-                            <constraint firstItem="Br0-e3-Dvt" firstAttribute="centerY" secondItem="CZv-QN-1ne" secondAttribute="centerY" type="default" id="qCL-7n-CNQ"/>
+                            <constraint firstItem="eBh-Ck-22p" firstAttribute="top" secondItem="Hf8-zc-zhV" secondAttribute="top" type="default" id="poI-8D-SKi"/>
                             <constraint firstItem="3lY-uC-v1i" firstAttribute="leading" secondItem="jga-gc-qNJ" secondAttribute="leading" type="default" id="reB-m5-6aN"/>
+                            <constraint firstAttribute="trailing" secondItem="khX-Gk-39h" secondAttribute="trailing" constant="138" id="tDC-bW-7T1"/>
                             <constraint firstItem="Pgw-5n-ZqR" firstAttribute="trailing" secondItem="tM1-Ix-EGO" secondAttribute="trailing" type="default" id="tZ9-J1-VAY"/>
+                            <constraint firstItem="g8o-sh-YZm" firstAttribute="leading" secondItem="PCb-2U-mcW" secondAttribute="leading" constant="31" id="tyn-wv-eab"/>
                             <constraint firstItem="5Jt-8b-P6B" firstAttribute="leading" secondItem="9hg-v9-Vwz" secondAttribute="leading" type="default" id="ugi-V5-gxu"/>
                             <constraint firstItem="Kc0-U9-CTB" firstAttribute="top" secondItem="PCb-2U-mcW" secondAttribute="top" type="default" id="wA3-9Z-zWS"/>
-                            <constraint firstItem="Kc0-U9-CTB" firstAttribute="centerX" secondItem="7yU-Mk-4yU" secondAttribute="centerX" type="default" id="xVU-q1-ISi"/>
+                            <constraint firstAttribute="bottom" secondItem="Hvb-VP-Aqv" secondAttribute="bottom" constant="117" id="x6K-jc-OQp"/>
                             <constraint firstItem="jga-gc-qNJ" firstAttribute="top" secondItem="Br0-e3-Dvt" secondAttribute="top" type="default" id="zZw-Vp-Z2H"/>
                         </constraints>
                     </view>
@@ -496,15 +630,25 @@
                     <connections>
                         <outlet property="dateLabel" destination="Br0-e3-Dvt" id="E4S-ZL-fmz"/>
                         <outlet property="date_cbv" destination="jga-gc-qNJ" id="b73-eZ-pSx"/>
+                        <outlet property="dayLabel" destination="g8o-sh-YZm" id="6Oh-bl-VUQ"/>
+                        <outlet property="day_cbv" destination="Hvb-VP-Aqv" id="Y5H-39-kVf"/>
+                        <outlet property="infoLabel" destination="7wD-bL-rWf" id="4gJ-l5-2MR"/>
+                        <outlet property="infoText" destination="jjF-Ex-LdS" id="Oc3-UD-PsP"/>
                         <outlet property="info_cbv" destination="Ft0-5C-eZs" id="uO5-7B-E1f"/>
+                        <outlet property="monthLabel" destination="eBh-Ck-22p" id="hFo-j7-Qfo"/>
+                        <outlet property="month_cbv" destination="Hf8-zc-zhV" id="7oN-Nb-Shp"/>
+                        <outlet property="repeatLabel" destination="7k4-wM-GHU" id="bxc-SR-kd5"/>
+                        <outlet property="repeat_cbv" destination="k4w-Mc-61d" id="RA9-ok-aGa"/>
                         <outlet property="timeLabel" destination="G0B-Vp-GQM" id="hGa-vN-9U6"/>
                         <outlet property="time_cbv" destination="3lY-uC-v1i" id="5Lu-IH-9UJ"/>
                         <outlet property="toDoLabel" destination="7yU-Mk-4yU" id="0Ph-bK-eaU"/>
+                        <outlet property="weekLabel" destination="VMn-Uf-j7c" id="bUv-P2-kXA"/>
+                        <outlet property="week_cbv" destination="khX-Gk-39h" id="Qxb-G3-hTD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d75-DU-hVN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1432" y="146"/>
+            <point key="canvasLocation" x="1412" y="153"/>
         </scene>
         <!--Date Selection View Controller - date-->
         <scene sceneID="Ocg-De-QWH">
@@ -584,7 +728,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kzi-Ht-VDX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1833" y="146"/>
+            <point key="canvasLocation" x="1809" y="153"/>
         </scene>
         <!--Day Selection View Controller-->
         <scene sceneID="vQs-7b-Lg7">
@@ -595,17 +739,21 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NGO-AA-C6b" customClass="CheckBoxButton_Time">
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="21" id="mxq-UA-dk8"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" image="cb_glossy_on.png">
+                                <state key="normal">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="pushUsual:" destination="bMg-cK-qAP" eventType="touchUpInside" id="sHe-eG-srZ"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xdQ-kL-mgP">
                                 <constraints>
@@ -625,9 +773,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="平日" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gM4-Tm-cC8">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="mEq-Nb-UIr"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -685,6 +830,9 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="pushHoliday:" destination="bMg-cK-qAP" eventType="touchUpInside" id="LrI-So-2fH"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NyZ-hS-urY" customClass="CheckBoxButton_Time">
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -834,10 +982,21 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                             <constraint firstAttribute="bottom" secondItem="xdQ-kL-mgP" secondAttribute="bottom" constant="55" id="y2e-kV-nIJ"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="Fri" destination="CSD-55-lLe" id="KcG-IW-VyF"/>
+                        <outlet property="Holi" destination="Hsr-WP-Tl4" id="voY-9m-O22"/>
+                        <outlet property="Mon" destination="fFg-LP-y3m" id="Pjq-gi-IYm"/>
+                        <outlet property="Satur" destination="8KK-AN-Xnd" id="jh2-Ne-6KQ"/>
+                        <outlet property="Sun" destination="NyZ-hS-urY" id="r2S-qC-9Xs"/>
+                        <outlet property="Thurs" destination="Z2v-Gu-a54" id="Aff-Cl-yPO"/>
+                        <outlet property="Tues" destination="7Mu-Je-OAa" id="Kke-xn-Wk0"/>
+                        <outlet property="Usual" destination="NGO-AA-C6b" id="0Iw-zA-Pa4"/>
+                        <outlet property="Wednes" destination="e1q-Bq-Pok" id="FjC-Ga-KzX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="voy-JO-7P9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2236" y="153"/>
+            <point key="canvasLocation" x="2200" y="153"/>
         </scene>
         <!--Start Selection View Controller-->
         <scene sceneID="7bQ-xs-G75">
@@ -884,7 +1043,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xQl-Nr-cvB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2010" y="-1084"/>
+            <point key="canvasLocation" x="2236" y="-1084"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="K0f-bd-M4L">
@@ -1020,7 +1179,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Hy-rh-tkT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="969" y="146"/>
+            <point key="canvasLocation" x="969" y="153"/>
         </scene>
         <!--Detail View Controller - detail-->
         <scene sceneID="DeR-sc-jvm">
@@ -1208,7 +1367,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NS2-sn-08Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="969" y="732"/>
+            <point key="canvasLocation" x="969" y="796"/>
         </scene>
         <!--Time Selection View Controller - time-->
         <scene sceneID="wXb-mY-kPq">
@@ -1288,7 +1447,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ntx-t5-06J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1833" y="803"/>
+            <point key="canvasLocation" x="1809" y="796"/>
         </scene>
         <!--Goal Selection View Controller-->
         <scene sceneID="3Ka-Lf-VKQ">
@@ -1335,7 +1494,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="68t-xT-lGd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2393" y="-1084"/>
+            <point key="canvasLocation" x="2630" y="-1084"/>
         </scene>
         <!--Occasion Selection View Controller-->
         <scene sceneID="OYe-Eg-wwF">
@@ -1383,12 +1542,11 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fy2-Ss-hs9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1633" y="-1084"/>
+            <point key="canvasLocation" x="1809" y="-1084"/>
         </scene>
     </scenes>
     <resources>
         <image name="00199_1.png" width="502" height="219"/>
-        <image name="cb_glossy_on.png" width="22" height="22"/>
     </resources>
     <classes>
         <class className="AdittionToDoViewController" superclassName="UIViewController">
@@ -1398,14 +1556,29 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 <relationship kind="action" name="ButtonDone:"/>
                 <relationship kind="action" name="clearKeyBoard:"/>
                 <relationship kind="action" name="dateButton:"/>
+                <relationship kind="action" name="dayButton:"/>
                 <relationship kind="action" name="endEdit:"/>
+                <relationship kind="action" name="infoButton:"/>
+                <relationship kind="action" name="monthButton:"/>
+                <relationship kind="action" name="repeatButton:"/>
                 <relationship kind="action" name="timeButton:"/>
+                <relationship kind="action" name="weekButton:"/>
                 <relationship kind="outlet" name="dateLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="date_cbv" candidateClass="CheckBoxButton"/>
+                <relationship kind="outlet" name="dayLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="day_cbv" candidateClass="CheckBoxButton"/>
+                <relationship kind="outlet" name="infoLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="infoText" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="info_cbv" candidateClass="CheckBoxButton"/>
+                <relationship kind="outlet" name="monthLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="month_cbv" candidateClass="CheckBoxButton"/>
+                <relationship kind="outlet" name="repeatLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="repeat_cbv" candidateClass="CheckBoxButton"/>
                 <relationship kind="outlet" name="timeLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="time_cbv" candidateClass="CheckBoxButton"/>
                 <relationship kind="outlet" name="toDoLabel" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="weekLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="week_cbv" candidateClass="CheckBoxButton"/>
             </relationships>
         </class>
         <class className="CheckBoxButton" superclassName="UIButton">
@@ -1425,6 +1598,17 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DaySelectionViewController.h"/>
             <relationships>
                 <relationship kind="action" name="pushDone:"/>
+                <relationship kind="action" name="pushHoliday:"/>
+                <relationship kind="action" name="pushUsual:"/>
+                <relationship kind="outlet" name="Fri" candidateClass="CheckBoxButton_Time"/>
+                <relationship kind="outlet" name="Holi" candidateClass="CheckBoxButton_Time"/>
+                <relationship kind="outlet" name="Mon" candidateClass="CheckBoxButton_Time"/>
+                <relationship kind="outlet" name="Satur" candidateClass="CheckBoxButton_Time"/>
+                <relationship kind="outlet" name="Sun" candidateClass="CheckBoxButton_Time"/>
+                <relationship kind="outlet" name="Thurs" candidateClass="CheckBoxButton_Time"/>
+                <relationship kind="outlet" name="Tues" candidateClass="CheckBoxButton_Time"/>
+                <relationship kind="outlet" name="Usual" candidateClass="CheckBoxButton_Time"/>
+                <relationship kind="outlet" name="Wednes" candidateClass="CheckBoxButton_Time"/>
             </relationships>
         </class>
         <class className="DetailViewController" superclassName="UIViewController">
@@ -1432,15 +1616,30 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             <relationships>
                 <relationship kind="action" name="backButton:"/>
                 <relationship kind="action" name="dateButton:"/>
+                <relationship kind="action" name="dayButton:"/>
                 <relationship kind="action" name="doneButton:"/>
                 <relationship kind="action" name="endButton:"/>
+                <relationship kind="action" name="infoButton:"/>
+                <relationship kind="action" name="monthButton:"/>
+                <relationship kind="action" name="repeatButton:"/>
                 <relationship kind="action" name="timeButton:"/>
+                <relationship kind="action" name="weekButton:"/>
                 <relationship kind="outlet" name="cbv_date" candidateClass="CheckBoxButton"/>
                 <relationship kind="outlet" name="cbv_info" candidateClass="CheckBoxButton"/>
                 <relationship kind="outlet" name="cbv_time" candidateClass="CheckBoxButton"/>
                 <relationship kind="outlet" name="dateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="dayLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="day_cbv" candidateClass="CheckBoxButton"/>
+                <relationship kind="outlet" name="infoLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="infoText" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="monthLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="month_cbv" candidateClass="CheckBoxButton"/>
+                <relationship kind="outlet" name="repeatLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="repeat_cbv" candidateClass="CheckBoxButton"/>
                 <relationship kind="outlet" name="timeLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="todoField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="weekLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="week_cbv" candidateClass="CheckBoxButton"/>
             </relationships>
         </class>
         <class className="GoalSelectionViewController" superclassName="UITableViewController">
@@ -1469,6 +1668,8 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 <relationship kind="action" name="pushGoal:"/>
                 <relationship kind="action" name="pushOccasion:"/>
                 <relationship kind="action" name="pushStart:"/>
+                <relationship kind="outlet" name="dayLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="day_cbv" candidateClass="CheckBoxButton_Time"/>
                 <relationship kind="outlet" name="goal" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="goal_text" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="occasion" candidateClass="UIButton"/>

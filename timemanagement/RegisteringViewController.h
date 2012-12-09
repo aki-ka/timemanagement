@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "OccasionSelectionViewController.h"
 @class TimeManagementController;
-
+@class CheckBoxButton_Time;
 @protocol ResisteringViewControllerDelegate;
 
 @interface RegisteringViewController : UIViewController
@@ -31,14 +31,17 @@
 @property (weak, nonatomic) IBOutlet UITextField *goal_text;
 //
 @property (weak, nonatomic) IBOutlet UITextField *time_text;
-
+//曜日を表示するラベル
+@property (weak, nonatomic) IBOutlet UILabel *dayLabel;
 
 //時間
 @property (nonatomic, strong) NSDate *time;
 //曜日
 @property (nonatomic) NSInteger day;
 
-
+@property (nonatomic) NSMutableArray *days;
+//曜日のチェックボタン
+@property (weak, nonatomic) IBOutlet CheckBoxButton_Time *day_cbv;
 
 //cancelボタンが押されたときのメソッド
 - (IBAction)pushCancel:(id)sender;

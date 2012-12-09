@@ -18,9 +18,9 @@
 
 -(void)removemasterToDoListAtIndexes:(NSIndexSet *)indexes;
 
-- (void)addToDoElementWithDoing:(NSString *)doing time:(NSString *)time information:(BOOL) information;
+- (void)addToDoElementWithDoing:(NSString *)doing time:(NSString *)time information:(BOOL) information repeat:(BOOL) repeat day:(int) day min:(int) min;
 
--(void) exchangeToDoElement:(NSString *)doing time:(NSString *)time information:(BOOL) information index:(NSInteger) index;
+-(void) exchangeToDoElement:(NSString *)doing time:(NSString *)time information:(BOOL) information repeat:(BOOL) repeat day:(int) day min:(int) min index:(NSInteger) index;
 
 - (NSMutableArray *) getList;
 @end

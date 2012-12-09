@@ -14,6 +14,7 @@
 #import "StartSelectionViewController.h"
 #import "GoalSelectionViewController.h"
 #import "DaySelectionViewController.h"
+#import "CheckBoxButton_Time.h"
 @interface RegisteringViewController ()
 <SelectionViewControllerDelegate,OccasionSelectionViewControllerDelegate,StartSelectionViewControllerDelegate,GoalSelectionViewControllerDelegate,DaySelectionViewControllerDelegate>
 
@@ -25,6 +26,7 @@
 @synthesize time = _time;
 @synthesize day = _day;
 @synthesize occasion_text=_occasion_text,start_text=_start_text,goal_text=_goal_text;
+@synthesize dayLabel=_dayLabel,days=_days,day_cbv=_day_cbv;
 
 
 //初期化
@@ -39,6 +41,7 @@
 
 - (void)viewDidLoad
 {
+    _days = [[NSMutableArray alloc] init];
     _ManagementController = [[TimeManagementController alloc] init];
     self.day = 8;
     [super viewDidLoad];
@@ -100,7 +103,21 @@
 
 }
 //Dayから入力を受け取る
--(void) DaySelectionDidFinish:(DaySelectionViewController *)controller day:(NSInteger)day{
+-(void) DaySelectionDidFinish:(DaySelectionViewController *)controller days:(NSMutableArray *)days{
+    switch ([days count]) {
+        case 0:
+            break;
+        case 1:
+            self.dayLabel.text = [days objectAtIndex:0];
+            break;
+        default: self.dayLabel.text = [days objectAtIndex:0];
+            for (int i=1; i<[days count]; i++) {
+                self.dayLabel.text = [NSString stringWithFormat:@"%@,%@",self.dayLabel.text,[days objectAtIndex:i]];
+            }
+            
+            break;
+    }
+    self.days = days;
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -175,8 +192,13 @@
 }
 
 - (IBAction)pushDay:(id)sender {
+    if(!self.day_cbv.checkBoxSelected){
     DaySelectionViewController *controller =[self.storyboard instantiateViewControllerWithIdentifier:@"day"];
     controller.delegate = self;
     [self presentViewController:controller animated:YES completion:nil];
+    }
+    else{
+        self.dayLabel.text = @"";
+    }
 }
 @end

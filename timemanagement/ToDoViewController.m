@@ -66,9 +66,9 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 //詳細画面で決定が押されたら
--(void) detailViewControllerDidFinish:(DetailViewController *)controller todo:(NSString *)todo time:(NSString *)time infomation:(BOOL)information index:(NSInteger)index{
+-(void) detailViewControllerDidFinish:(DetailViewController *)controller todo:(NSString *)todo time:(NSString *)time infomation:(BOOL)information repeat:(BOOL)repeat day:(int)day min:(int)min index:(NSInteger)index{
     //登録処理
-    [self.ToDoList exchangeToDoElement:todo time:time information:information index:index];
+    [self.ToDoList exchangeToDoElement:todo time:time information:information repeat:repeat day:day min:min index:index];
     [[self tableView] reloadData];
     NSString *directory = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
     NSString *filePath = [directory stringByAppendingPathComponent:@"todo.dat"];
@@ -85,7 +85,7 @@
         int a =[ [[UIApplication sharedApplication] scheduledLocalNotifications] count];
         NSLog(@"%d",a);
         for (UILocalNotification *notify in [[UIApplication sharedApplication] scheduledLocalNotifications]){
-            NSString *key = [notify.userInfo objectForKey:todo];
+            NSString *key = [notify.userInfo objectForKey:@"todo"];
             if([key isEqual:todo]){
                 single = NO;
                 break;
@@ -97,13 +97,59 @@
             //タイムゾーン設定
             localPush.timeZone = [NSTimeZone defaultTimeZone];
             //表示タイミング
-            localPush.fireDate = [NSDate dateWithTimeIntervalSinceNow:1];
+            
+            //スペースで分割
+            NSArray *date_time = [time componentsSeparatedByString:@" "];
+            NSString *date_text = [date_time objectAtIndex:0];
+            NSString *time_text = [date_time objectAtIndex:1];
+            //時間があれば
+            if([time_text length] != 0){
+                NSDate *formatterDate = [[NSDate alloc] init];
+                //日付があれば
+                if([date_text length] != 0){
+                    NSDateFormatter *inputFormatter = [[NSDateFormatter alloc] init];
+                    [inputFormatter setDateFormat:@"MM/dd HH:mm"];
+                    formatterDate = [inputFormatter dateFromString:time];
+                }
+                //日付がなければ
+                else{
+                    NSDateFormatter *inputFormatter = [[NSDateFormatter alloc] init];
+                    [inputFormatter setDateFormat:@"HH:mm"];
+                    formatterDate = [inputFormatter dateFromString:time_text];
+                }
+                NSDate *now =[NSDate date];
+                //現在時刻との差を算出
+                NSTimeInterval since = [formatterDate timeIntervalSinceDate:now];
+                localPush.fireDate = [NSDate dateWithTimeIntervalSinceNow:since];
+            }
+            //時間がなければ、すぐに通知
+            else{
+                localPush.fireDate = [NSDate dateWithTimeIntervalSinceNow:1];
+            }
+            
+            //繰り返しの設定
+            if(repeat){
+                switch (day) {
+                        //毎日のとき
+                    case 1:
+                        localPush.repeatInterval = NSDayCalendarUnit;
+                        break;
+                        //毎週のとき
+                    case 2:
+                        localPush.repeatInterval = NSWeekCalendarUnit;
+                        break;
+                        //毎月のとき
+                    default:
+                        localPush.repeatInterval = NSMonthCalendarUnit;
+                        break;
+                }
+            }
             //メッセージ
             localPush.alertBody = todo;
             //バッジ表示
             localPush.applicationIconBadgeNumber = 0;
             //特定できるようにキーを設定
-            [localPush setUserInfo:[NSDictionary  dictionaryWithObject:todo forKey:todo]];
+            [localPush setUserInfo:[NSDictionary  dictionaryWithObject:todo forKey:@"todo"]];
             //登録
             [[UIApplication sharedApplication] scheduleLocalNotification:localPush];
         }
@@ -115,18 +161,16 @@
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
 //doneを押されたら、それぞれのリストに追加
--(void) additionToDoViewControllerDidFinish:(AdittionToDoViewController *)controller todo:(NSString *)todo time:(NSString *)time information:(BOOL)information{
-       [self.ToDoList addToDoElementWithDoing:todo time:time information:information];
+-(void) additionToDoViewControllerDidFinish:(AdittionToDoViewController *)controller todo:(NSString *)todo time:(NSString *)time information:(BOOL)information repeat:(BOOL)repeat day:(int)day min:(int)min{
+       [self.ToDoList addToDoElementWithDoing:todo time:time information:information repeat:repeat day:day min:min];
     [[self tableView] reloadData];
-    //
-    
+    //保存
     NSString *directory = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
     NSString *filePath = [directory stringByAppendingPathComponent:@"todo.dat"];
     NSMutableArray *array = [[NSMutableArray alloc] init];
     array = [self.ToDoList getList];
        [NSKeyedArchiver archiveRootObject:array toFile:filePath];
-     
-       
+     //遷移先の画面の消去
     [self dismissViewControllerAnimated:YES completion:NULL];
     //通知がYESだったら
     if (information) {
@@ -145,13 +189,60 @@
         //タイムゾーン設定
         localPush.timeZone = [NSTimeZone defaultTimeZone];
         //表示タイミング
-        localPush.fireDate = [NSDate dateWithTimeIntervalSinceNow:1];
-        //メッセージ
-        localPush.alertBody = todo;
-        //バッジ表示
-        localPush.applicationIconBadgeNumber = 0;
-        //特定できるようにキーを設定
-         [localPush setUserInfo:[NSDictionary  dictionaryWithObject:todo forKey:todo]];
+            
+            //スペースで分割
+            NSArray *date_time = [time componentsSeparatedByString:@" "];
+            NSString *date_text = [date_time objectAtIndex:0];
+            NSString *time_text = [date_time objectAtIndex:1];
+            //時間があれば
+            if([time_text length] != 0){
+                NSDate *formatterDate = [[NSDate alloc] init];
+                //日付があれば
+                if([date_text length] != 0){
+                NSDateFormatter *inputFormatter = [[NSDateFormatter alloc] init];
+                [inputFormatter setDateFormat:@"MM/dd HH:mm"];
+                formatterDate = [inputFormatter dateFromString:time];
+                }
+                //日付がなければ
+            else{
+                NSDateFormatter *inputFormatter = [[NSDateFormatter alloc] init];
+                [inputFormatter setDateFormat:@"HH:mm"];
+                formatterDate = [inputFormatter dateFromString:time_text];
+            }
+                NSDate *now =[NSDate date];
+                //現在時刻との差を算出
+                NSTimeInterval since = [formatterDate timeIntervalSinceDate:now];
+                localPush.fireDate = [NSDate dateWithTimeIntervalSinceNow:since];
+            }
+            //時間がなければ、すぐに通知
+            else{
+                localPush.fireDate = [NSDate dateWithTimeIntervalSinceNow:1];
+            }
+            
+               //繰り返しの設定
+            if(repeat){
+                switch (day) {
+                        //毎日のとき
+                    case 1:
+                        localPush.repeatInterval = NSDayCalendarUnit;
+                        break;
+                        //毎週のとき
+                    case 2:
+                        localPush.repeatInterval = NSWeekCalendarUnit;
+                        break;
+                        //毎月のとき
+                    default:
+                        localPush.repeatInterval = NSMonthCalendarUnit;
+                        break;
+                }                
+            }
+            //メッセージ
+            localPush.alertBody = todo;
+            //バッジ表示
+            localPush.applicationIconBadgeNumber = 0;
+            //特定できるようにキーを設定
+            [localPush setUserInfo:[NSDictionary  dictionaryWithObject:todo forKey:@"todo"]];
+
         //登録
         [[UIApplication sharedApplication] scheduleLocalNotification:localPush];
         }
@@ -186,7 +277,7 @@
 	cell.textLabel.text = [self.ToDoList objectInListAtIndex:indexPath.row].doing;
     //ToDoの下に時間をラベルに表示
     cell.detailTextLabel.text = [self.ToDoList objectInListAtIndex:indexPath.row].time;
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.selectionStyle = UITableViewCellSelectionStyleGray;
     if([self.ToDoList objectInListAtIndex:indexPath.row].check){
         cell.accessoryType =UITableViewCellAccessoryCheckmark;
         [cell.textLabel setEnabled:NO];
@@ -226,10 +317,10 @@
     }   
     else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+    } 
+  
 }
 */
-
 /*
 // Override to support rearranging the table view.
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
@@ -249,13 +340,13 @@
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+{ //選択されたセルを取得
+    UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
+    
     //編集状態でなければ
-    if(!self.tableView.editing){
+    if(!tableView.editing){
         //選択状態の解除
-        [tableView deselectRowAtIndexPath:indexPath animated:YES];
-        //選択されたセルを取得
-        UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
+       [tableView deselectRowAtIndexPath:indexPath animated:YES];
         //詳細用のアクセサリをチェックマークに変え、テキストを薄い色に
         if(cell.accessoryType == UITableViewCellAccessoryDetailDisclosureButton){
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
@@ -276,7 +367,6 @@
                     break;
                 }
             }
-
             
         }
         //その逆
@@ -293,8 +383,8 @@
 
         }
     }
-        
-}
+   
+    }
 //アクセサリが押されたら詳細画面へ飛ぶ
 - (void)tableView:(UITableView *)tableView
 accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
@@ -309,7 +399,7 @@ accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
     }
   }
 
-//編集画面へ飛ぶ
+//追加画面へ飛ぶ
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if([[segue identifier] isEqualToString:@"AddPlayer"]){
         AdittionToDoViewController *addController = (AdittionToDoViewController *)[[[segue destinationViewController]viewControllers]objectAtIndex:0];

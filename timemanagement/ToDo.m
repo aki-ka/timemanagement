@@ -48,10 +48,10 @@
 }
 
 //index番目の要素を入れ替える
--(void) exchangeToDoElement:(NSString *)doing time:(NSString *)time information:(BOOL)information index:(NSInteger)index{
+-(void) exchangeToDoElement:(NSString *)doing time:(NSString *)time information:(BOOL)information repeat:(BOOL)repeat day:(int)day min:(int)min index:(NSInteger)index{
     [self.masterToDoList removeObjectAtIndex:index];
     ToDoElement *todoElement;
-    todoElement = [[ToDoElement alloc] initWithDoing:doing time:time information:information];
+    todoElement = [[ToDoElement alloc] initWithDoing:doing time:time information:information repeat:repeat day:day min:min];
     [self.masterToDoList insertObject:todoElement atIndex:index];
 }
 //消去
@@ -59,9 +59,9 @@
     [self.masterToDoList removeObjectsAtIndexes:indexes];
 }
 //要素を追加する
-- (void)addToDoElementWithDoing:(NSString *)doing time:(NSString *)time information:(BOOL)information {
+- (void)addToDoElementWithDoing:(NSString *)doing time:(NSString *)time information:(BOOL)information repeat:(BOOL)repeat day:(int)day min:(int)min{
     ToDoElement *todoElement;
-    todoElement = [[ToDoElement alloc] initWithDoing:doing time:time information:information];
+    todoElement = [[ToDoElement alloc] initWithDoing:doing time:time information:information repeat:repeat day:day min:min];
     [self.masterToDoList addObject:todoElement];
 }
 
