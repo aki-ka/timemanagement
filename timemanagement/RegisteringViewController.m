@@ -13,8 +13,9 @@
 #import "OccasionSelectionViewController.h"
 #import "StartSelectionViewController.h"
 #import "GoalSelectionViewController.h"
+#import "DaySelectionViewController.h"
 @interface RegisteringViewController ()
-<SelectionViewControllerDelegate,OccasionSelectionViewControllerDelegate,StartSelectionViewControllerDelegate,GoalSelectionViewControllerDelegate>
+<SelectionViewControllerDelegate,OccasionSelectionViewControllerDelegate,StartSelectionViewControllerDelegate,GoalSelectionViewControllerDelegate,DaySelectionViewControllerDelegate>
 
 @end
 @implementation RegisteringViewController
@@ -98,7 +99,10 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 
 }
-
+//Dayから入力を受け取る
+-(void) DaySelectionDidFinish:(DaySelectionViewController *)controller day:(NSInteger)day{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 
 
@@ -168,5 +172,11 @@
    controller.managementController = self.Controller;
     [self presentViewController:controller animated:YES completion:nil];
 
+}
+
+- (IBAction)pushDay:(id)sender {
+    DaySelectionViewController *controller =[self.storyboard instantiateViewControllerWithIdentifier:@"day"];
+    controller.delegate = self;
+    [self presentViewController:controller animated:YES completion:nil];
 }
 @end

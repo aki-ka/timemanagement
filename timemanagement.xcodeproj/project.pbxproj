@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		290FE1801666B19E00F6403D /* AdittionToDoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 290FE17F1666B19E00F6403D /* AdittionToDoViewController.m */; };
 		290FE1831666B50000F6403D /* DateSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 290FE1821666B50000F6403D /* DateSelectionViewController.m */; };
+		2917032E1673F17E009F599C /* CheckBoxButton_Time.m in Sources */ = {isa = PBXBuildFile; fileRef = 2917032D1673F17E009F599C /* CheckBoxButton_Time.m */; };
+		291703321673F339009F599C /* DaySelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 291703311673F339009F599C /* DaySelectionViewController.m */; };
 		291ADE8516569A5A005FF628 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 291ADE8416569A5A005FF628 /* UIKit.framework */; };
 		291ADE8716569A5A005FF628 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 291ADE8616569A5A005FF628 /* Foundation.framework */; };
 		291ADE8916569A5A005FF628 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 291ADE8816569A5A005FF628 /* CoreGraphics.framework */; };
@@ -64,6 +66,10 @@
 		290FE17F1666B19E00F6403D /* AdittionToDoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdittionToDoViewController.m; sourceTree = "<group>"; };
 		290FE1811666B50000F6403D /* DateSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateSelectionViewController.h; sourceTree = "<group>"; };
 		290FE1821666B50000F6403D /* DateSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateSelectionViewController.m; sourceTree = "<group>"; };
+		2917032C1673F17E009F599C /* CheckBoxButton_Time.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckBoxButton_Time.h; sourceTree = "<group>"; };
+		2917032D1673F17E009F599C /* CheckBoxButton_Time.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckBoxButton_Time.m; sourceTree = "<group>"; };
+		291703301673F338009F599C /* DaySelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DaySelectionViewController.h; sourceTree = "<group>"; };
+		291703311673F339009F599C /* DaySelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DaySelectionViewController.m; sourceTree = "<group>"; };
 		291ADE8016569A5A005FF628 /* timemanagement.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = timemanagement.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		291ADE8416569A5A005FF628 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		291ADE8616569A5A005FF628 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -182,6 +188,8 @@
 				DEB7E218166BCDB700C058DF /* TimeManagementMasterViewController.h */,
 				DEB7E219166BCDB700C058DF /* TimeManagementMasterViewController.m */,
 				2939407B166F96B4002725AF /* MainStoryboard.storyboard */,
+				2917032C1673F17E009F599C /* CheckBoxButton_Time.h */,
+				2917032D1673F17E009F599C /* CheckBoxButton_Time.m */,
 				29A0E24E1668D47F00E94BF1 /* CheckBoxButton.h */,
 				29A0E24F1668D47F00E94BF1 /* CheckBoxButton.m */,
 				2939407D166F98E9002725AF /* OccasionSelectionViewController.h */,
@@ -198,6 +206,8 @@
 				290FE17F1666B19E00F6403D /* AdittionToDoViewController.m */,
 				297FCFC5165FA08B008071B8 /* SelectionViewController.h */,
 				297FCFC6165FA08B008071B8 /* SelectionViewController.m */,
+				291703301673F338009F599C /* DaySelectionViewController.h */,
+				291703311673F339009F599C /* DaySelectionViewController.m */,
 				297FCFC2165FA02E008071B8 /* RegisteringViewController.h */,
 				297FCFC3165FA02E008071B8 /* RegisteringViewController.m */,
 				297FCFBB165F9ECB008071B8 /* TimeManagement.h */,
@@ -378,6 +388,8 @@
 				2939407F166F98E9002725AF /* OccasionSelectionViewController.m in Sources */,
 				29394082166F98FB002725AF /* StartSelectionViewController.m in Sources */,
 				29394085166F9916002725AF /* GoalSelectionViewController.m in Sources */,
+				2917032E1673F17E009F599C /* CheckBoxButton_Time.m in Sources */,
+				291703321673F339009F599C /* DaySelectionViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -50,6 +50,16 @@
     
 
 }
+//通知センターから選ばれたら通知を消去
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
+{
+    // キャンセル処理
+    [[UIApplication sharedApplication] cancelLocalNotification:notification];
+    if (notification.repeatInterval) {
+        // 繰り返しありの場合は再登録
+        [[UIApplication sharedApplication] scheduleLocalNotification:notification];
+    }
+}
 
 //詳細画面でキャンセルが押されたら
 -(void) detailViewControllerDidBack:(DetailViewController *)controller{

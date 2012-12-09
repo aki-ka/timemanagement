@@ -98,7 +98,7 @@
                                     <segue destination="xwR-uN-WXy" kind="modal" identifier="SelectPlayer" modalTransitionStyle="partialCurl" id="sFo-6S-MD3"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dkk-wW-Mii" customClass="CheckBoxButton">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dkk-wW-Mii" customClass="CheckBoxButton_Time">
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="21" id="2GN-aN-GW7"/>
@@ -112,6 +112,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="pushDay:" destination="sxx-iL-UGH" eventType="touchUpInside" id="xc0-Cn-r5M"/>
+                                </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="曜日" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="buN-T8-8tS">
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -582,6 +585,259 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kzi-Ht-VDX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1833" y="146"/>
+        </scene>
+        <!--Day Selection View Controller-->
+        <scene sceneID="vQs-7b-Lg7">
+            <objects>
+                <viewController storyboardIdentifier="day" id="bMg-cK-qAP" customClass="DaySelectionViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VBf-im-q1E">
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NGO-AA-C6b" customClass="CheckBoxButton_Time">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="21" id="mxq-UA-dk8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" image="cb_glossy_on.png">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xdQ-kL-mgP">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="204" id="tfF-VJ-gNN"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="けってー">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="decide:" destination="maV-bO-szX" eventType="touchUpInside" id="qzk-YY-EQO"/>
+                                    <action selector="pushDone:" destination="bMg-cK-qAP" eventType="touchUpInside" id="QOk-N4-HVh"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="平日" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gM4-Tm-cC8">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="mEq-Nb-UIr"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="休日" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ipr-jg-DzV">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="月" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WtS-fr-9fc">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="火" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dQp-Rx-Jck">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="水" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ss0-YS-5zc">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="木" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x19-9y-chr">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="金" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8bw-pu-o8u">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="土" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I2v-h9-p1t">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="日" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eK1-Pg-90M">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hsr-WP-Tl4" customClass="CheckBoxButton_Time">
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="iPN-Id-XL4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NyZ-hS-urY" customClass="CheckBoxButton_Time">
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="21" id="EXG-74-DEE"/>
+                                    <constraint firstAttribute="height" constant="21" id="jIh-Vx-42B"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8KK-AN-Xnd" customClass="CheckBoxButton_Time">
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="21" id="Iix-Ds-9om"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fFg-LP-y3m" customClass="CheckBoxButton_Time">
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="21" id="uX8-MW-6Nf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Mu-Je-OAa" customClass="CheckBoxButton_Time">
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e1q-Bq-Pok" customClass="CheckBoxButton_Time">
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="21" id="n9V-ct-PQO"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z2v-Gu-a54" customClass="CheckBoxButton_Time">
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="21" id="J4a-wC-wEw"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CSD-55-lLe" customClass="CheckBoxButton_Time">
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="21" id="WoP-xz-kNL"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="CSD-55-lLe" firstAttribute="leading" secondItem="8bw-pu-o8u" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="0TS-eP-xFP"/>
+                            <constraint firstItem="8KK-AN-Xnd" firstAttribute="leading" secondItem="7Mu-Je-OAa" secondAttribute="leading" type="default" id="0gH-rk-iGh"/>
+                            <constraint firstAttribute="bottom" secondItem="I2v-h9-p1t" secondAttribute="bottom" constant="205" id="0rO-C0-j2w"/>
+                            <constraint firstItem="WtS-fr-9fc" firstAttribute="leading" secondItem="VBf-im-q1E" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="0vr-QW-QW0"/>
+                            <constraint firstItem="Z2v-Gu-a54" firstAttribute="bottom" secondItem="7Mu-Je-OAa" secondAttribute="bottom" type="default" id="2K0-Ya-mOK"/>
+                            <constraint firstItem="I2v-h9-p1t" firstAttribute="leading" secondItem="VBf-im-q1E" secondAttribute="leading" constant="79" id="2MO-Qy-zKc"/>
+                            <constraint firstItem="Hsr-WP-Tl4" firstAttribute="trailing" secondItem="NGO-AA-C6b" secondAttribute="trailing" type="default" id="2Wu-u0-PFQ"/>
+                            <constraint firstItem="Hsr-WP-Tl4" firstAttribute="leading" secondItem="NGO-AA-C6b" secondAttribute="leading" type="default" id="75a-by-y8r"/>
+                            <constraint firstAttribute="bottom" secondItem="NyZ-hS-urY" secondAttribute="bottom" constant="204" id="7MM-Bf-6gL"/>
+                            <constraint firstItem="Hsr-WP-Tl4" firstAttribute="top" secondItem="VBf-im-q1E" secondAttribute="top" constant="177" id="7kO-ST-80q"/>
+                            <constraint firstItem="NGO-AA-C6b" firstAttribute="leading" secondItem="VBf-im-q1E" secondAttribute="leading" constant="94" id="D4y-aB-4z2"/>
+                            <constraint firstItem="I2v-h9-p1t" firstAttribute="leading" secondItem="dQp-Rx-Jck" secondAttribute="leading" type="default" id="Dmn-gC-40y"/>
+                            <constraint firstItem="ss0-YS-5zc" firstAttribute="bottom" secondItem="e1q-Bq-Pok" secondAttribute="bottom" type="default" id="ESi-on-k2g"/>
+                            <constraint firstItem="Z2v-Gu-a54" firstAttribute="top" secondItem="7Mu-Je-OAa" secondAttribute="top" type="default" id="FXQ-DN-rub"/>
+                            <constraint firstItem="xdQ-kL-mgP" firstAttribute="centerX" secondItem="VBf-im-q1E" secondAttribute="centerX" type="default" id="FhY-Af-0QS"/>
+                            <constraint firstItem="fFg-LP-y3m" firstAttribute="bottom" secondItem="WtS-fr-9fc" secondAttribute="bottom" type="default" id="Gvj-dj-8X6"/>
+                            <constraint firstItem="ipr-jg-DzV" firstAttribute="top" secondItem="VBf-im-q1E" secondAttribute="top" constant="176" id="J7a-PC-3nR"/>
+                            <constraint firstItem="gM4-Tm-cC8" firstAttribute="top" secondItem="VBf-im-q1E" secondAttribute="top" constant="54" id="N9b-t3-5mI"/>
+                            <constraint firstItem="ipr-jg-DzV" firstAttribute="leading" secondItem="gM4-Tm-cC8" secondAttribute="leading" type="default" id="OHs-Is-Z73"/>
+                            <constraint firstItem="8KK-AN-Xnd" firstAttribute="bottom" secondItem="I2v-h9-p1t" secondAttribute="bottom" type="default" id="OLP-KU-KMa"/>
+                            <constraint firstItem="8KK-AN-Xnd" firstAttribute="leading" secondItem="VBf-im-q1E" secondAttribute="leading" constant="109" id="PDR-s7-3fX"/>
+                            <constraint firstItem="fFg-LP-y3m" firstAttribute="top" secondItem="WtS-fr-9fc" secondAttribute="top" type="default" id="SMH-ty-uLa"/>
+                            <constraint firstItem="eK1-Pg-90M" firstAttribute="leading" secondItem="e1q-Bq-Pok" secondAttribute="leading" type="default" id="SVo-sM-5Rt"/>
+                            <constraint firstItem="ss0-YS-5zc" firstAttribute="leading" secondItem="7Mu-Je-OAa" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="Tpz-2a-W6o"/>
+                            <constraint firstItem="8bw-pu-o8u" firstAttribute="baseline" secondItem="x19-9y-chr" secondAttribute="baseline" type="default" id="YlD-cu-xsP"/>
+                            <constraint firstItem="8KK-AN-Xnd" firstAttribute="trailing" secondItem="7Mu-Je-OAa" secondAttribute="trailing" type="default" id="Yp4-4b-enx"/>
+                            <constraint firstItem="CSD-55-lLe" firstAttribute="top" secondItem="Z2v-Gu-a54" secondAttribute="top" type="default" id="a2Y-jF-wOi"/>
+                            <constraint firstItem="fFg-LP-y3m" firstAttribute="top" secondItem="7Mu-Je-OAa" secondAttribute="top" type="default" id="d07-fR-T5N"/>
+                            <constraint firstItem="x19-9y-chr" firstAttribute="leading" secondItem="e1q-Bq-Pok" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="dBY-hc-7SU"/>
+                            <constraint firstItem="fFg-LP-y3m" firstAttribute="bottom" secondItem="7Mu-Je-OAa" secondAttribute="bottom" type="default" id="eSP-kU-ZTk"/>
+                            <constraint firstItem="8KK-AN-Xnd" firstAttribute="top" secondItem="I2v-h9-p1t" secondAttribute="top" type="default" id="ezP-kz-sHd"/>
+                            <constraint firstItem="Z2v-Gu-a54" firstAttribute="leading" secondItem="x19-9y-chr" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="gcQ-5f-i3V"/>
+                            <constraint firstItem="gM4-Tm-cC8" firstAttribute="bottom" secondItem="NGO-AA-C6b" secondAttribute="bottom" type="default" id="gmI-ke-2lp"/>
+                            <constraint firstItem="e1q-Bq-Pok" firstAttribute="leading" secondItem="ss0-YS-5zc" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="ir5-zF-Sya"/>
+                            <constraint firstItem="8bw-pu-o8u" firstAttribute="leading" secondItem="Z2v-Gu-a54" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="lZK-ts-lb9"/>
+                            <constraint firstItem="fFg-LP-y3m" firstAttribute="trailing" secondItem="gM4-Tm-cC8" secondAttribute="trailing" type="default" id="niT-Oj-knc"/>
+                            <constraint firstItem="NyZ-hS-urY" firstAttribute="leading" secondItem="x19-9y-chr" secondAttribute="leading" type="default" id="oMZ-Va-KGV"/>
+                            <constraint firstItem="x19-9y-chr" firstAttribute="baseline" secondItem="ss0-YS-5zc" secondAttribute="baseline" type="default" id="qYE-Sx-s6n"/>
+                            <constraint firstItem="dQp-Rx-Jck" firstAttribute="top" secondItem="VBf-im-q1E" secondAttribute="top" constant="108" id="r9t-DE-H2x"/>
+                            <constraint firstItem="eK1-Pg-90M" firstAttribute="baseline" secondItem="I2v-h9-p1t" secondAttribute="baseline" type="default" id="u8A-wO-Yci"/>
+                            <constraint firstItem="fFg-LP-y3m" firstAttribute="top" secondItem="VBf-im-q1E" secondAttribute="top" constant="109" id="uh6-We-XlF"/>
+                            <constraint firstItem="NGO-AA-C6b" firstAttribute="top" secondItem="gM4-Tm-cC8" secondAttribute="top" type="default" id="vSo-yy-y4S"/>
+                            <constraint firstItem="CSD-55-lLe" firstAttribute="bottom" secondItem="Z2v-Gu-a54" secondAttribute="bottom" type="default" id="vTd-Xv-LaQ"/>
+                            <constraint firstItem="ss0-YS-5zc" firstAttribute="baseline" secondItem="dQp-Rx-Jck" secondAttribute="baseline" type="default" id="vea-gq-Lgv"/>
+                            <constraint firstItem="ss0-YS-5zc" firstAttribute="top" secondItem="e1q-Bq-Pok" secondAttribute="top" type="default" id="wuH-US-9ZB"/>
+                            <constraint firstItem="fFg-LP-y3m" firstAttribute="leading" secondItem="WtS-fr-9fc" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="xvI-9y-jKZ"/>
+                            <constraint firstAttribute="bottom" secondItem="xdQ-kL-mgP" secondAttribute="bottom" constant="55" id="y2e-kV-nIJ"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="voy-JO-7P9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2236" y="153"/>
         </scene>
         <!--Start Selection View Controller-->
         <scene sceneID="7bQ-xs-G75">
@@ -1132,6 +1388,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
     </scenes>
     <resources>
         <image name="00199_1.png" width="502" height="219"/>
+        <image name="cb_glossy_on.png" width="22" height="22"/>
     </resources>
     <classes>
         <class className="AdittionToDoViewController" superclassName="UIViewController">
@@ -1154,11 +1411,20 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <class className="CheckBoxButton" superclassName="UIButton">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CheckBoxButton.h"/>
         </class>
+        <class className="CheckBoxButton_Time" superclassName="UIButton">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CheckBoxButton_Time.h"/>
+        </class>
         <class className="DateSelectionViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DateSelectionViewController.h"/>
             <relationships>
                 <relationship kind="action" name="buttonEnd:"/>
                 <relationship kind="outlet" name="DatePicker" candidateClass="UIDatePicker"/>
+            </relationships>
+        </class>
+        <class className="DaySelectionViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DaySelectionViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="pushDone:"/>
             </relationships>
         </class>
         <class className="DetailViewController" superclassName="UIViewController">
@@ -1198,6 +1464,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RegisteringViewController.h"/>
             <relationships>
                 <relationship kind="action" name="pushCancel:"/>
+                <relationship kind="action" name="pushDay:"/>
                 <relationship kind="action" name="pushDone:"/>
                 <relationship kind="action" name="pushGoal:"/>
                 <relationship kind="action" name="pushOccasion:"/>

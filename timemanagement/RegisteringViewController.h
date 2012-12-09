@@ -37,18 +37,21 @@
 @property (nonatomic, strong) NSDate *time;
 //曜日
 @property (nonatomic) NSInteger day;
-//状況選択の画面
-//@property (strong,nonatomic) OccasionSelectionViewController *OccasionController;
+
 
 
 //cancelボタンが押されたときのメソッド
 - (IBAction)pushCancel:(id)sender;
 //doneボタンが押されたときのメソッド
 - (IBAction)pushDone:(id)sender;
-
+//
 - (IBAction)pushOccasion:(id)sender;
+//
 - (IBAction)pushStart:(id)sender;
+//
 - (IBAction)pushGoal:(id)sender;
+//曜日選択
+- (IBAction)pushDay:(id)sender;
 
 @end
 
