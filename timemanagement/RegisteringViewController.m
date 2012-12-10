@@ -26,7 +26,8 @@
 @synthesize time = _time;
 @synthesize day = _day;
 @synthesize occasion_text=_occasion_text,start_text=_start_text,goal_text=_goal_text;
-@synthesize dayLabel=_dayLabel,days=_days,day_cbv=_day_cbv;
+@synthesize days=_days,day_cbv=_day_cbv;
+@synthesize day_text = _day_text;
 
 
 //初期化
@@ -41,6 +42,7 @@
 
 - (void)viewDidLoad
 {
+    [self.day_text setEnabled:NO];
     _days = [[NSMutableArray alloc] init];
     _ManagementController = [[TimeManagementController alloc] init];
     self.day = 8;
@@ -108,11 +110,11 @@
         case 0:
             break;
         case 1:
-            self.dayLabel.text = [days objectAtIndex:0];
+            self.day_text.text = [days objectAtIndex:0];
             break;
-        default: self.dayLabel.text = [days objectAtIndex:0];
+        default: self.day_text.text = [days objectAtIndex:0];
             for (int i=1; i<[days count]; i++) {
-                self.dayLabel.text = [NSString stringWithFormat:@"%@,%@",self.dayLabel.text,[days objectAtIndex:i]];
+                self.day_text.text = [NSString stringWithFormat:@"%@,%@",self.day_text.text,[days objectAtIndex:i]];
             }
             
             break;
@@ -195,10 +197,11 @@
     if(!self.day_cbv.checkBoxSelected){
     DaySelectionViewController *controller =[self.storyboard instantiateViewControllerWithIdentifier:@"day"];
     controller.delegate = self;
+        controller.modalTransitionStyle = UIModalTransitionStylePartialCurl;
     [self presentViewController:controller animated:YES completion:nil];
     }
     else{
-        self.dayLabel.text = @"";
+        self.day_text.text = @"";
     }
 }
 @end

@@ -20,9 +20,10 @@
 //ToDoが書き込まれるTextField
 @property (weak, nonatomic) IBOutlet UITextField *toDoLabel;
 //DateSelectionViewControllerで選択された日付を表示するラベル
-@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (weak, nonatomic) IBOutlet UITextField *dateLabel;
 //時間
-@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
+@property (weak, nonatomic) IBOutlet UITextField *timeLabel;
+
 //日付のチェックボタン
 @property (weak, nonatomic) IBOutlet CheckBoxButton *date_cbv;
 //時間のチェックボタン

@@ -60,11 +60,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "timemanagement/RegisteringViewController.m"
-         timestampString = "376757983.547742"
+         timestampString = "376851325.008922"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "44"
-         endingLineNumber = "44"
+         startingLineNumber = "46"
+         endingLineNumber = "46"
          landmarkName = "-viewDidLoad"
          landmarkType = "5">
       </FileBreakpoint>
@@ -86,22 +86,22 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "timemanagement/RegisteringViewController.m"
-         timestampString = "376757983.547742"
+         timestampString = "376854021.304767"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "221"
-         endingLineNumber = "221">
+         startingLineNumber = "224"
+         endingLineNumber = "224">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "timemanagement/RegisteringViewController.m"
-         timestampString = "376757983.547742"
+         timestampString = "376854021.304767"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "231"
-         endingLineNumber = "231">
+         startingLineNumber = "234"
+         endingLineNumber = "234">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -225,11 +225,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "timemanagement/RegisteringViewController.m"
-         timestampString = "376757983.547742"
+         timestampString = "376851325.008922"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "82"
-         endingLineNumber = "82"
+         startingLineNumber = "84"
+         endingLineNumber = "84"
          landmarkName = "-pushDone:occasion:"
          landmarkType = "5">
       </FileBreakpoint>

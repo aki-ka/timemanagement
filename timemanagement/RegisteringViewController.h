@@ -32,8 +32,7 @@
 //
 @property (weak, nonatomic) IBOutlet UITextField *time_text;
 //曜日を表示するラベル
-@property (weak, nonatomic) IBOutlet UILabel *dayLabel;
-
+@property (weak, nonatomic) IBOutlet UITextField *day_text;
 //時間
 @property (nonatomic, strong) NSDate *time;
 //曜日

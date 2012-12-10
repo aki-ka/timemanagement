@@ -15,8 +15,8 @@
 - (void)awakeFromNib
 {
     [super awakeFromNib];
-    UIImage* nocheck = [UIImage imageNamed:@"cb_glossy_off.png"];
-    UIImage* checked = [UIImage imageNamed:@"cb_glossy_on.png"];
+    UIImage* nocheck = [UIImage imageNamed:@"cb_box_off@2x.png"];
+    UIImage* checked = [UIImage imageNamed:@"cb_box_on@2x.png"];
     [self setBackgroundImage:nocheck forState:UIControlStateNormal];
     [self setBackgroundImage:checked forState:UIControlStateSelected];
     [self setBackgroundImage:checked forState:UIControlStateHighlighted];
@@ -30,8 +30,8 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        UIImage* nocheck = [UIImage imageNamed:@"cb_glossy_off.png"];
-        UIImage* checked = [UIImage imageNamed:@"cb_glossy_on.png"];
+        UIImage* nocheck = [UIImage imageNamed:@"cb_box_off@2x.png"];
+        UIImage* checked = [UIImage imageNamed:@"cb_box_on@2x.png"];
         [self setBackgroundImage:nocheck forState:UIControlStateNormal];
         [self setBackgroundImage:checked forState:UIControlStateSelected];
         [self setBackgroundImage:checked forState:UIControlStateHighlighted];
