@@ -15,7 +15,6 @@
 @implementation SelectionViewController
 @synthesize delegate;
 @synthesize time =_time;
-@synthesize day =_day;
 //初期化
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -40,8 +39,7 @@
 //登録画面に戻す
 - (IBAction)decide:(id)sender {
       NSDate *choice = [self.time date];
-     NSInteger number = [self.day selectedSegmentIndex];
-    [[self delegate] selectionViewControllerDidFinish:self time:choice day:number];
+    [[self delegate] selectionViewControllerDidFinish:self time:choice];
   
 
 }

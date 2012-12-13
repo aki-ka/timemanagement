@@ -13,12 +13,10 @@
 @interface OccasionSelectionViewController : UITableViewController
 
 @property (nonatomic) id <OccasionSelectionViewControllerDelegate> delegate;
-@property (nonatomic) TimeManagementController *managementController;
 @property (nonatomic) NSMutableArray *ideal;
 @property (weak,nonatomic) UITextField *txtField;
 - (IBAction)buttonBack:(id)sender;
 - (IBAction)buttonDone:(id)sender;
-- (void) removeDuplicatedObjects;
 @end
 
 @protocol OccasionSelectionViewControllerDelegate <NSObject>

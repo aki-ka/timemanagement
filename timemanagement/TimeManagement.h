@@ -18,9 +18,12 @@
 //時間
 @property (nonatomic, strong) NSDate *time;
 //曜日
-@property (nonatomic) NSInteger day;
+@property (nonatomic, copy) NSString *res;
 
--(id)initWithOccasion:(NSString *)occasion start:(NSString *)start goal:(NSString *)goal time:(NSDate *)time day:(NSInteger)day;
+@property (nonatomic, copy) NSMutableArray *day;
+
+
+-(id)initWithOccasion:(NSString *)occasion start:(NSString *)start goal:(NSString *)goal time:(NSDate *)time day:(NSMutableArray *)day;
 
 -(NSString *)getDayOfTheWeek;
 

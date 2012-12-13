@@ -16,7 +16,6 @@
 @implementation GoalSelectionViewController
 
 @synthesize delegate =_delegate;
-@synthesize managementController = _managementController;
 @synthesize txtfield = _txtfield;
 @synthesize ideal = _ideal;
 
@@ -32,8 +31,6 @@
 - (void)viewDidLoad
 {
     self.txtfield = [[UITextField alloc] init];
-    self.ideal = [[NSMutableArray alloc] init];
-    [self removeDuplicatedObjects];
     [super viewDidLoad];
 
     // Uncomment the following line to preserve selection between presentations.
@@ -99,27 +96,6 @@
     }
     return self.ideal.count;
 }
-
-//重複を消去
--(void) removeDuplicatedObjects{
-    //重複しない要素を格納
-    NSMutableSet* set = [[NSMutableSet alloc] init];
-    const NSUInteger count = [self.managementController countOfList];
-    //重複しているかどうかの確認
-    for (NSUInteger i = 0; i < count; i++) {
-        NSString *object = [self.managementController objectInListAtIndex:i].goal;
-        if ([set containsObject:object])
-        {
-        }
-        else {
-            [set addObject:object];
-            [self.ideal addObject:object]; //重複していないオブジェクトを格納
-        }
-    }
-    //ここまで
-}
-
-
 
 
 
@@ -196,6 +172,11 @@
     //履歴から選択された場合、登録画面へ
     else{
         NSString *goal = [self.ideal objectAtIndex:indexPath.row];
+        //選択された候補を一番上に
+        [self.ideal removeObjectAtIndex:indexPath.row];
+        [self.ideal insertObject:goal atIndex:0];
+        //ここまで
+
         [[self delegate] pushDone_g:self goal:goal];
     }
 

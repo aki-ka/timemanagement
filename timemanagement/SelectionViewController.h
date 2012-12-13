@@ -15,8 +15,6 @@
 
 //時間選択
 @property (weak, nonatomic) IBOutlet UIDatePicker *time;
-//曜日選択
-@property (weak, nonatomic) IBOutlet UISegmentedControl *day;
 //画面を登録画面に戻すアクション
 - (IBAction)decide:(id)sender;
 
@@ -24,6 +22,6 @@
 
 @protocol SelectionViewControllerDelegate <NSObject>
 
-- (void)selectionViewControllerDidFinish:(SelectionViewController *)controller time:(NSDate *)time day:(NSInteger)day;
+- (void)selectionViewControllerDidFinish:(SelectionViewController *)controller time:(NSDate *)time;
 
 @end

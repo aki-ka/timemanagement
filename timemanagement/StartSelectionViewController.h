@@ -13,12 +13,10 @@
 @interface StartSelectionViewController : UITableViewController
 
 @property (nonatomic) id <StartSelectionViewControllerDelegate> delegate;
-@property(nonatomic) TimeManagementController *managementController;
 @property(weak,nonatomic) UITextField *txtField;
 @property(nonatomic) NSMutableArray *ideal;
 - (IBAction)buttonDone:(id)sender;
 - (IBAction)buttonBack:(id)sender;
--(void) removeDuplicatedObjects;
 @end
 
 @protocol StartSelectionViewControllerDelegate <NSObject>

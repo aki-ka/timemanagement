@@ -152,6 +152,7 @@
         [self.week_cbv setEnabled:NO];
         [self.monthLabel setEnabled:NO];
         [self.month_cbv setEnabled:NO];
+        self.infoText.textColor =[UIColor whiteColor];
 
     }
     else{
@@ -162,6 +163,7 @@
     if([self.timeLabel.text length] !=0){
         [self.infoLabel setEnabled:YES];
         [self.infoText setEnabled:YES];
+        self.infoText.textColor =[UIColor blackColor];
     }
     }
 }

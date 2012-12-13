@@ -24,10 +24,10 @@
 @synthesize delegate = _delegate;
 @synthesize occasion = _occasion,start=_start,goal=_goal;
 @synthesize time = _time;
-@synthesize day = _day;
 @synthesize occasion_text=_occasion_text,start_text=_start_text,goal_text=_goal_text;
 @synthesize days=_days,day_cbv=_day_cbv;
 @synthesize day_text = _day_text;
+@synthesize o_ideal=_o_ideal, s_ideal=_s_ideal, g_ideal=_g_ideal;
 
 
 //初期化
@@ -45,7 +45,6 @@
     [self.day_text setEnabled:NO];
     _days = [[NSMutableArray alloc] init];
     _ManagementController = [[TimeManagementController alloc] init];
-    self.day = 8;
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 }
@@ -67,9 +66,8 @@
     }
 }
 //selectionViewから返ってきた値を格納
-- (void)selectionViewControllerDidFinish:(SelectionViewController *)controller time:(NSDate *)time day:(NSInteger)day{
+- (void)selectionViewControllerDidFinish:(SelectionViewController *)controller time:(NSDate *)time{
     self.time = time;
-    self.day = day;
     NSDateFormatter *formatter =[[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"HH:mm"];
     self.time_text.text = [formatter stringFromDate:time];
@@ -125,14 +123,25 @@
 
 
 
-
-
+//重複しなければ追加
+-(void) removeDuplicatedObjects:(NSMutableArray *)ideal string:(NSString *)new{
+    //重複していなければ一番上に追加
+    if(![ideal containsObject:new])
+    {
+        //登録数が20件なら最後のオブジェクトを消去
+        if([ideal count] == 20){
+            [ideal removeObjectAtIndex:19];
+           }
+        [ideal insertObject:new atIndex:0];
+    }
+}
 
 
 //cancelが押されたら
 - (IBAction)pushCancel:(id)sender {
     [[self delegate] registeringViewControllerDidCancel:self];
 }
+
 //Doneが押されたら
 - (IBAction)pushDone:(id)sender {
     NSString *occasion = self.occasion_text.text;
@@ -153,7 +162,7 @@
                               ];
         [alert show];
     }
-    else if(self.day == 8){
+    else if([self.time_text.text length]==0){
         UIAlertView *alert = [
                               [UIAlertView alloc]
                               initWithTitle:@"warning"
@@ -164,7 +173,13 @@
         [alert show];
     }
     else{
-        [[self delegate] registeringViewControllerDidFinish:self ocassion:occasion start:start goal:goal time:self.time day:self.day];
+        //重複しなければ追加
+        [self removeDuplicatedObjects:self.o_ideal string:occasion];
+        [self removeDuplicatedObjects:self.s_ideal string:start];
+        [self removeDuplicatedObjects:self.g_ideal string:goal];
+        
+        //
+        [[self delegate] registeringViewControllerDidFinish:self ocassion:occasion start:start goal:goal time:self.time day:self.days];
     }
 
 }
@@ -172,7 +187,7 @@
 - (IBAction)pushOccasion:(id)sender {
     OccasionSelectionViewController *controller =[self.storyboard instantiateViewControllerWithIdentifier:@"occasion"];
     controller.delegate = self;
-    controller.managementController = self.Controller;
+    controller.ideal = self.o_ideal;
     [self presentViewController:controller animated:YES completion:nil];
     
 }
@@ -180,7 +195,7 @@
 - (IBAction)pushStart:(id)sender {
     StartSelectionViewController *controller =[self.storyboard instantiateViewControllerWithIdentifier:@"start"];
     controller.delegate = self;
-    controller.managementController = self.Controller;
+    controller.ideal = self.s_ideal;
     [self presentViewController:controller animated:YES completion:nil];
 
 }
@@ -188,7 +203,7 @@
 - (IBAction)pushGoal:(id)sender {
     GoalSelectionViewController *controller =[self.storyboard instantiateViewControllerWithIdentifier:@"goal"];
     controller.delegate = self;
-   controller.managementController = self.Controller;
+    controller.ideal = self.g_ideal;
     [self presentViewController:controller animated:YES completion:nil];
 
 }

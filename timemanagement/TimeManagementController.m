@@ -46,7 +46,7 @@
     return [self.masterTimeManagementList objectAtIndex:theIndex];
 }
 //要素を追加する
-- (void)addTimeManagementWithOccasion:(NSString *)inputOccasion start:(NSString *)inputStart goal:(NSString *)inputGoal time:(NSDate *)inputTime day:(NSInteger)inputDay {
+- (void)addTimeManagementWithOccasion:(NSString *)inputOccasion start:(NSString *)inputStart goal:(NSString *)inputGoal time:(NSDate *)inputTime day:(NSMutableArray *)inputDay {
     TimeManagement *management;
     management = [[TimeManagement alloc] initWithOccasion:inputOccasion start:inputStart goal:inputGoal time:inputTime day:inputDay];
     [self.masterTimeManagementList addObject:management];

@@ -14,12 +14,17 @@
 
 @property (strong, nonatomic) TimeManagementController *dataController;
 
-
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *EditButton;
 
 @property (nonatomic, copy) NSArray *sectionDatas;
 
 @property (nonatomic) NSInteger flag;
+//状況履歴表示用
+@property(nonatomic) NSMutableArray *o_ideal;
+//出発地履歴表示用
+@property(nonatomic) NSMutableArray *s_ideal;
+//目的地履歴表示用
+@property(nonatomic) NSMutableArray *g_ideal;
 
 - (IBAction)buttonPush:(id)sender;
 

@@ -12,13 +12,11 @@
 
 @interface GoalSelectionViewController : UITableViewController
 @property (nonatomic) id <GoalSelectionViewControllerDelegate> delegate;
-@property (nonatomic) TimeManagementController *managementController;
 @property (nonatomic) NSMutableArray *ideal;
 @property(weak,nonatomic) UITextField *txtfield;
 
 - (IBAction)buttonBack:(id)sender;
 - (IBAction)buttonDone:(id)sender;
-- (void) removeDuplicatedObjects;
 
 @end
 

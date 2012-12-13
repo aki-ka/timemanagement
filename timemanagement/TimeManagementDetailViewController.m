@@ -151,4 +151,7 @@
      */
 }
 
+- (IBAction)didBack:(id)sender {
+    [[self delegate] detailViewControllerDidCalcel:self];
+}
 @end

@@ -17,7 +17,7 @@
 #import "TimeManagementDetailViewController.h"
 
 @interface TimeManagementMasterViewController ()
-<ResisteringViewControllerDelegate,UIActionSheetDelegate>
+<ResisteringViewControllerDelegate,UIActionSheetDelegate, DetailViewControllerDelegate>
 
 @end
 
@@ -27,7 +27,7 @@
 @synthesize EditButton = _EditButton;
 @synthesize sectionDatas = _sectionDatas;
 @synthesize flag = _flag;
-
+@synthesize o_ideal=_o_ideal, s_ideal=_s_ideal, g_ideal=_g_ideal;
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -40,16 +40,48 @@
 - (void)viewDidLoad
 {
     _dataController = [[TimeManagementController alloc] init];
+    _o_ideal = [[NSMutableArray alloc] init];
+    _s_ideal = [[NSMutableArray alloc] init];
+    _g_ideal = [[NSMutableArray alloc] init];
+    
     NSString *directory = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
     NSString *filePath = [directory stringByAppendingPathComponent:@"timemanagement.dat"];
-    //[[NSFileManager defaultManager] removeItemAtPath:filePath error:nil];
+    NSString *o_filePath = [directory stringByAppendingPathComponent:@"occasion.dat"];
+    NSString *s_filePath = [directory stringByAppendingPathComponent:@"start.dat"];
+    NSString *g_filePath = [directory stringByAppendingPathComponent:@"goal.dat"];
+
+   // [[NSFileManager defaultManager] removeItemAtPath:filePath error:nil];
+  //  [[NSFileManager defaultManager] removeItemAtPath:o_filePath error:nil];
+  //  [[NSFileManager defaultManager] removeItemAtPath:s_filePath error:nil];
+  //  [[NSFileManager defaultManager] removeItemAtPath:g_filePath error:nil];
+    
+    //セル表示
     NSArray *array = [NSKeyedUnarchiver unarchiveObjectWithFile:filePath];
     if(array){
         NSMutableArray *Marray = [NSMutableArray arrayWithArray:array];
         [self.dataController setMasterTimeManagementList:Marray];
         
     }
-
+    //状況履歴
+    NSArray *o_array = [NSKeyedUnarchiver unarchiveObjectWithFile:o_filePath];
+    if(o_array){
+      [self.o_ideal setArray:o_array];
+    }
+    //出発地履歴
+    NSArray *s_array = [NSKeyedUnarchiver unarchiveObjectWithFile:s_filePath];
+    if(s_array){
+        [self.s_ideal setArray:s_array];
+    }
+    //目的地履歴
+    NSArray *g_array = [NSKeyedUnarchiver unarchiveObjectWithFile:g_filePath];
+    if(g_array){
+        [self.g_ideal setArray:g_array];
+    }
+    TimeManagement *timeManagement;
+    for (timeManagement in self.dataController.masterTimeManagementList) {
+        TimeManagement *management;
+        management = [[TimeManagement alloc] initWithOccasion:timeManagement.occasion start:timeManagement.start goal:timeManagement.goal time:timeManagement.time day:timeManagement.day];
+    }
     [super viewDidLoad];
     self.tableView.allowsMultipleSelectionDuringEditing = YES;
 
@@ -126,40 +158,74 @@
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
+-(void) detailViewControllerDidCalcel:(TimeManagementDetailViewController *)controller{
+    [self dismissViewControllerAnimated:YES completion:NULL];
+}
+
 // doneが押されたら、リストに追加
-- (void)registeringViewControllerDidFinish:(RegisteringViewController *)controller ocassion:(NSString *)ocassion start:(NSString *)start goal:(NSString *)goal time:(NSDate *)time day:(NSInteger)day; {
+- (void)registeringViewControllerDidFinish:(RegisteringViewController *)controller ocassion:(NSString *)ocassion start:(NSString *)start goal:(NSString *)goal time:(NSDate *)time day:(NSMutableArray *)day; {
     [self.dataController addTimeManagementWithOccasion:ocassion start:start goal:goal time:time day:day];
     
     NSArray *datalist = [NSArray arrayWithArray:self.dataController.masterTimeManagementList];
     
-    NSArray *mondaylist;
-    NSArray *tuedaylist;
-    NSArray *weddaylist;
-    NSArray *thudaylist;
-    NSArray *fridaylist;
-    NSArray *satdaylist;
-    NSArray *sundaylist;
-    NSArray *nonedaylist;
-    NSPredicate *mon = [NSPredicate predicateWithFormat:@"self.day == 0"];
-    mondaylist = [datalist filteredArrayUsingPredicate:mon];
-    NSPredicate *tue = [NSPredicate predicateWithFormat:@"self.day == 1"];
-    tuedaylist = [datalist filteredArrayUsingPredicate:tue];
-    NSPredicate *wed = [NSPredicate predicateWithFormat:@"self.day == 2"];
-    weddaylist = [datalist filteredArrayUsingPredicate:wed];
-    NSPredicate *thu = [NSPredicate predicateWithFormat:@"self.day == 3"];
-    thudaylist = [datalist filteredArrayUsingPredicate:thu];
-    NSPredicate *fri = [NSPredicate predicateWithFormat:@"self.day == 4"];
-    fridaylist = [datalist filteredArrayUsingPredicate:fri];
-    NSPredicate *sat = [NSPredicate predicateWithFormat:@"self.day == 5"];
-    satdaylist = [datalist filteredArrayUsingPredicate:sat];
-    NSPredicate *sun = [NSPredicate predicateWithFormat:@"self.day == 6"];
-    sundaylist = [datalist filteredArrayUsingPredicate:sun];
-    NSPredicate *none = [NSPredicate predicateWithFormat:@"self.day ==7"];
-    nonedaylist = [datalist filteredArrayUsingPredicate:none];
+    NSMutableArray *mondaylist = [[NSMutableArray alloc] init];
+    NSMutableArray *tuedaylist = [[NSMutableArray alloc] init];
+    NSMutableArray *weddaylist = [[NSMutableArray alloc] init];
+    NSMutableArray *thudaylist = [[NSMutableArray alloc] init];
+    NSMutableArray *fridaylist = [[NSMutableArray alloc] init];
+    NSMutableArray *satdaylist = [[NSMutableArray alloc] init];
+    NSMutableArray *sundaylist = [[NSMutableArray alloc] init];
+    NSMutableArray *nonedaylist = [[NSMutableArray alloc] init];
+    NSString *mon_chr = @"月";
+    NSString *tue_chr = @"火";
+    NSString *wed_chr = @"水";
+    NSString *thu_chr = @"木";
+    NSString *fri_chr = @"金";
+    NSString *sat_chr = @"土";
+    NSString *sun_chr = @"日";
     
-    self.sectionDatas = [[NSArray alloc] initWithObjects:mondaylist, tuedaylist, weddaylist, thudaylist, fridaylist, satdaylist ,sundaylist, nonedaylist, nil];
+    TimeManagement *data;
+    
+    for (data in datalist) {
+        NSArray *daylist = [NSArray arrayWithArray: data.day];
+        if ([daylist containsObject:mon_chr]) {
+            [mondaylist addObject: data];
+        }
+        if ([daylist containsObject:tue_chr]) {
+            [tuedaylist addObject:data];
+        }
+        if ([daylist containsObject:wed_chr]) {
+            [weddaylist addObject:data];
+        }
+        if ([daylist containsObject:thu_chr]) {
+            [thudaylist addObject:data];
+        }
+        if ([daylist containsObject:fri_chr]) {
+            [fridaylist addObject:data];
+        }
+        if ([daylist containsObject:sat_chr]) {
+            [satdaylist addObject:data];
+        }
+        if ([daylist containsObject:sun_chr]) {
+            [sundaylist addObject:data];
+        }
+        if ([daylist count] == 0) {
+            [nonedaylist addObject:data];
+        }
+    }
+    
+    NSArray *monlist = [NSArray arrayWithArray:mondaylist];
+    NSArray *tuelist = [NSArray arrayWithArray:tuedaylist];
+    NSArray *wedlist = [NSArray arrayWithArray:weddaylist];
+    NSArray *thulist = [NSArray arrayWithArray:thudaylist];
+    NSArray *frilist = [NSArray arrayWithArray:fridaylist];
+    NSArray *satlist = [NSArray arrayWithArray:satdaylist];
+    NSArray *sunlist = [NSArray arrayWithArray:sundaylist];
+    NSArray *nonelist = [NSArray arrayWithArray:nonedaylist];
     
     
+    self.sectionDatas = [[NSArray alloc] initWithObjects:monlist, tuelist, wedlist, thulist, frilist, satlist ,sunlist, nonelist, nil];
+        
     [[self tableView] reloadData];
     
     NSString *directory = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
@@ -167,9 +233,15 @@
     NSMutableArray *array = [[NSMutableArray alloc] init];
     array = [self.dataController getList];
     [NSKeyedArchiver archiveRootObject:array toFile:filePath];
-    
+    //それぞれの履歴のデータを保存
+    NSString *o_filePath = [directory stringByAppendingPathComponent:@"occasion.dat"];
+    NSString *s_filePath = [directory stringByAppendingPathComponent:@"start.dat"];
+    NSString *g_filePath = [directory stringByAppendingPathComponent:@"goal.dat"];
+    [NSKeyedArchiver archiveRootObject:self.o_ideal toFile:o_filePath];
+    [NSKeyedArchiver archiveRootObject:self.s_ideal toFile:s_filePath];
+    [NSKeyedArchiver archiveRootObject:self.g_ideal toFile:g_filePath];
     [self dismissViewControllerAnimated:YES completion:NULL];
-}
+    }
 
 
 
@@ -183,7 +255,9 @@
     if([[segue identifier] isEqualToString:@"addTime"]){
         RegisteringViewController *addTime = (RegisteringViewController *)[[[segue destinationViewController]viewControllers]objectAtIndex:0];
         addTime.delegate = self;
-        addTime.Controller = self.dataController;
+        addTime.o_ideal = self.o_ideal;
+        addTime.s_ideal = self.s_ideal;
+        addTime.g_ideal = self.g_ideal;
     }
     if ([[segue identifier] isEqualToString:@"ShowTimeManagementDetail"]) {
         TimeManagementDetailViewController *detailViewController = [segue
@@ -261,6 +335,38 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    TimeManagementDetailViewController *detailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"timemanagementdetail"];
+    detailViewController.delegate = self;
+    
+    if (self.flag != 1) {
+        detailViewController.timeManagement =[self.dataController
+                                              objectInListAtIndex:[self.tableView indexPathForSelectedRow].row];
+        detailViewController.delegate = self;
+        [self presentViewController:detailViewController animated:YES completion:nil];
+    } else {
+        if ([self.tableView indexPathForSelectedRow].section == 0) {
+            detailViewController.timeManagement = [[self.sectionDatas objectAtIndex:0] objectAtIndex:[self.tableView indexPathForSelectedRow].row];
+            
+        } else if ([self.tableView indexPathForSelectedRow].section == 1) {
+            detailViewController.timeManagement = [[self.sectionDatas objectAtIndex:1] objectAtIndex:[self.tableView indexPathForSelectedRow].row];
+        } else if ([self.tableView indexPathForSelectedRow].section == 2) {
+            detailViewController.timeManagement = [[self.sectionDatas objectAtIndex:2] objectAtIndex:[self.tableView indexPathForSelectedRow].row];
+        } else if ([self.tableView indexPathForSelectedRow].section == 3) {
+            detailViewController.timeManagement = [[self.sectionDatas objectAtIndex:3] objectAtIndex:[self.tableView indexPathForSelectedRow].row];
+        } else if ([self.tableView indexPathForSelectedRow].section == 4) {
+            detailViewController.timeManagement = [[self.sectionDatas objectAtIndex:4] objectAtIndex:[self.tableView indexPathForSelectedRow].row];
+        } else if ([self.tableView indexPathForSelectedRow].section == 5) {
+            detailViewController.timeManagement = [[self.sectionDatas objectAtIndex:5] objectAtIndex:[self.tableView indexPathForSelectedRow].row];
+        } else if ([self.tableView indexPathForSelectedRow].section == 6) {
+            detailViewController.timeManagement = [[self.sectionDatas objectAtIndex:6] objectAtIndex:[self.tableView indexPathForSelectedRow].row];
+        } else {
+            detailViewController.timeManagement = [[self.sectionDatas objectAtIndex:7] objectAtIndex:[self.tableView indexPathForSelectedRow].row];
+        }
+        [self presentViewController:detailViewController animated:YES completion:nil];
+    }
+
+    
+    
     // Navigation logic may go here. Create and push another view controller.
     /*
      <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
@@ -333,6 +439,7 @@
             
             
             for (TimeManagement *time in index) {
+                //データの消去
                 [self.dataController removeMasterTimeManagementWithObject:time];
             }
             
@@ -344,34 +451,64 @@
             
             NSArray *datalist = [NSArray arrayWithArray:self.dataController.masterTimeManagementList];
             
-            NSArray *mondaylist;
-            NSArray *tuedaylist;
-            NSArray *weddaylist;
-            NSArray *thudaylist;
-            NSArray *fridaylist;
-            NSArray *satdaylist;
-            NSArray *sundaylist;
-            NSArray *nonedaylist;
-            NSPredicate *mon = [NSPredicate predicateWithFormat:@"self.day == 0"];
-            mondaylist = [datalist filteredArrayUsingPredicate:mon];
-            NSPredicate *tue = [NSPredicate predicateWithFormat:@"self.day == 1"];
-            tuedaylist = [datalist filteredArrayUsingPredicate:tue];
-            NSPredicate *wed = [NSPredicate predicateWithFormat:@"self.day == 2"];
-            weddaylist = [datalist filteredArrayUsingPredicate:wed];
-            NSPredicate *thu = [NSPredicate predicateWithFormat:@"self.day == 3"];
-            thudaylist = [datalist filteredArrayUsingPredicate:thu];
-            NSPredicate *fri = [NSPredicate predicateWithFormat:@"self.day == 4"];
-            fridaylist = [datalist filteredArrayUsingPredicate:fri];
-            NSPredicate *sat = [NSPredicate predicateWithFormat:@"self.day == 5"];
-            satdaylist = [datalist filteredArrayUsingPredicate:sat];
-            NSPredicate *sun = [NSPredicate predicateWithFormat:@"self.day == 6"];
-            sundaylist = [datalist filteredArrayUsingPredicate:sun];
-            NSPredicate *none = [NSPredicate predicateWithFormat:@"self.day ==7"];
-            nonedaylist = [datalist filteredArrayUsingPredicate:none];
+            NSMutableArray *mondaylist = [[NSMutableArray alloc] init];
+            NSMutableArray *tuedaylist = [[NSMutableArray alloc] init];
+            NSMutableArray *weddaylist = [[NSMutableArray alloc] init];
+            NSMutableArray *thudaylist = [[NSMutableArray alloc] init];
+            NSMutableArray *fridaylist = [[NSMutableArray alloc] init];
+            NSMutableArray *satdaylist = [[NSMutableArray alloc] init];
+            NSMutableArray *sundaylist = [[NSMutableArray alloc] init];
+            NSMutableArray *nonedaylist = [[NSMutableArray alloc] init];
+            NSString *mon_chr = @"月";
+            NSString *tue_chr = @"火";
+            NSString *wed_chr = @"水";
+            NSString *thu_chr = @"木";
+            NSString *fri_chr = @"金";
+            NSString *sat_chr = @"土";
+            NSString *sun_chr = @"日";
             
-            self.sectionDatas = [[NSArray alloc] initWithObjects:mondaylist, tuedaylist, weddaylist, thudaylist, fridaylist, satdaylist ,sundaylist, nonedaylist, nil];
+            TimeManagement *data;
+            
+            for (data in datalist) {
+                NSArray *daylist = [NSArray arrayWithArray: data.day];
+                if ([daylist containsObject:mon_chr]) {
+                    [mondaylist addObject: data];
+                }
+                if ([daylist containsObject:tue_chr]) {
+                    [tuedaylist addObject:data];
+                }
+                if ([daylist containsObject:wed_chr]) {
+                    [weddaylist addObject:data];
+                }
+                if ([daylist containsObject:thu_chr]) {
+                    [thudaylist addObject:data];
+                }
+                if ([daylist containsObject:fri_chr]) {
+                    [fridaylist addObject:data];
+                }
+                if ([daylist containsObject:sat_chr]) {
+                    [satdaylist addObject:data];
+                }
+                if ([daylist containsObject:sun_chr]) {
+                    [sundaylist addObject:data];
+                }
+                if ([daylist count] == 0) {
+                    [nonedaylist addObject:data];
+                }
+            }
+            
+            NSArray *monlist = [NSArray arrayWithArray:mondaylist];
+            NSArray *tuelist = [NSArray arrayWithArray:tuedaylist];
+            NSArray *wedlist = [NSArray arrayWithArray:weddaylist];
+            NSArray *thulist = [NSArray arrayWithArray:thudaylist];
+            NSArray *frilist = [NSArray arrayWithArray:fridaylist];
+            NSArray *satlist = [NSArray arrayWithArray:satdaylist];
+            NSArray *sunlist = [NSArray arrayWithArray:sundaylist];
+            NSArray *nonelist = [NSArray arrayWithArray:nonedaylist];
             
             
+            self.sectionDatas = [[NSArray alloc] initWithObjects:monlist, tuelist, wedlist, thulist, frilist, satlist ,sunlist, nonelist, nil];
+                        
             [self.tableView reloadData];
             
             //編集モードを解除
@@ -393,6 +530,7 @@
         [as showInView:self.view.window];
     }
 }
+
 
 -(void)actionSheet:(UIActionSheet*)actionSheet
 clickedButtonAtIndex:(NSInteger)buttonIndex {
@@ -438,32 +576,63 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
                 
                 NSArray *datalist = [NSArray arrayWithArray:self.dataController.masterTimeManagementList];
                 
-                NSArray *mondaylist;
-                NSArray *tuedaylist;
-                NSArray *weddaylist;
-                NSArray *thudaylist;
-                NSArray *fridaylist;
-                NSArray *satdaylist;
-                NSArray *sundaylist;
-                NSArray *nonedaylist;
-                NSPredicate *mon = [NSPredicate predicateWithFormat:@"self.day == 0"];
-                mondaylist = [datalist filteredArrayUsingPredicate:mon];
-                NSPredicate *tue = [NSPredicate predicateWithFormat:@"self.day == 1"];
-                tuedaylist = [datalist filteredArrayUsingPredicate:tue];
-                NSPredicate *wed = [NSPredicate predicateWithFormat:@"self.day == 2"];
-                weddaylist = [datalist filteredArrayUsingPredicate:wed];
-                NSPredicate *thu = [NSPredicate predicateWithFormat:@"self.day == 3"];
-                thudaylist = [datalist filteredArrayUsingPredicate:thu];
-                NSPredicate *fri = [NSPredicate predicateWithFormat:@"self.day == 4"];
-                fridaylist = [datalist filteredArrayUsingPredicate:fri];
-                NSPredicate *sat = [NSPredicate predicateWithFormat:@"self.day == 5"];
-                satdaylist = [datalist filteredArrayUsingPredicate:sat];
-                NSPredicate *sun = [NSPredicate predicateWithFormat:@"self.day == 6"];
-                sundaylist = [datalist filteredArrayUsingPredicate:sun];
-                NSPredicate *none = [NSPredicate predicateWithFormat:@"self.day ==7"];
-                nonedaylist = [datalist filteredArrayUsingPredicate:none];
+                NSMutableArray *mondaylist = [[NSMutableArray alloc] init];
+                NSMutableArray *tuedaylist = [[NSMutableArray alloc] init];
+                NSMutableArray *weddaylist = [[NSMutableArray alloc] init];
+                NSMutableArray *thudaylist = [[NSMutableArray alloc] init];
+                NSMutableArray *fridaylist = [[NSMutableArray alloc] init];
+                NSMutableArray *satdaylist = [[NSMutableArray alloc] init];
+                NSMutableArray *sundaylist = [[NSMutableArray alloc] init];
+                NSMutableArray *nonedaylist = [[NSMutableArray alloc] init];
+                NSString *mon_chr = @"月";
+                NSString *tue_chr = @"火";
+                NSString *wed_chr = @"水";
+                NSString *thu_chr = @"木";
+                NSString *fri_chr = @"金";
+                NSString *sat_chr = @"土";
+                NSString *sun_chr = @"日";
                 
-                self.sectionDatas = [[NSArray alloc] initWithObjects:mondaylist, tuedaylist, weddaylist, thudaylist, fridaylist, satdaylist ,sundaylist, nonedaylist, nil];
+                TimeManagement *data;
+                
+                for (data in datalist) {
+                    NSArray *daylist = [NSArray arrayWithArray: data.day];
+                    if ([daylist containsObject:mon_chr]) {
+                        [mondaylist addObject: data];
+                    }
+                    if ([daylist containsObject:tue_chr]) {
+                        [tuedaylist addObject:data];
+                    }
+                    if ([daylist containsObject:wed_chr]) {
+                        [weddaylist addObject:data];
+                    }
+                    if ([daylist containsObject:thu_chr]) {
+                        [thudaylist addObject:data];
+                    }
+                    if ([daylist containsObject:fri_chr]) {
+                        [fridaylist addObject:data];
+                    }
+                    if ([daylist containsObject:sat_chr]) {
+                        [satdaylist addObject:data];
+                    }
+                    if ([daylist containsObject:sun_chr]) {
+                        [sundaylist addObject:data];
+                    }
+                    if ([daylist count] == 0) {
+                        [nonedaylist addObject:data];
+                    }
+                }
+                
+                NSArray *monlist = [NSArray arrayWithArray:mondaylist];
+                NSArray *tuelist = [NSArray arrayWithArray:tuedaylist];
+                NSArray *wedlist = [NSArray arrayWithArray:weddaylist];
+                NSArray *thulist = [NSArray arrayWithArray:thudaylist];
+                NSArray *frilist = [NSArray arrayWithArray:fridaylist];
+                NSArray *satlist = [NSArray arrayWithArray:satdaylist];
+                NSArray *sunlist = [NSArray arrayWithArray:sundaylist];
+                NSArray *nonelist = [NSArray arrayWithArray:nonedaylist];
+                
+                
+                self.sectionDatas = [[NSArray alloc] initWithObjects:monlist, tuelist, wedlist, thulist, frilist, satlist ,sunlist, nonelist, nil];
                 
                 self.flag = 1;
                 

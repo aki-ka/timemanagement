@@ -18,7 +18,7 @@
 
 - (TimeManagement *)objectInListAtIndex:(NSUInteger)theIndex;
 
-- (void)addTimeManagementWithOccasion:(NSString *)inputOccasion start:(NSString *)inputStart goal:(NSString *)inputGoal time:(NSDate *) inputTime day:(NSInteger)inputDay;
+- (void)addTimeManagementWithOccasion:(NSString *)inputOccasion start:(NSString *)inputStart goal:(NSString *)inputGoal time:(NSDate *) inputTime day:(NSMutableArray *)inputDay;
 //getter
 -(NSMutableArray *)getList;
 
